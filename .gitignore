@@ -32,14 +32,8 @@
 /web/sites/**/settings.local.php
 
 
-# Ignorar CONTENIDOS PROPIOS de la plataforma
-/web/sites/default/files/*.*
-
-
 
 # Ignore paths that may contain temporary files
-/web/sites/**/translations/*.*
-/web/sites/**/tmp/*.*
 /web/sites/**/cache/*.*
 
 
