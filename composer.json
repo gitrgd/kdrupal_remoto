@@ -1,0 +1,108 @@
+{
+    "name": "drupal-composer/drupal-project",
+    "description": "Project template for Drupal 8 projects with composer",
+    "type": "project",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "",
+            "role": ""
+        }
+    ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    ],
+    "require": {
+        "composer/installers": "^1.7",
+        "cweagans/composer-patches": "^1.6",
+        "drupal-composer/drupal-scaffold": "^2.5",
+        "drupal/address": "^1.7",
+        "drupal/addtoany": "^1.12",
+        "drupal/admin_toolbar": "^2.0",
+        "drupal/block_class": "^1.1",
+        "drupal/commerce": "^2.8",
+        "drupal/commerce_paypal": "^1.0",
+        "drupal/config_update": "^1.5",
+        "drupal/console": "^1.0.2",
+        "drupal/contact_block": "^1.4",
+        "drupal/core-recommended": "^8.8",
+        "drupal/ctools": "^3.2",
+        "drupal/entity": "^1.0",
+        "drupal/entity_activity": "^1.0",
+        "drupal/entity_reference_revisions": "^1.7",
+        "drupal/features": "^3.8",
+        "drupal/field_collection": "^1.0",
+        "drupal/fontawesome": "^2.15",
+        "drupal/image_url_formatter": "^1.0",
+        "drupal/imce": "^1.6",
+        "drupal/inline_entity_form": "^1.0",
+        "drupal/libraries": "^3.0",
+        "drupal/ludwig": "^1.0",
+        "drupal/mailchimp": "^1.11",
+        "drupal/mailsystem": "^4.2",
+        "drupal/paragraphs": "^1.11",
+        "drupal/pathauto": "^1.6",
+        "drupal/profile": "^1.0",
+        "drupal/simplenews": "^2.0",
+        "drupal/swiftmailer": "^1.0",
+        "drupal/token": "^1.6",
+        "drupal/token_filter": "^1.0",
+        "drupal/tvi": "^1.0",
+        "drupal/twitter_block": "^3.0",
+        "drupal/views_infinite_scroll": "^1.6",
+        "drush/drush": "^10.0.0",
+        "vlucas/phpdotenv": "^2.4",
+        "webflo/drupal-finder": "^1.0.0",
+        "webmozart/path-util": "^2.3"
+    },
+    "require-dev": {
+        "drupal/core-dev": "^8.8"
+    },
+    "conflict": {
+        "drupal/drupal": "*"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true
+    },
+    "autoload": {
+        "classmap": [
+            "scripts/composer/ScriptHandler.php"
+        ],
+        "files": ["load.environment.php"]
+    },
+    "scripts": {
+        "pre-install-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+        ],
+        "pre-update-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+        ],
+        "post-install-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+        ],
+        "post-update-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+        ]
+    },
+    "extra": {
+        "installer-paths": {
+            "web/core": ["type:drupal-core"],
+            "web/libraries/{$name}": ["type:drupal-library"],
+            "web/modules/contrib/{$name}": ["type:drupal-module"],
+            "web/profiles/contrib/{$name}": ["type:drupal-profile"],
+            "web/themes/contrib/{$name}": ["type:drupal-theme"],
+            "drush/Commands/{$name}": ["type:drupal-drush"]
+        },
+        "drupal-scaffold": {
+            "initial": {
+                ".editorconfig": "../.editorconfig",
+                ".gitattributes": "../.gitattributes"
+            }
+        }
+    }
+}

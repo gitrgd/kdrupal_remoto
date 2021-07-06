@@ -1,0 +1,13 @@
+theme: current
+defaults:
+  sender: swiftmailer
+  formatter: test_simplenews_html_mail
+_core:
+  default_config_hash: IhwTepsVwtbtbcT5GzQKhCXDCRvbk3MNkWqPiuiZ10s
+modules:
+  swiftmailer: {  }
+  simplenews:
+    none:
+      formatter: test_simplenews_html_mail
+      sender: swiftmailer
+langcode: es

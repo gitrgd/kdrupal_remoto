@@ -1,0 +1,35 @@
+uuid: d716e383-bed8-41bc-a252-cdd8fd397142
+langcode: es
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:723d9330-e7ea-478f-8d29-b8adbc497221'
+  module:
+    - block_content
+    - gaviasthemer
+    - system
+  theme:
+    - gavias_edmix
+third_party_settings:
+  gaviasthemer:
+    classes: block_suscrip_cursos
+id: suscripcionacursophp7ia
+theme: gavias_edmix
+region: other
+weight: -13
+provider: null
+plugin: 'block_content:723d9330-e7ea-478f-8d29-b8adbc497221'
+settings:
+  id: 'block_content:723d9330-e7ea-478f-8d29-b8adbc497221'
+  label: 'Suscripción a curso PHP 7 (IA)'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /product/13
+    negate: false
+    context_mapping: {  }

@@ -1,0 +1,27 @@
+uuid: 9b59d126-ad19-4603-8d6e-5048ec62c2cc
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_descarga
+    - paragraphs.paragraphs_type.fichero
+  module:
+    - file
+id: paragraph.fichero.field_descarga
+field_name: field_descarga
+entity_type: paragraph
+bundle: fichero
+label: Descarga
+description: 'txt, pdf, docx, zip'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: contenidos/html5-css3-inicio
+  file_extensions: 'txt pdf docx zip'
+  max_filesize: 5MB
+  description_field: true
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file

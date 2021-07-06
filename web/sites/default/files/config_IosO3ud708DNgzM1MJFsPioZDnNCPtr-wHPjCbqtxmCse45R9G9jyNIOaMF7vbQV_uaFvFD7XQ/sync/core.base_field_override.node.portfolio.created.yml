@@ -1,0 +1,18 @@
+uuid: 85552bac-341f-44f5-b304-16c14d544e35
+langcode: es
+status: true
+dependencies:
+  config:
+    - node.type.portfolio
+id: node.portfolio.created
+field_name: created
+entity_type: node
+bundle: portfolio
+label: Fecha
+description: 'La fecha en que el nodo fue creado.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

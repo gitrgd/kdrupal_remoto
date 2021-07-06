@@ -1,0 +1,11 @@
+uuid: 12ea5a80-622c-46ef-9baf-e14bd6b2a95d
+langcode: es
+status: true
+dependencies:
+  module:
+    - entity_activity
+id: entity_activity_log.entity_activity_log
+target_entity_type_id: entity_activity_log
+target_bundle: entity_activity_log
+default_langcode: es
+language_alterable: false

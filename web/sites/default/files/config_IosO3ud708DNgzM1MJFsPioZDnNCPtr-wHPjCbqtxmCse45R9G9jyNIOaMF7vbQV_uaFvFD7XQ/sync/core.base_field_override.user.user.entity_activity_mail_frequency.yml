@@ -1,0 +1,19 @@
+uuid: c91ecec5-1f27-493c-9867-f2d5b63fd5da
+langcode: es
+status: true
+dependencies:
+  module:
+    - options
+    - user
+id: user.user.entity_activity_mail_frequency
+field_name: entity_activity_mail_frequency
+entity_type: user
+bundle: user
+label: 'Logs report frequency'
+description: 'Select the frequency at which you want receive logs report by mail. Leave empty to not receive any reports by mail.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

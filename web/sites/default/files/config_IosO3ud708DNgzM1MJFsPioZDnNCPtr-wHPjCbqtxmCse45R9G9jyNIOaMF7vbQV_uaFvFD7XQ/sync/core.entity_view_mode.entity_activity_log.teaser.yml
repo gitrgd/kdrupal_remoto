@@ -1,0 +1,15 @@
+uuid: bd582c53-c1eb-4140-abda-b651a13c90af
+langcode: es
+status: true
+dependencies:
+  enforced:
+    module:
+      - entity_activity
+  module:
+    - entity_activity
+_core:
+  default_config_hash: ukFNk4Suy-SSETvbpn_vBq7PD7MVnyvw5o2W_dcK7oY
+id: entity_activity_log.teaser
+label: Teaser
+targetEntityType: entity_activity_log
+cache: true

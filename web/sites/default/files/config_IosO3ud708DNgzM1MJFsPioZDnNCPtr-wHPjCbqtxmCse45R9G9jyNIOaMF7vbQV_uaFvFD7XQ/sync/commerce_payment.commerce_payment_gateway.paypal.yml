@@ -1,0 +1,22 @@
+uuid: 8a4eda2f-8805-4cea-ba22-97d2dcf08569
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_paypal
+id: paypal
+label: Paypal
+weight: null
+plugin: paypal_express_checkout
+configuration:
+  api_username: kreativdrupal-facilitator_api1.gmail.com
+  api_password: QVNN9C8B2U7M4DXZ
+  shipping_prompt: shipping_skip
+  signature: AFcWxV21C7fd0v3bYYYRCpSSRl31AG8PwsCcPlIBlfCUDLTHOmCnrwxQ
+  solution_type: Mark
+  display_label: PayPal
+  mode: test
+  payment_method_types:
+    - credit_card
+conditions: {  }
+conditionOperator: AND

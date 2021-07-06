@@ -1,0 +1,23 @@
+uuid: 8ef92ce5-b091-4f93-a84b-482813f5f7cf
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.fichero.field_descarga
+    - paragraphs.paragraphs_type.fichero
+  module:
+    - file
+id: paragraph.fichero.default
+targetEntityType: paragraph
+bundle: fichero
+mode: default
+content:
+  field_descarga:
+    weight: 0
+    label: hidden
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    type: file_table
+    region: content
+hidden: {  }

@@ -1,0 +1,18 @@
+uuid: 99220495-0d82-4cdd-b8ad-f551a2d108b2
+langcode: es
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.portfolio_tags
+id: taxonomy_term.portfolio_tags.name
+field_name: name
+entity_type: taxonomy_term
+bundle: portfolio_tags
+label: Nombre
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,35 @@
+uuid: b05bfb95-7121-4369-b2e5-babb877dc98c
+langcode: es
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:b7687ff4-6494-4ef0-9031-38b58f5f990a'
+  module:
+    - block_content
+    - gaviasthemer
+    - system
+  theme:
+    - gavias_edmix
+third_party_settings:
+  gaviasthemer:
+    classes: block_suscrip_cursos
+id: suscribetealboletininformativodelcursodrupal8desarrolloweb
+theme: gavias_edmix
+region: after_content
+weight: 0
+provider: null
+plugin: 'block_content:b7687ff4-6494-4ef0-9031-38b58f5f990a'
+settings:
+  id: 'block_content:b7687ff4-6494-4ef0-9031-38b58f5f990a'
+  label: 'Suscríbete al boletín informativo del curso Drupal 8 (Desarrollo web)'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /product/11
+    negate: false
+    context_mapping: {  }

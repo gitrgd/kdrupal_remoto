@@ -1,0 +1,15 @@
+uuid: 91a06b99-91fc-4fc3-8e01-c8e528f77a2c
+langcode: es
+status: true
+dependencies:
+  enforced:
+    module:
+      - entity_activity_mail
+  module:
+    - entity_activity
+_core:
+  default_config_hash: IjkHcG6fn1s0z5Z-HGOZwAcEZ3kfHgo2Z4MlM40jP78
+id: entity_activity_log.mail
+label: Mail
+targetEntityType: entity_activity_log
+cache: true

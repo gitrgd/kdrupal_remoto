@@ -1,0 +1,20 @@
+uuid: f3633d58-f10e-4ad1-8a06-aeda8298539a
+langcode: es
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.category_course
+  module:
+    - path
+id: taxonomy_term.category_course.path
+field_name: path
+entity_type: taxonomy_term
+bundle: category_course
+label: 'Alias de URL'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

@@ -1,0 +1,20 @@
+uuid: 9969978a-1531-48df-8c10-1ea9a4742398
+langcode: es
+status: true
+dependencies:
+  config:
+    - node.type.lesson
+  module:
+    - path
+id: node.lesson.path
+field_name: path
+entity_type: node
+bundle: lesson
+label: 'Alias de URL'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path
