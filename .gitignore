@@ -35,6 +35,7 @@
 
 
 # Ignore paths that may contain temporary files
+/web/sites/default/files/tmp/*.*
 /web/sites/**/cache/*.*
 
 
