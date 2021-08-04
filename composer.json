@@ -13,12 +13,16 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
         }
     ],
     "require": {
         "composer/installers": "^1.7",
         "cweagans/composer-patches": "^1.6",
-        "drupal-composer/drupal-scaffold": "^2.5",
+        "drupal/core-composer-scaffold": "^8.8",
         "drupal/address": "^1.7",
         "drupal/addtoany": "^1.12",
         "drupal/admin_toolbar": "^2.0",
