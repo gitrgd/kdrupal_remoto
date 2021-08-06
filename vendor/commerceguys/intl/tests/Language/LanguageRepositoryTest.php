@@ -5,11 +5,12 @@ namespace CommerceGuys\Intl\Tests\Language;
 use CommerceGuys\Intl\Language\Language;
 use CommerceGuys\Intl\Language\LanguageRepository;
 use org\bovigo\vfs\vfsStream;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @coversDefaultClass \CommerceGuys\Intl\Language\LanguageRepository
  */
-class LanguageRepositoryTest extends \PHPUnit_Framework_TestCase
+final class LanguageRepositoryTest extends TestCase
 {
     /**
      * Language definitions.
@@ -57,7 +58,6 @@ class LanguageRepositoryTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::get
      * @covers ::loadDefinitions
-     * @covers ::createLanguageFromDefinition
      *
      * @uses \CommerceGuys\Intl\Language\Language
      * @uses \CommerceGuys\Intl\Locale
@@ -121,7 +121,6 @@ class LanguageRepositoryTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::getAll
      * @covers ::loadDefinitions
-     * @covers ::createLanguageFromDefinition
      *
      * @uses \CommerceGuys\Intl\Language\Language
      * @uses \CommerceGuys\Intl\Locale

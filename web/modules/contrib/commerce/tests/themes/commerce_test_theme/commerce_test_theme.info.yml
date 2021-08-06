@@ -1,8 +1,8 @@
 name: 'Commerce test theme'
 type: theme
 description: 'Theme for testing commerce email theming'
-core: 8.x
 base theme: stable
+package: Testing
 regions:
   sidebar_first: 'Left sidebar'
   sidebar_second: 'Right sidebar'
@@ -15,7 +15,7 @@ regions_hidden:
   - sidebar_first
   - sidebar_second
 
-# Information added by Drupal.org packaging script on 2019-12-11
-version: '8.x-2.16'
+# Information added by Drupal.org packaging script on 2021-08-04
+version: '8.x-2.26'
 project: 'commerce'
-datestamp: 1576074190
+datestamp: 1628088730

@@ -70,6 +70,10 @@
 		"name": "برازيلي ريل",
 		"symbol": "R$"
 	},
+	"GBP": {
+		"name": "برتانوې پونډ",
+		"symbol": "£"
+	},
 	"BMD": {
 		"name": "برمودا ډالر"
 	},
@@ -142,6 +146,9 @@
 	"THB": {
 		"name": "تهايي بات"
 	},
+	"TND": {
+		"name": "تيونسې دينار"
+	},
 	"TTD": {
 		"name": "ټرينيډاډ او ټوباګو ډالر"
 	},
@@ -152,6 +159,9 @@
 		"name": "جاپاني ين",
 		"symbol": "JP¥"
 	},
+	"GEL": {
+		"name": "جارجیاېي لارې"
+	},
 	"GIP": {
 		"name": "جبل الطارقي پونډ"
 	},
@@ -160,6 +170,9 @@
 	},
 	"JMD": {
 		"name": "جمايکايي ډالر"
+	},
+	"SSP": {
+		"name": "جنوب سوډاني پونډ"
 	},
 	"ZAR": {
 		"name": "جنوبي افريقاېي رنډ"
@@ -180,7 +193,7 @@
 	},
 	"XOF": {
 		"name": "ختيځ افريقايي CFA فرانک",
-		"symbol": "CFA"
+		"symbol": "F CFA"
 	},
 	"XCD": {
 		"name": "ختيځ کربين ډالر",
@@ -268,7 +281,8 @@
 		"name": "فجي ډالر"
 	},
 	"PHP": {
-		"name": "فلپاينۍ پسو"
+		"name": "فلپاينۍ پسو",
+		"symbol": "₱"
 	},
 	"KZT": {
 		"name": "قازقستاني ټينج"
@@ -334,6 +348,9 @@
 	"GMD": {
 		"name": "ګيمبين دلاسې"
 	},
+	"LAK": {
+		"name": "لاشې کپ"
+	},
 	"LRD": {
 		"name": "لايبيرين ډالر"
 	},
@@ -364,6 +381,9 @@
 	},
 	"EGP": {
 		"name": "مصري پونډ"
+	},
+	"MOP": {
+		"name": "مکانيس پټاکا"
 	},
 	"MGA": {
 		"name": "ملاګاسي ارياري"
@@ -423,6 +443,10 @@
 		"name": "هانګ کانګ ډالر",
 		"symbol": "HK$"
 	},
+	"INR": {
+		"name": "هندي روپۍ",
+		"symbol": "₹"
+	},
 	"HUF": {
 		"name": "هنګري فورنټ"
 	},
@@ -455,38 +479,15 @@
 	"UGX": {
 		"name": "يوګانډي شيلنګ"
 	},
-	"GBP": {
-		"name": "British Pound",
-		"symbol": "£"
-	},
 	"XPF": {
 		"name": "CFP فرانک",
 		"symbol": "CFPF"
 	},
-	"GEL": {
-		"name": "Georgian Lari"
-	},
-	"INR": {
-		"name": "Indian Rupee",
-		"symbol": "₹"
-	},
-	"LAK": {
-		"name": "Laotian Kip"
-	},
 	"LSL": {
 		"name": "Lesotho Loti"
 	},
-	"MOP": {
-		"name": "Macanese Pataca"
-	},
 	"SVC": {
 		"name": "Salvadoran Colón"
-	},
-	"SSP": {
-		"name": "South Sudanese Pound"
-	},
-	"TND": {
-		"name": "Tunisian Dinar"
 	},
 	"UYW": {
 		"name": "Uruguayan Nominal Wage Index Unit"

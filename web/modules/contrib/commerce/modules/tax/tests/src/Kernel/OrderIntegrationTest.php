@@ -30,12 +30,13 @@ class OrderIntegrationTest extends OrderKernelTestBase {
    */
   public static $modules = [
     'commerce_tax',
+    'commerce_tax_test',
   ];
 
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  protected function setUp(): void {
     parent::setUp();
 
     $this->installConfig(['commerce_tax']);
