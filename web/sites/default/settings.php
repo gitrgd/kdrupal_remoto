@@ -806,6 +806,7 @@ $databases['default']['default'] = array (
   'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
   'driver' => 'mysql',
 );
+
 $settings['install_profile'] = 'standard';
 
 $settings['config_sync_directory'] = 'sites/default/files/config_IosO3ud708DNgzM1MJFsPioZDnNCPtr-wHPjCbqtxmCse45R9G9jyNIOaMF7vbQV_uaFvFD7XQ/sync';
@@ -816,4 +817,9 @@ $settings['trusted_host_patterns'] = [ '^kdrupal.des$',  ];
 $ddev_settings = dirname(__FILE__) . '/settings.ddev.php';
 if (getenv('IS_DDEV_PROJECT') == 'true' && is_readable($ddev_settings)) {
   require $ddev_settings;
+}
+
+// las siguientes lineas las incluimos segun instrucciones by ddev.
+if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
+include $app_root . '/' . $site_path . '/settings.local.php';
 }
