@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '425ca6c1759debfc95efe283eb047ccc3b5e2864',
+        'reference' => '4fd4de1aadd612b36ccbe859050df523b881432f',
         'name' => 'drupal-composer/drupal-project',
         'dev' => true,
     ),
@@ -352,7 +352,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '425ca6c1759debfc95efe283eb047ccc3b5e2864',
+            'reference' => '4fd4de1aadd612b36ccbe859050df523b881432f',
             'dev_requirement' => false,
         ),
         'drupal/action' => array(
@@ -1412,12 +1412,14 @@
             ),
         ),
         'drupal/upgrade_status' => array(
-            'pretty_version' => '3.8.0',
-            'version' => '3.8.0.0',
+            'pretty_version' => 'dev-3.x',
+            'version' => 'dev-3.x',
             'type' => 'drupal-module',
             'install_path' => __DIR__ . '/../../web/modules/contrib/upgrade_status',
-            'aliases' => array(),
-            'reference' => '8.x-3.8',
+            'aliases' => array(
+                0 => '3.x-dev',
+            ),
+            'reference' => '53f052a2cb3c09ef0005d6e85d8bef7239bf51db',
             'dev_requirement' => false,
         ),
         'drupal/user' => array(

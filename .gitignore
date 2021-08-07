@@ -36,7 +36,7 @@
 
 
 # Ignore paths that may contain temporary files
-/web/sites/default/files/tmp/*.*
+/web/sites/default/files/tmp/
 /web/sites/default/files/php/twig/
 /web/sites/**/cache/*.*
 
