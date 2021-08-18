@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '4fd4de1aadd612b36ccbe859050df523b881432f',
+        'reference' => '026a8d4e4e609660cec20a2e7839c503582d182d',
         'name' => 'drupal-composer/drupal-project',
         'dev' => true,
     ),
@@ -352,7 +352,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '4fd4de1aadd612b36ccbe859050df523b881432f',
+            'reference' => '026a8d4e4e609660cec20a2e7839c503582d182d',
             'dev_requirement' => false,
         ),
         'drupal/action' => array(
@@ -1411,6 +1411,15 @@
                 0 => '8.9.17',
             ),
         ),
+        'drupal/upgrade_rector' => array(
+            'pretty_version' => '1.0.0-alpha7',
+            'version' => '1.0.0.0-alpha7',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/upgrade_rector',
+            'aliases' => array(),
+            'reference' => '8.x-1.0-alpha7',
+            'dev_requirement' => false,
+        ),
         'drupal/upgrade_status' => array(
             'pretty_version' => 'dev-3.x',
             'version' => 'dev-3.x',
@@ -1459,6 +1468,12 @@
             'dev_requirement' => false,
             'replaced' => array(
                 0 => '8.9.17',
+            ),
+        ),
+        'drupal8-rector/drupal8-rector' => array(
+            'dev_requirement' => false,
+            'replaced' => array(
+                0 => '*',
             ),
         ),
         'drush/drush' => array(
@@ -1758,6 +1773,21 @@
                 0 => '~2.0',
             ),
         ),
+        'palantirnet/drupal-rector' => array(
+            'pretty_version' => '0.11.2',
+            'version' => '0.11.2.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../palantirnet/drupal-rector',
+            'aliases' => array(),
+            'reference' => '92d56b1a0edb40a063742c0331aaadd19b6b4cc8',
+            'dev_requirement' => false,
+        ),
+        'palantirnet/drupal8-rector' => array(
+            'dev_requirement' => false,
+            'replaced' => array(
+                0 => '*',
+            ),
+        ),
         'paragonie/random_compat' => array(
             'pretty_version' => 'v9.99.99',
             'version' => '9.99.99.0',
@@ -1991,6 +2021,15 @@
             'install_path' => __DIR__ . '/../ralouphie/getallheaders',
             'aliases' => array(),
             'reference' => '120b605dfeb996808c31b6477290a714d356e822',
+            'dev_requirement' => false,
+        ),
+        'rector/rector' => array(
+            'pretty_version' => '0.11.43',
+            'version' => '0.11.43.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../rector/rector',
+            'aliases' => array(),
+            'reference' => '7541c3c02dd0c8a328be86ae10373200fc38dd21',
             'dev_requirement' => false,
         ),
         'roundcube/plugin-installer' => array(

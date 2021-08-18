@@ -8,7 +8,11 @@ function gavias_edmix_base_url(){
 function gavias_edmix_preprocess_node(&$variables) {
   $date = $variables['node']->getCreatedTime();
   $variables['date'] = date( 'j F Y', $date);
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> feature/H-5.2.4
   if ($variables['teaser'] || !empty($variables['content']['comments']['comment_form'])) {
     unset($variables['content']['links']['comment']['#links']['comment-add']);
   }
@@ -49,7 +53,11 @@ function gavias_edmix_preprocess_node(&$variables) {
 
 function gavias_edmix_preprocess_node__portfolio(&$variables){
   $node = $variables['node'];
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> feature/H-5.2.4
   // Override lesson list on single course
   $output = '';
   $count_information = 0;
@@ -74,9 +82,15 @@ function gavias_edmix_preprocess_node__event(&$variables){
   $event_date = array();
   if($node->hasField('field_event_start')){
     $event_start = $node->field_event_start->value;
+<<<<<<< HEAD
     if($event_start){ 
       $event_date['day'] = format_date(strtotime($event_start), 'custom', 'd');
       $event_date['month'] = format_date(strtotime($event_start), 'custom', 'F');
+=======
+    if($event_start){
+      $event_date['day'] = \Drupal::service('date.formatter')->format(strtotime($event_start), 'custom', 'd');
+      $event_date['month'] = \Drupal::service('date.formatter')->format(strtotime($event_start), 'custom', 'F');
+>>>>>>> feature/H-5.2.4
     }
   }
   $variables['event_date'] = $event_date;
@@ -84,7 +98,11 @@ function gavias_edmix_preprocess_node__event(&$variables){
 
 function gavias_edmix_preprocess_breadcrumb(&$variables){
   $variables['#cache']['max-age'] = 0;
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> feature/H-5.2.4
   $request = \Drupal::request();
   $title = '';
   if ($route = $request->attributes->get(\Symfony\Cmf\Component\Routing\RouteObjectInterface::ROUTE_OBJECT)) {
@@ -103,14 +121,24 @@ function gavias_edmix_preprocess_breadcrumb(&$variables){
       );
       $variables['breadcrumb'][] = array(
         'text' => $title
+<<<<<<< HEAD
       );  
     }  
+=======
+      );
+    }
+>>>>>>> feature/H-5.2.4
   }
 }
 
 function gavias_edmix_preprocess_node__course(&$variables) {
+<<<<<<< HEAD
   $view_mode = $variables['view_mode']; 
   $allowed_view_modes = ['full']; 
+=======
+  $view_mode = $variables['view_mode'];
+  $allowed_view_modes = ['full'];
+>>>>>>> feature/H-5.2.4
   if(in_array($view_mode, $allowed_view_modes)) {
     $allowed_regions = ['lessons'];
     gavias_edmix_add_regions_to_node($allowed_regions, $variables);

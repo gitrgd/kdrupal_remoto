@@ -1,7 +1,7 @@
 <?php declare(strict_types = 1);
 
 return PHPStan\Cache\CacheItem::__set_state(array(
-   'variableKey' => '/var/www/html/web/themes/custom/gavias_edmix/gavias_edmix.theme-1523864342',
+   'variableKey' => '/var/www/html/web/themes/custom/gavias_edmix/gavias_edmix.theme-1629222141',
    'data' => 
   array (
     'f702dec1887b2c86b4a1e379fb5c4250' => 
@@ -47,6 +47,7 @@ return PHPStan\Cache\CacheItem::__set_state(array(
         array (
           'attribute' => 'Drupal\\Core\\Template\\Attribute',
           'block' => 'Drupal\\block\\Entity\\Block',
+          'url' => 'Drupal\\Core\\Url',
         ),
          'className' => NULL,
          'functionName' => 'gavias_edmix_preprocess_html',
@@ -77,6 +78,7 @@ return PHPStan\Cache\CacheItem::__set_state(array(
         array (
           'attribute' => 'Drupal\\Core\\Template\\Attribute',
           'block' => 'Drupal\\block\\Entity\\Block',
+          'url' => 'Drupal\\Core\\Url',
         ),
          'className' => NULL,
          'functionName' => 'gavias_edmix_preprocess_maintenance_page',
@@ -107,6 +109,7 @@ return PHPStan\Cache\CacheItem::__set_state(array(
         array (
           'attribute' => 'Drupal\\Core\\Template\\Attribute',
           'block' => 'Drupal\\block\\Entity\\Block',
+          'url' => 'Drupal\\Core\\Url',
         ),
          'className' => NULL,
          'functionName' => 'gavias_edmix_preprocess_block',
@@ -137,6 +140,7 @@ return PHPStan\Cache\CacheItem::__set_state(array(
         array (
           'attribute' => 'Drupal\\Core\\Template\\Attribute',
           'block' => 'Drupal\\block\\Entity\\Block',
+          'url' => 'Drupal\\Core\\Url',
         ),
          'className' => NULL,
          'functionName' => 'gavias_edmix_preprocess_page_title',
@@ -167,6 +171,7 @@ return PHPStan\Cache\CacheItem::__set_state(array(
         array (
           'attribute' => 'Drupal\\Core\\Template\\Attribute',
           'block' => 'Drupal\\block\\Entity\\Block',
+          'url' => 'Drupal\\Core\\Url',
         ),
          'className' => NULL,
          'functionName' => 'gavias_edmix_theme_suggestions_form_alter',
@@ -197,6 +202,7 @@ return PHPStan\Cache\CacheItem::__set_state(array(
         array (
           'attribute' => 'Drupal\\Core\\Template\\Attribute',
           'block' => 'Drupal\\block\\Entity\\Block',
+          'url' => 'Drupal\\Core\\Url',
         ),
          'className' => NULL,
          'functionName' => 'gavias_edmix_form_alter',

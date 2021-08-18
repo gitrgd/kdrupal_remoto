@@ -1,6 +1,7 @@
 name: Gavias Edmix
 type: theme
 description: 'A flexible, recolorable theme with many regions and a responsive, mobile-first layout.'
+base theme: stable
 package: gaviasthemes
 libraries:
   - gavias_edmix/global-styling
@@ -38,4 +39,5 @@ regions:
 
 version: '8.x'
 core: '8.x'
+core_version_requirement: ^8 || ^9
 project: 'drupal'
