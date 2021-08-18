@@ -56,6 +56,7 @@
         "drupal/token_filter": "^1.0",
         "drupal/tvi": "^1.0",
         "drupal/twitter_block": "^3.0",
+        "drupal/upgrade_rector": "^1.0@alpha",
         "drupal/upgrade_status": "3.x-dev@dev",
         "drupal/views_infinite_scroll": "^1.6",
         "drush/drush": "^10.0.0",

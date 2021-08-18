@@ -5,6 +5,7 @@ use Drupal\Component\Utility\Unicode;
 use Drupal\Core\Url;
 use Drupal\Core\Menu\MenuLinkInterface;
 use Drupal\Component\Plugin\Exception\PluginNotFoundException;
+use Drupal\Core\Entity;
 
 function gavias_edmix_preprocess_menu__main(&$variables) {
   $variables['attributes']['class'][] = 'clearfix';
@@ -43,7 +44,7 @@ function _gavias_edmix_attributes_get_attributes(MenuLinkInterface $menu_link_co
   }
   list($entity_type, $uuid) = explode(':', $plugin_id, 2);
   if ($entity_type == 'menu_link_content') {
-    $entity = \Drupal::entityManager()->loadEntityByUuid($entity_type, $uuid);
+    $entity = \Drupal::service('entity.repository')->loadEntityByUuid($entity_type, $uuid);
     if ($entity) {
       $options = $entity->link->first()->options;
       $attributes = isset($options['attributes']) ? $options['attributes'] : [];
