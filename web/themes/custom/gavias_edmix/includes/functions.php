@@ -20,16 +20,6 @@ function gavias_edmix_include($theme, $path) {
 function gavias_edmix_render_block($key) {
   $block = \Drupal\block\Entity\Block::load($key);
   if($block){
-<<<<<<< HEAD
-  $block_content = \Drupal::entityManager()
-    ->getViewBuilder('block')
-    ->view($block);
-    return drupal_render($block_content);
-  }  
-  return '';
-}
-
-=======
   $block_content = \Drupal::entityTypeManager()
     ->getViewBuilder('block')
     ->view($block);
@@ -37,7 +27,7 @@ function gavias_edmix_render_block($key) {
   }
   return '';
 }
->>>>>>> feature/H-5.2.4
+
 function gavias_edmix_makeid($length = 5){
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $randomString = '';
@@ -53,24 +43,6 @@ function gavias_edmix_makeid($length = 5){
 function gavias_edmix_add_regions_to_node($allowed_regions, &$variables) {
   // Retrieve active theme
   $theme = \Drupal::theme()->getActiveTheme()->getName();
-<<<<<<< HEAD
- 
-  // Retrieve theme regions
-  $available_regions = system_region_list($theme, 'REGIONS_ALL');
- 
-  // Validate allowed regions with available regions
-  $regions = array_intersect(array_keys($available_regions), $allowed_regions);
- 
-  // For each region
-  foreach ($regions as $key => $region) {
- 
-    // Load region blocks
-    $blocks = entity_load_multiple_by_properties('block', array('theme' => $theme, 'region' => $region));
- 
-    // Sort ‘em
-    uasort($blocks, 'Drupal\block\Entity\Block::sort');
- 
-=======
 
   // Retrieve theme regions
   $available_regions = system_region_list($theme, 'REGIONS_ALL');
@@ -87,21 +59,10 @@ function gavias_edmix_add_regions_to_node($allowed_regions, &$variables) {
     // Sort ‘em
     uasort($blocks, 'Drupal\block\Entity\Block::sort');
 
->>>>>>> feature/H-5.2.4
     // Capture viewable blocks and their settings to $build
     $build = array();
     foreach ($blocks as $key => $block) {
       if ($block->access('view')) {
-<<<<<<< HEAD
-        $build[$key] = entity_view($block, 'block');
-      }
-    }
- 
-    // Add build to region
-    $variables[$region] = $build;
-  }
-}
-=======
         $build[$key] = \Drupal::entityTypeManager()->getViewBuilder('block_content')->view($block, 'block');
       }
     }
@@ -110,4 +71,3 @@ function gavias_edmix_add_regions_to_node($allowed_regions, &$variables) {
     $variables[$region] = $build;
   }
 }
->>>>>>> feature/H-5.2.4
