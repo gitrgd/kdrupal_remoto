@@ -6,6 +6,14 @@ commerce_order.configuration:
   requirements:
     _permission: 'access commerce administration pages'
 
+commerce_order.settings:
+  path: '/admin/commerce/config/orders/settings'
+  defaults:
+    _form: '\Drupal\commerce_order\Form\OrderSettingsForm'
+    _title: 'Order settings'
+  requirements:
+    _permission: 'administer commerce_order'
+
 entity.commerce_order.add_page:
   path: '/admin/commerce/orders/add'
   defaults:
@@ -39,7 +47,7 @@ entity.commerce_order.user_view:
     _entity_view: 'commerce_order.user'
     _title: 'Order information'
   requirements:
-    _entity_access: 'commerce_order.view'
+    _custom_access: '\Drupal\commerce_order\Access\OrderUserViewAccessCheck::checkAccess'
   options:
     parameters:
       entity:
@@ -62,7 +70,7 @@ commerce_order.address_book.overview:
 commerce_order.address_book.add_form:
   path: '/user/{user}/address-book/add/{profile_type}'
   defaults:
-    _entity_form: 'profile.address-book-add'
+    _controller: '\Drupal\commerce_order\Controller\AddressBookController::addForm'
     _title: 'Add address'
   options:
     parameters:

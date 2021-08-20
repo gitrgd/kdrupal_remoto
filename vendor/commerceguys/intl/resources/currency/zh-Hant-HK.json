@@ -144,7 +144,7 @@
 	},
 	"XOF": {
 		"name": "多哥非洲共同體法郎",
-		"symbol": "CFA"
+		"symbol": "F CFA"
 	},
 	"AOA": {
 		"name": "安哥拉寬扎"
@@ -190,6 +190,9 @@
 	},
 	"TZS": {
 		"name": "坦桑尼亞先令"
+	},
+	"VES": {
+		"name": "委內瑞拉玻利瓦"
 	},
 	"BDT": {
 		"name": "孟加拉塔卡"
@@ -489,8 +492,5 @@
 	},
 	"UYW": {
 		"name": "Uruguayan Nominal Wage Index Unit"
-	},
-	"VES": {
-		"name": "Venezuelan Bolívar"
 	}
 }

@@ -5,11 +5,12 @@ namespace CommerceGuys\Intl\Tests\Currency;
 use CommerceGuys\Intl\Currency\Currency;
 use CommerceGuys\Intl\Currency\CurrencyRepository;
 use org\bovigo\vfs\vfsStream;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @coversDefaultClass \CommerceGuys\Intl\Currency\CurrencyRepository
  */
-class CurrencyRepositoryTest extends \PHPUnit_Framework_TestCase
+final class CurrencyRepositoryTest extends TestCase
 {
     /**
      * Currency definitions.
@@ -69,7 +70,6 @@ class CurrencyRepositoryTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::get
      * @covers ::loadDefinitions
-     * @covers ::createCurrencyFromDefinition
      *
      * @uses \CommerceGuys\Intl\Currency\Currency
      * @uses \CommerceGuys\Intl\Locale
@@ -120,7 +120,6 @@ class CurrencyRepositoryTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::getAll
      * @covers ::loadDefinitions
-     * @covers ::createCurrencyFromDefinition
      *
      * @uses \CommerceGuys\Intl\Currency\Currency
      * @uses \CommerceGuys\Intl\Locale

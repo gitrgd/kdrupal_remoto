@@ -5,8 +5,6 @@ namespace Drupal\Tests\commerce_cart\Kernel;
 use Drupal\commerce_order\Entity\OrderItem;
 use Drupal\commerce_price\Price;
 use Drupal\commerce_product\Entity\ProductVariation;
-use Drupal\Tests\commerce_cart\Traits\CartManagerTestTrait;
-use Drupal\Tests\commerce_order\Kernel\OrderKernelTestBase;
 
 /**
  * Tests the order item matcher.
@@ -14,9 +12,7 @@ use Drupal\Tests\commerce_order\Kernel\OrderKernelTestBase;
  * @coversDefaultClass \Drupal\commerce_cart\OrderItemMatcher
  * @group commerce
  */
-class OrderItemMatcherTest extends OrderKernelTestBase {
-
-  use CartManagerTestTrait;
+class OrderItemMatcherTest extends CartKernelTestBase {
 
   /**
    * The order item matcher.
@@ -51,7 +47,7 @@ class OrderItemMatcherTest extends OrderKernelTestBase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  protected function setUp(): void {
     parent::setUp();
 
     $this->installConfig(['extra_order_item_field']);
@@ -72,7 +68,6 @@ class OrderItemMatcherTest extends OrderKernelTestBase {
       'status' => 1,
     ]);
 
-    $this->installCommerceCart();
     $this->orderItemMatcher = $this->container->get('commerce_cart.order_item_matcher');
   }
 

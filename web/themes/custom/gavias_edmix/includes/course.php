@@ -1,13 +1,16 @@
 <?php
+
+use Drupal\Core\Database\Query\Condition;
+
 function gavias_edmix_check_registered_course($uid, $course_id){
-  $results = db_select('{commerce_order_item}', 'oi');
+  $results = \Drupal::database()->select('{commerce_order_item}', 'oi');
   $results->leftJoin('{commerce_order}', 'o', 'oi.order_id = o.order_id');
   $results->leftJoin('{commerce_product_variation_field_data}', 'v', 'oi.purchased_entity = v.variation_id');
   $results->fields('v', array('product_id', 'type'));
   $results->fields('o', array('state', 'uid'));
   $results->fields('oi', array('unit_price__number', 'total_price__number'));
   $results->condition(
-    db_or()
+    (new Condition('OR'))
       ->condition('o.state', 'payment_received', '=')
       ->condition('o.state', 'completed', '=')
   );
@@ -25,7 +28,7 @@ function gavias_edmix_preprocess_course(&$vars){
    $vars['#cache']['max-age'] = 0;
    $product_entity = $vars['product_entity'];
    $product = $vars['product'];
-  
+
    $id = $product_entity->id();
    $video_link = '';
 
@@ -50,7 +53,7 @@ function gavias_edmix_preprocess_course(&$vars){
   }
 
   $course_free = true;
-  $results = db_select('{commerce_product_variation_field_data}', 'v');
+  $results = \Drupal::database()->select('{commerce_product_variation_field_data}', 'v');
   $results->fields('v', array('product_id', 'price__number'));
   $results->condition('v.product_id', $id, '=');
   $variations = $results->execute()->fetchAll(PDO::FETCH_ASSOC);
@@ -119,7 +122,7 @@ function gavias_edmix_preprocess_node__lesson(&$variables) {
           $lesson_icon = 'gv-icon-2';
           if(isset($variables['content']['field_lesson_content'])){
             $lesson_content = $variables['content']['field_lesson_content'];
-          }    
+          }
         }else{
           $lesson_content = '<div class="alert alert-info fade in alert-dismissable">' . t('Please you must PURCHASE the course to view this lesson. ') . '<a href="'. base_path() .'user"><strong>' . t('Login Page') . '</strong></a></div>';
         }
@@ -128,7 +131,7 @@ function gavias_edmix_preprocess_node__lesson(&$variables) {
         if (!$user->id()) {
           $lesson_content = '<div class="alert alert-info fade in alert-dismissable">' . t('Please Login to view this lesson. ') . '<a href="'. base_path() .'user"><strong>' . t('Login Page') . '</strong></a></div>';
         }
-        else { 
+        else {
           if(isset($variables['content']['field_lesson_content'])){
             $lesson_content = $variables['content']['field_lesson_content'];
           }
@@ -144,12 +147,12 @@ function gavias_edmix_preprocess_node__lesson(&$variables) {
           $lesson_icon = 'gv-icon-2';
           if(isset($variables['content']['field_lesson_content'])){
             $lesson_content = $variables['content']['field_lesson_content'];
-          }    
+          }
         }else{
           $lesson_content = '<div class="alert alert-info fade in alert-dismissable">' . t('Please register for course to view this lesson. ') . '<a href="'. base_path() .'user"><strong>' . t('Login Page') . '</strong></a></div>';
         }
       }
-    } 
+    }
   }
   $variables['course_id'] =  $course_id;
   $variables['lesson_content'] = $lesson_content;
