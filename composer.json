@@ -51,7 +51,7 @@
         "drupal/pathauto": "^1.6",
         "drupal/profile": "^1.0",
         "drupal/simplenews": "^2.0",
-        "drupal/swiftmailer": "^1.0",
+        "drupal/swiftmailer": "^2.0",
         "drupal/token": "^1.6",
         "drupal/token_filter": "^1.0",
         "drupal/tvi": "^1.0",
