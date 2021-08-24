@@ -16,6 +16,7 @@ namespace Drupal\gavias_blockbuilder\Plugin\Field\FieldFormatter;
 
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\FormatterBase;
+use Drupal\Core\Url;
 
 class BlockBuilderFormatter extends FormatterBase {
 
@@ -36,7 +37,7 @@ class BlockBuilderFormatter extends FormatterBase {
           $url = \Drupal::request()->getRequestUri();
           $edit_url = '';
           if($user->hasPermission('administer gaviasblockbuilder')){
-            $edit_url = \Drupal::url('gavias_blockbuilder.admin.edit', array('bid' => $bid, 'destination' =>  $url));
+            $edit_url = Url::fromRoute('gavias_blockbuilder.admin.edit', array('bid' => $bid, 'destination' =>  $url))->toString();
           }
 
           $content .= '<div class="gavias-blockbuilder-content">';

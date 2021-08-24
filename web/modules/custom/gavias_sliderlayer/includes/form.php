@@ -33,7 +33,7 @@ function gavias_sliderlayer_export($gid){
 function gavias_sliderlayer_import($bid) {
   $bid = arg(2);
   if (is_numeric($bid)) {
-    $bblock = db_select('{gavias_sliderlayer}', 'd')
+    $bblock = Drupal::database()->select('{gavias_sliderlayer}', 'd')
        ->fields('d')
        ->condition('id', $bid, '=')
        ->execute()
@@ -75,5 +75,5 @@ function gavias_sliderlayer_import_submit($form, $form_state) {
       ->execute();
     drupal_goto('admin/gavias_sliderlayer/'.$id.'/edit');
     drupal_set_message("Block Builder '{$form['title']['#value']}' has been updated");
-  } 
+  }
 }

@@ -5,7 +5,7 @@ class gavias_bb_fields{
 		$output = '';
 		if(is_array($value)) $value = '';
 		$class = ( isset( $field['class']) ) ? $field['class'] : '';
-		$output .= '<input autocomplete="off" type="text" name="'. $field['id'] .'" value="'.($value).'" class="'.$class.'" />';
+		$output .= '<input autocomplete="off" type="text" name="'. $field['id'] .'" value="'.htmlentities($value).'" class="'.$class.'" />';
 		$output .= (isset($field['desc']) && !empty($field['desc']))?' <span class="description '.$class.'">'.$field['desc'].'</span>':'';	
 		return $output;
 	}
@@ -135,7 +135,7 @@ class gavias_bb_fields{
 		?>
 		<div class="textarea-wrapper <?php print $class ?>">
 			
-			<textarea name="<?php print $field['id'] ?>" class="<?php print $param ?>" rows="8"><?php print($value) ?></textarea>
+			<textarea name="<?php print $field['id'] ?>" class="<?php print $param ?>" rows="8"><?php print htmlentities($value) ?></textarea>
 			<?php if( isset($field['desc']) && !empty($field['desc']) ){ ?>
 				<br/><span class="description"><?php print $field['desc'] ?></span> 
 			<?php } ?>	

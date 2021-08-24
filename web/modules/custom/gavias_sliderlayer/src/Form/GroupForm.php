@@ -4,6 +4,7 @@ use Drupal\Core\Form\FormBuilderInterface;
 use Drupal\Core\Form\FormInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Symfony\Component\HttpFoundation;
+use Drupal\Core\Url;
 class GroupForm implements FormInterface {
    /**
    * Implements \Drupal\Core\Form\FormInterface::getFormID().
@@ -18,9 +19,9 @@ class GroupForm implements FormInterface {
    public function buildForm(array $form, FormStateInterface $form_state) {
       $sid = 0;
       if(\Drupal::request()->attributes->get('sid')) $sid = \Drupal::request()->attributes->get('sid');
-      
+
       if (is_numeric($sid)) {
-        $slide = db_select('{gavias_sliderlayergroups}', 'd')->fields('d')->condition('id', $sid, '=')->execute()->fetchAssoc();
+        $slide = Drupal::database()->select('{gavias_sliderlayergroups}', 'd')->fields('d')->condition('id', $sid, '=')->execute()->fetchAssoc();
         } else {
             $slide = array('id' => 0, 'title' => '');
         }
@@ -53,7 +54,7 @@ class GroupForm implements FormInterface {
   public function validateForm(array &$form, FormStateInterface $form_state) {
       if (isset($form['values']['title']) && $form['values']['title'] === '' ) {
          $this->setFormError('title', $form_state, $this->t('Please enter title for slider.'));
-       } 
+       }
    }
 
    /**
@@ -79,7 +80,7 @@ class GroupForm implements FormInterface {
         drupal_set_message("Slide '{$form['title']['#value']}' has been created");
         \Drupal::service('plugin.manager.block')->clearCachedDefinitions();
     }
-    $response = new \Symfony\Component\HttpFoundation\RedirectResponse(\Drupal::url('gavias_sl_group.admin'));
+    $response = new \Symfony\Component\HttpFoundation\RedirectResponse(Url::fromRoute('gavias_sl_group.admin'));
     $response->send();
    }
 }

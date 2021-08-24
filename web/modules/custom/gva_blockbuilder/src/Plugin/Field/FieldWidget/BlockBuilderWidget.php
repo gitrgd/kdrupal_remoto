@@ -63,7 +63,7 @@ class BlockBuilderWidget extends WidgetBase {
     $field_name = $items->getName();
     $input = $form_state->getUserInput();
 
-    $results = db_select('{gavias_blockbuilder}', 'd')
+    $results = \Drupal::database()->select('{gavias_blockbuilder}', 'd')
       ->fields('d', array('id', 'title', 'body_class'))
       ->orderBy('title', 'ASC')
       ->execute();
@@ -77,27 +77,37 @@ class BlockBuilderWidget extends WidgetBase {
     
     $random = gavias_blockbuilder_makeid(10);
 
-    $links = array(
-      '#type' => 'link',
-      '#title' => t('<strong>Add new builder</strong>'),
-      '#url' => Url::fromRoute('gavias_blockbuilder.admin.add_popup', array('random'=>$random)),
-      '#attributes' => array(
-        'class' => array('use-ajax'),
-        'data-dialog-type' => 'modal',
-        'data-dialog-options' =>  json_encode(array(
-            'resizable' => TRUE,
-            'width' => '80%',
-            'height' => 'auto',
-            'max-width' => '1100px',
-            'modal' => TRUE,
-          )),
-        'title' => t('Add new builder'),
-      ),
+    // $links = array(
+    //   '#type' => 'link',
+    //   '#title' => t('<strong>Add new builder</strong>'),
+    //   '#url' => Url::fromRoute('gavias_blockbuilder.admin.add_popup', array('random'=>$random))->toString(),
+    //   '#attributes' => array(
+    //     'class' => array('use-ajax'),
+    //     'data-dialog-type' => 'modal',
+    //     'data-dialog-options' =>  json_encode(array(
+    //         'resizable' => TRUE,
+    //         'width' => '80%',
+    //         'height' => 'auto',
+    //         'max-width' => '1100px',
+    //         'modal' => TRUE,
+    //       )),
+    //     'title' => t('Add new builder'),
+    //   ),
+    // );
+    // $element['addform'] = $links;
+
+    $link_html = '<a href="'.Url::fromRoute('gavias_blockbuilder.admin.add_popup', array('random'=>$random))->toString().'" class="use-ajax" data-dialog-type="modal" data-dialog-options="{&quot;width&quot;:&quot;600px&quot;,&quot;modal&quot;:true}" data-drupal-selector="edit-field-content-builder-0-addform" id="edit-field-content-builder-0-addform">';
+      $link_html .= '<strong>Add New Builder</strong>';
+    $link_html .= '</a>';
+
+    $element['addform'] = array(
+      '#type' => 'markup',
+      '#markup' => \Drupal\Core\Render\Markup::create($link_html),
+      '#weight' => -11  
     );
-    $element['addform'] = $links;
     
     $element['bid'] = array(
-      '#title' => $items->getFieldDefinition()->getLabel() . (' <a class="gva-popup-iframe" href="'.\Drupal::url('gavias_blockbuilder.admin').'">Manage All Blockbuilders</a>'),
+      '#title' => $items->getFieldDefinition()->getLabel() . (' <a class="gva-popup-iframe" href="'.Url::fromRoute('gavias_blockbuilder.admin')->toString().'">Manage All Blockbuilders</a>'),
       '#type' => 'textfield',
       '#default_value' => $bid,
       '#attributes' => array('class' => array('field_block_builder', 'gva-id-' . $random), 'data-random' => $random, 'readonly'=>'readonly')
@@ -112,7 +122,7 @@ class BlockBuilderWidget extends WidgetBase {
   }
 
   function _get_list_blockbuilder($random){
-     $results = db_select('{gavias_blockbuilder}', 'd')
+     $results = \Drupal::database()->select('{gavias_blockbuilder}', 'd')
       ->fields('d', array('id', 'title', 'body_class'))
       ->orderBy('title', 'ASC')
       ->execute();
@@ -121,11 +131,11 @@ class BlockBuilderWidget extends WidgetBase {
       foreach ($results as $key => $result) {
         $html .= '<span class="gbb-item id-'.$result->id.'">';
         $html .= '<a class="select" data-id="'.$result->id.'" title="'. $result->body_class .'">' . $list_gbb[$result->id] = $result->title  . '</a>';
-        $html .= ' <span class="action">( <a class="edit gva-popup-iframe" href="'.\Drupal::url('gavias_blockbuilder.admin.edit', array('bid'=>$result->id)).'" data-id="'.$result->id.'" title="'. $result->body_class .'">Edit</a>';
-        $html .= ' | <a class="duplicate use-ajax" data-dialog-type="modal" data-dialog-options="{"resizable":true,"width":"80%","height":"auto","max-width":"1100px","modal":true}" href="'.\Drupal::url('gavias_blockbuilder.admin.duplicate_popup', array('bid'=>$result->id, 'random'=>$random)).'" data-id="'.$result->id.'" title="'. $result->body_class .'">Duplicate</a>';
-        $html .= ' | <a class="import use-ajax" data-dialog-type="modal" data-dialog-options="{"resizable":true,"width":"80%","height":"auto","max-width":"1100px","modal":true}" href="'.\Drupal::url('gavias_blockbuilder.admin.import_popup', array('bid'=>$result->id)).'" data-id="'.$result->id.'" title="'. $result->body_class .'">Import</a> ';
-        $html .= ' | <a class="export" href="'.\Drupal::url('gavias_blockbuilder.admin.export', array('bid'=>$result->id)).'" data-id="'.$result->id.'" title="'. $result->body_class .'">Export</a>';
-        $html .= ' | <a class="delete use-ajax" data-dialog-type="modal" data-dialog-options="{"resizable":true,"width":"80%","height":"auto","max-width":"1100px","modal":true}" href="'.\Drupal::url('gavias_blockbuilder.admin.delete_popup', array('bid'=>$result->id, 'random'=>$random)).'" data-id="'.$result->id.'" title="'. $result->body_class .'">Delete</a> )</span>';
+        $html .= ' <span class="action">( <a class="edit gva-popup-iframe" href="'.Url::fromRoute('gavias_blockbuilder.admin.edit', array('bid'=>$result->id))->toString().'" data-id="'.$result->id.'" title="'. $result->body_class .'">Edit</a>';
+        $html .= ' | <a class="duplicate use-ajax" data-dialog-type="modal" data-dialog-options="{"resizable":true,"width":"80%","height":"auto","max-width":"1100px","modal":true}" href="'.Url::fromRoute('gavias_blockbuilder.admin.duplicate_popup', array('bid'=>$result->id, 'random'=>$random))->toString().'" data-id="'.$result->id.'" title="'. $result->body_class .'">Duplicate</a>';
+        $html .= ' | <a class="import use-ajax" data-dialog-type="modal" data-dialog-options="{"resizable":true,"width":"80%","height":"auto","max-width":"1100px","modal":true}" href="'.Url::fromRoute('gavias_blockbuilder.admin.import_popup', array('bid'=>$result->id))->toString().'" data-id="'.$result->id.'" title="'. $result->body_class .'">Import</a> ';
+        $html .= ' | <a class="export" href="'.Url::fromRoute('gavias_blockbuilder.admin.export', array('bid'=>$result->id))->toString().'" data-id="'.$result->id.'" title="'. $result->body_class .'">Export</a>';
+        $html .= ' | <a class="delete use-ajax" data-dialog-type="modal" data-dialog-options="{"resizable":true,"width":"80%","height":"auto","max-width":"1100px","modal":true}" href="'.Url::fromRoute('gavias_blockbuilder.admin.delete_popup', array('bid'=>$result->id, 'random'=>$random))->toString().'" data-id="'.$result->id.'" title="'. $result->body_class .'">Delete</a> )</span>';
         $html .= '</span>';
       }
       $html .= '</div>';

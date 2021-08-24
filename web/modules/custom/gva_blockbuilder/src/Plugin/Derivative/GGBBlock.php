@@ -20,7 +20,7 @@ class GGBBlock extends DeriverBase {
    * {@inheritdoc}
    */
   public function getDerivativeDefinitions($base_plugin_definition) {
-    $results = db_select('{gavias_blockbuilder}', 'd')
+    $results = \Drupal::database()->select('{gavias_blockbuilder}', 'd')
           ->fields('d', array('id', 'title'))
           ->execute();
     foreach ($results as $row) {

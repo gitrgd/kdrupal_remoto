@@ -20,10 +20,11 @@ class GaviasSliderLayerBlock extends DeriverBase {
    * {@inheritdoc}
    */
   public function getDerivativeDefinitions($base_plugin_definition) {
-    if(!db_table_exists('gavias_sliderlayergroups')){
+    $database = \Drupal::service('database');
+    if(!$database->schema()->tableExists('gavias_sliderlayergroups')){
       return "";
     }
-    $results = db_select('{gavias_sliderlayergroups}', 'd')
+    $results = \Drupal::database()->select('{gavias_sliderlayergroups}', 'd')
           ->fields('d', array('id', 'title'))
           ->execute();
     foreach ($results as $row) {
