@@ -55,7 +55,6 @@ function gavias_edmix_add_regions_to_node($allowed_regions, &$variables) {
 
     // Load region blocks
     $blocks = \Drupal::entityTypeManager()->getStorage('block_content')->loadByProperties(array('theme' => $theme, 'region' => $region));
-
     // Sort ‘em
     uasort($blocks, 'Drupal\block\Entity\Block::sort');
 
@@ -63,7 +62,7 @@ function gavias_edmix_add_regions_to_node($allowed_regions, &$variables) {
     $build = array();
     foreach ($blocks as $key => $block) {
       if ($block->access('view')) {
-        $build[$key] = \Drupal::entityTypeManager()->getViewBuilder('block_content')->view($block, 'block');
+         $build[$key] = \Drupal::entityTypeManager()->getViewBuilder('block_content')->view($block, 'block');
       }
     }
 

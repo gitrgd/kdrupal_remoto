@@ -4,6 +4,7 @@ use Drupal\Core\Form\FormBuilderInterface;
 use Drupal\Core\Form\FormInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Symfony\Component\HttpFoundation;
+use Drupal\Core\Url;
 class GroupClone implements FormInterface {
    /**
    * Implements \Drupal\Core\Form\FormInterface::getFormID().
@@ -18,9 +19,9 @@ class GroupClone implements FormInterface {
    public function buildForm(array $form, FormStateInterface $form_state) {
       $sid = 0;
       if(\Drupal::request()->attributes->get('sid')) $sid = \Drupal::request()->attributes->get('sid');
-      
+
       if (is_numeric($sid)) {
-        $slide = db_select('{gavias_sliderlayergroups}', 'd')
+        $slide = Drupal::database()->select('{gavias_sliderlayergroups}', 'd')
                  ->fields('d')
                  ->condition('id', $sid, '=')
                  ->execute()->fetchAssoc();
@@ -60,7 +61,7 @@ class GroupClone implements FormInterface {
   public function validateForm(array &$form, FormStateInterface $form_state) {
       if (isset($form['values']['title']) && $form['values']['title'] === '' ) {
          $this->setFormError('title', $form_state, $this->t('Please enter title for slider.'));
-       } 
+       }
    }
 
    /**
@@ -75,7 +76,7 @@ class GroupClone implements FormInterface {
           'params' => $form['params']['#value']
       ))
       ->execute();
-      
+
       $slides = gavias_sliders_by_group($old_id);
 
       foreach ($slides as $key => $slide) {
@@ -95,7 +96,7 @@ class GroupClone implements FormInterface {
       drupal_set_message("Slide '{$form['title']['#value']}' has been cloned");
       \Drupal::service('plugin.manager.block')->clearCachedDefinitions();
     }
-    $response = new \Symfony\Component\HttpFoundation\RedirectResponse(\Drupal::url('gavias_sl_group.admin'));
+    $response = new \Symfony\Component\HttpFoundation\RedirectResponse(Url::fromRoute('gavias_sl_group.admin'));
     $response->send();
    }
 }

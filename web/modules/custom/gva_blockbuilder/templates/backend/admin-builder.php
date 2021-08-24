@@ -1,7 +1,9 @@
-
+<?php 
+  use Drupal\Core\Url;
+?>
 <div id="gbb-builder">
    <div class="gbb-block-title">
-    <?php print 'Edit: ' ?><?php print $gbb_title ?> <span style="color:red;"><?php print "[gbb name=\"{$gbb_shortcode}\"]" ?></span> ( ID: <?php print $gbb_id ?> | <a href="<?php print \Drupal::url('gavias_blockbuilder.admin.import', array('bid' => $gbb_id)) ?>">Import</a> | <a href="<?php print \Drupal::url('gavias_blockbuilder.admin.export', array('bid' => $gbb_id)) ?>">Export</a> )
+    <?php print 'Edit: ' ?><?php print $gbb_title ?> <span style="color:red;"><?php print "[gbb name=\"{$gbb_shortcode}\"]" ?></span> ( ID: <?php print $gbb_id ?> | <a href="<?php print Url::fromRoute('gavias_blockbuilder.admin.import', array('bid' => $gbb_id))->toString(); ?>">Import</a> | <a href="<?php print Url::fromRoute('gavias_blockbuilder.admin.export', array('bid' => $gbb_id))->toString(); ?>">Export</a> )
    </div>
 
    <input type="hidden" id="gbb-row-id" value="<?php echo $gbb_rows_count; ?>" />

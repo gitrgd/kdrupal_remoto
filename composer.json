@@ -40,7 +40,7 @@
         "drupal/features": "^3.8",
         "drupal/fontawesome": "^2.15",
         "drupal/image_url_formatter": "^1.0",
-        "drupal/imce": "^1.6",
+        "drupal/imce": "^2.4",
         "drupal/inline_entity_form": "^1.0",
         "drupal/libraries": "^3.0",
         "drupal/ludwig": "^1.0",

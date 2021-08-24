@@ -5,6 +5,7 @@ use Drupal\Core\Form\FormInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Symfony\Component\HttpFoundation;
 use Drupal\file\Entity\File;
+use Drupal\Core\Url;
 
 class ImportForm implements FormInterface {
    /**
@@ -22,7 +23,7 @@ class ImportForm implements FormInterface {
       if(\Drupal::request()->attributes->get('gid')) $gid = \Drupal::request()->attributes->get('gid');
 
       if (is_numeric($gid)) {
-        $group = db_select('{gavias_sliderlayergroups}', 'd')
+        $group = Drupal::database()->select('{gavias_sliderlayergroups}', 'd')
            ->fields('d')
            ->condition('id', $gid, '=')
            ->execute()
@@ -36,7 +37,7 @@ class ImportForm implements FormInterface {
       }
 
       $form = array();
-      
+
       $form['gid'] = array(
         '#type' => 'hidden',
         '#default_value' => $group['id']
@@ -73,7 +74,7 @@ class ImportForm implements FormInterface {
   public function validateForm(array &$form, FormStateInterface $form_state) {
     if (isset($form['values']['title']) && $form['values']['title'] === '' ) {
       $this->setFormError('title', $form_state, $this->t('Please enter title for slider layer.'));
-    } 
+    }
    }
 
    /**
@@ -101,8 +102,8 @@ class ImportForm implements FormInterface {
       ))
       ->condition('id', $gid)
       ->execute();
-    
-      $i = 0; 
+
+      $i = 0;
       if($slideshow->sliders){
         db_delete('gavias_sliderlayers')->condition('group_id', $gid)->execute();
         foreach ($slideshow->sliders as $key => $slider) {
@@ -113,18 +114,18 @@ class ImportForm implements FormInterface {
               'status' => (isset($slider->status) && $slider->status) ? $slider->status : 1,
               'title' => (isset($slider->title) && $slider->title) ? $slider->title : 'Title',
               'group_id' => $gid,
-              'params'  => (isset($slider->params) && $slider->params) ? $slider->params : '', 
+              'params'  => (isset($slider->params) && $slider->params) ? $slider->params : '',
               'layersparams' => $slider->layersparams,
               'background_image_uri' => (isset($slider->background_image_uri) && $slider->background_image_uri) ? $slider->background_image_uri : '',
           ))
           ->execute();
         }
-      }  
+      }
 
       \Drupal::service('plugin.manager.block')->clearCachedDefinitions();
       drupal_set_message("Slider Layer '{$form['title']['#value']}' has been import");
-      $response = new \Symfony\Component\HttpFoundation\RedirectResponse(\Drupal::url('gavias_sl_group.admin', array('gid'=>$gid)));
+      $response = new \Symfony\Component\HttpFoundation\RedirectResponse(Url::fromRoute('gavias_sl_group.admin', array('gid'=>$gid)));
       $response->send();
-    }  
+    }
   }
 }

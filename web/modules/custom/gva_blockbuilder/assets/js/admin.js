@@ -112,22 +112,6 @@ function randomString(length) {
       });
    });
 
-   function notify(style, text) {
-      $.notify({
-          title: 'Notification',
-          text: text,
-          image: '<i class="fa fa-bell" style="font-size: 30px; color: #fff;"></i>',
-          hideAnimation: 'slideUp',
-
-      }, {
-          style: 'metro',
-          className: style,
-          autoHide: true,
-          clickToHide: true,
-          globalPosition: 'top right'
-      });
-   }
-
   function gavias_save_blockbuilder(){
       var result = $('#gavias-blockbuilder-setting input:not(.input-file-upload), #gavias-blockbuilder-setting select, #gavias-blockbuilder-setting textarea').serializeObject();
       result = $.extend({}, result);
@@ -138,7 +122,7 @@ function randomString(length) {
          data: result,
          pid: pid
       };
-      notify('info', 'Please waiting Block Builder process !');
+      $.notify('Please waiting Block Builder process !', 'info'); 
       $.ajax({
          url: drupalSettings.gavias_blockbuilder.saveConfigURL,
          type: 'POST',
@@ -146,7 +130,7 @@ function randomString(length) {
          dataType: 'json',
          success: function (data) {
           $('#save').val('Save');
-          notify('success', 'Block Builder setting updated');
+          $.notify('Block Builder setting updated!', 'success'); 
           $('#save').removeAttr('disabled');
           if(drupalSettings.gavias_blockbuilder.destination==true){
             window.location = drupalSettings.gavias_blockbuilder.url_redirect;
@@ -162,7 +146,7 @@ function randomString(length) {
          },
          error: function (jqXHR, textStatus, errorThrown) {
            alert(textStatus + ":" + jqXHR.responseText);
-           notify('black', 'Block Builder setting not updated');
+           $.notify('Block Builder setting can\'t updated!', 'warning'); 
            window.location = drupalSettings.gavias_blockbuilder.url_redirect;
          }
       });

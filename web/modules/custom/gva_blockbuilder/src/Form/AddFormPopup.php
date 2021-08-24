@@ -8,6 +8,7 @@ use Drupal\Core\Ajax\InvokeCommand;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\file\Entity\File;
+use Drupal\Core\Url;
 
 class AddFormPopup extends FormBase{
 
@@ -106,7 +107,7 @@ class AddFormPopup extends FormBase{
 
     }else{
       $values = $form_state->getValues();
-      $pid = db_insert("gavias_blockbuilder")
+      $pid = \Drupal::database()->insert("gavias_blockbuilder")
         ->fields(array(
           'title'       => $form['title']['#value'],
           'body_class'  => $form['body_class']['#value'],
@@ -191,7 +192,7 @@ class AddFormPopup extends FormBase{
     $html = '';
     $html .= '<span class="gbb-item active id-'.$pid.'">';
     $html .= '<a class="select" data-id="'.$pid.'" title="'. $body_class .'">' . $title  . '</a>';
-    $html .= ' <span class="action">( <a class="edit gva-popup-iframe" href="'.\Drupal::url('gavias_blockbuilder.admin.edit', array('bid'=>$pid)).'" title="'. $body_class .'">Edit</a>';
+    $html .= ' <span class="action">( <a class="edit gva-popup-iframe" href="'. Url::fromRoute('gavias_blockbuilder.admin.edit', array('bid'=>$pid))->toString() .'" title="'. $body_class .'">Edit</a>';
     $html .= ' | <a>Please save and refesh if you want duplicate</a>) </span>';
     $html .= '</span>';
 

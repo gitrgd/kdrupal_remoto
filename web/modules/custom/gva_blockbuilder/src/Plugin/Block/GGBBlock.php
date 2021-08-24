@@ -9,7 +9,7 @@ namespace Drupal\gavias_blockbuilder\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Form\FormStateInterface;
-
+use Drupal\Core\Url;
 /**
  * Provides blocks which belong to Gavias Blockbuilder.
  *
@@ -43,7 +43,7 @@ class GGBBlock extends BlockBase {
         $url = \Drupal::request()->getRequestUri();
         $edit_url = '';
         if($user->hasPermission('administer gaviasblockbuilder')){
-          $edit_url = \Drupal::url('gavias_blockbuilder.admin.edit', array('bid' => $bid, 'destination' =>  $url));
+          $edit_url = Url::fromRoute('gavias_blockbuilder.admin.edit', array('bid' => $bid, 'destination' =>  $url))->toString();
         }
         //print $content_block;
         $block = array(

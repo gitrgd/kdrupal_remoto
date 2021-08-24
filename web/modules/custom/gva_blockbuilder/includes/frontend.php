@@ -84,7 +84,7 @@ function gavias_blockbuilder_frontend( $params ) {
 				      showYTLogo: false, realfullscreen: true, addRaster: false, optimizeDisplay: true, stopMovieOnBlur: true}\"";
 				}
 
-				$row_class = implode($array_class, ' ');
+				$row_class = implode(' ', $array_class); 
 				$row_style 	= implode('; ', $array_style );
 			}	
 

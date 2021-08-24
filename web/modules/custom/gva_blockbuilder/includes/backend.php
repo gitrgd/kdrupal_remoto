@@ -57,7 +57,7 @@ function gavias_admin_column( $item_std, $column_std, $column = false, $column_i
 function gavias_blockbuilder_admin($pid) {
 	$pbd_single = gavias_blockbuilder_load($pid);
 	if(!$pbd_single){
-		drupal_set_message('Not found gavias block builder !');
+		\Drupal::messenger()->addMessage('Not found gavias block builder !');
 		return false;
 	}
 	$gsc = new gavias_sc();

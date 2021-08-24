@@ -1,4 +1,5 @@
 <?php
+use Drupal\Core\Url;
 function sc_blockbulider($attr){
    extract(shortcode_atts(array(
       'name'  => '',
@@ -13,7 +14,7 @@ function sc_blockbulider($attr){
         $url = \Drupal::request()->getRequestUri();
         $edit_url = '';
         if($user->hasPermission('administer gaviasblockbuilder')){
-          $edit_url = \Drupal::url('gavias_blockbuilder.admin.edit', array('bid' => $results->id, 'destination' =>  $url));
+          $edit_url = Url::fromRoute('gavias_blockbuilder.admin.edit', array('bid' => $results->id, 'destination' =>  $url))->toString();
           $output .= "<a class=\"link-edit-blockbuider\" href=\"{$edit_url}\"> Config block builder </a>";
         }
         $output .= gavias_blockbuilder_frontend($results->params);

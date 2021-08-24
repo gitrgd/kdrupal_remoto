@@ -7,7 +7,7 @@ function gavias_edmix_base_url(){
 
 function gavias_edmix_preprocess_node(&$variables) {
   $date = $variables['node']->getCreatedTime();
-  $variables['date'] = date( 'j F Y', $date);
+  $variables['date'] = date( 'j', $date) . ' ' . t(date( 'F', $date)) . ' ' . date( 'Y', $date);
 
   if ($variables['teaser'] || !empty($variables['content']['comments']['comment_form'])) {
     unset($variables['content']['links']['comment']['#links']['comment-add']);
