@@ -362,4 +362,16 @@ class Node extends EditorialContentEntityBase implements NodeInterface {
     return $fields;
   }
 
+  /**
+   * Default value callback for 'uid' base field definition.
+   *
+   * @see ::baseFieldDefinitions()
+   *
+   * @return array
+   *   An array of default values.
+   */
+  public static function getCurrentUserId() {
+    return [\Drupal::currentUser()->id()];
+  }
+
 }

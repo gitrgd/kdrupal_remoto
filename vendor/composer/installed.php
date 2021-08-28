@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '1f34f33d1cbac15c711bad085821bd38fa5be86b',
+        'reference' => 'beddb5e5bfe24a3733f01a84b37b3f02503a7c08',
         'name' => 'drupal-composer/drupal-project',
         'dev' => true,
     ),
@@ -152,12 +152,12 @@
             'dev_requirement' => true,
         ),
         'consolidation/annotated-command' => array(
-            'pretty_version' => '4.2.4',
-            'version' => '4.2.4.0',
+            'pretty_version' => '4.3.0',
+            'version' => '4.3.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../consolidation/annotated-command',
             'aliases' => array(),
-            'reference' => 'ec297e05cb86557671c2d6cbb1bebba6c7ae2c60',
+            'reference' => 'b620b92b7cc2705fa829620f1fba7d182a6397c2',
             'dev_requirement' => false,
         ),
         'consolidation/config' => array(
@@ -334,7 +334,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '1f34f33d1cbac15c711bad085821bd38fa5be86b',
+            'reference' => 'beddb5e5bfe24a3733f01a84b37b3f02503a7c08',
             'dev_requirement' => false,
         ),
         'drupal/action' => array(
