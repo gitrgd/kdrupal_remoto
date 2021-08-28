@@ -44,7 +44,7 @@
         "drupal/inline_entity_form": "^1.0",
         "drupal/libraries": "^3.0",
         "drupal/ludwig": "^1.0",
-        "drupal/mailchimp": "^2.1@RC",
+        "drupal/mailchimp": "2.0.0",
         "drupal/mailsystem": "^4.2",
         "drupal/paragraphs": "^1.11",
         "drupal/pathauto": "^1.6",
@@ -98,6 +98,11 @@
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
             "drush/Commands/{$name}": ["type:drupal-drush"]
         },
+        "patches": {
+        "drupal/core": {
+          "Solucionar un bug": "https://www.drupal.org/files/issues/2020-07-24/core-delete_node_error-3153455-36-9.x.patch"
+        }
+      },
         "drupal-scaffold": {
           "locations": {
              "web-root": "web/"

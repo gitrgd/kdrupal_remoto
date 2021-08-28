@@ -5,9 +5,11 @@
  * Mailchimp module.
  */
 
+use Drupal\Component\Utility\Crypt;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Markup;
-use Drupal\Core\Url;
+use Drupal\Core\Site\Settings;
+use Drupal\mailchimp\Autoload;
 use Mailchimp\MailchimpLists;
 
 define('MAILCHIMP_QUEUE_CRON', 'mailchimp');
@@ -20,9 +22,6 @@ define('MAILCHIMP_STATUS_SENDING', 'sending');
 
 /**
  * Access callback for mailchimp submodule menu items.
- *
- * @return bool
- *   TRUE if the mailchimp api is available and accessible by the user.
  */
 function mailchimp_apikey_ready_access($permission) {
   if (mailchimp_get_api_object() && \Drupal::currentUser()->hasPermission($permission)) {
@@ -34,18 +33,49 @@ function mailchimp_apikey_ready_access($permission) {
 /**
  * Instantiates a Mailchimp library object.
  *
- * @return \Mailchimp\Mailchimp
+ * @return \Mailchimp
  *   Drupal Mailchimp library object.
  */
 function mailchimp_get_api_object($classname = 'Mailchimp') {
-  $object = \Drupal::service('mailchimp.client_factory')->getByClassNameOrNull($classname);
+  $mailchimp = &drupal_static(__FUNCTION__);
+  if (isset($mailchimp) && $mailchimp instanceof $classname) {
+    return $mailchimp;
+  }
 
-  if (!$object) {
-    \Drupal::messenger()->addError('Failed to load Mailchimp PHP library. Please refer to the installation requirements.');
+  $config = \Drupal::config('mailchimp.settings');
+
+  if ($config->get('test_mode')) {
+    // Register autoloader for loading test classes.
+    Autoload::register();
+    $classname = '\Mailchimp\Tests\\' . $classname;
+  }
+  else {
+    $classname = '\Mailchimp\\' . $classname;
+  }
+
+  if (!class_exists($classname)) {
+    $msg = t('Failed to load Mailchimp PHP library. Please refer to the installation requirements.');
+    \Drupal::logger('mailchimp')->error($msg);
+    \Drupal::messenger()->addError($msg);
     return NULL;
   }
 
-  return $object;
+  $api_key = $config->get('api_key');
+  if (!strlen($api_key)) {
+    \Drupal::logger('mailchimp')->error('Mailchimp Error: API Key cannot be blank.');
+    return NULL;
+  }
+
+  $http_options = [
+    'timeout' => $config->get('api_timeout'),
+    'headers' => [
+      'User-Agent' => _mailchimp_get_user_agent(),
+    ],
+  ];
+
+  $mailchimp = new $classname($api_key, 'apikey', $http_options);
+
+  return $mailchimp;
 }
 
 /**
@@ -513,12 +543,9 @@ function mailchimp_subscribe_process($list_id, $email, $merge_vars = NULL, $inte
             ->warning('A problem occurred setting marketing permissions for {email} on list {list}.', [
               'email' => $email,
               'list'  => $list_id,
-            ]);
+            ]
+                 );
         }
-      }
-
-      if ($double_optin) {
-        \Drupal::messenger()->addStatus(t('Please check your email to confirm your subscription.'), FALSE);
       }
     }
     else {
@@ -546,6 +573,9 @@ function mailchimp_subscribe_process($list_id, $email, $merge_vars = NULL, $inte
     ]);
   }
 
+  if ($double_optin) {
+    \Drupal::messenger()->addStatus(t('Please check your email to confirm your subscription.'), FALSE);
+  }
   return $result;
 }
 
@@ -805,7 +835,7 @@ function mailchimp_unsubscribe_process($list_id, $email) {
       throw new Exception('Cannot unsubscribe from list without Mailchimp API. Check API key has been entered.');
     }
 
-    $mc_lists->updateMember($list_id, $email, ['status' => 'unsubscribed']);
+    $mc_lists->removeMember($list_id, $email);
 
     \Drupal::moduleHandler()->invokeAll('mailchimp_unsubscribe_success', [$list_id, $email]);
 
@@ -1049,6 +1079,19 @@ function mailchimp_flush_caches() {
 }
 
 /**
+ * Access callback for mailchimp_process_webhook().
+ *
+ * @param string $key
+ *   The incoming webhook key.
+ *
+ * @return bool
+ *   Whether or not the key matches.
+ */
+function mailchimp_process_webhook_access($key) {
+  return ($key == mailchimp_webhook_key());
+}
+
+/**
  * Processes a webhook post from Mailchimp.
  */
 function mailchimp_process_webhook() {
@@ -1089,25 +1132,23 @@ function mailchimp_process_webhook() {
 }
 
 /**
+ * Generates a key to include in the webhook URL based on a hash.
+ *
+ * @return string
+ *   The key.
+ */
+function mailchimp_webhook_key() {
+  return Crypt::hashBase64($GLOBALS['base_url'] . Drupal::service('private_key')->get() . Settings::getHashSalt());
+}
+
+/**
  * Generates the webhook endpoint URL.
  *
  * @return string
  *   The endpoint URL.
  */
-function mailchimp_webhook_url($hash = NULL, $lang = NULL) {
-  if (is_null($hash)) {
-    $hash = \Drupal::config('mailchimp.settings')->get('webhook_hash');
-  }
-  if (is_null($lang)) {
-    $lang = \Drupal::languageManager()->getDefaultLanguage()->getId();
-  }
-  return Url::fromRoute(
-    'mailchimp.webhook_endpoint',
-    [
-      'hash' => $hash,
-      'language' => $lang,
-    ]
-  )->setAbsolute()->toString();
+function mailchimp_webhook_url() {
+  return $GLOBALS['base_url'] . '/mailchimp/webhook/' . mailchimp_webhook_key();
 }
 
 /**
@@ -1368,7 +1409,7 @@ function mailchimp_insert_drupal_form_tag($mergevar) {
  *
  * Processes queued Mailchimp actions.
  */
-function mailchimp_cron($batch_limit = NULL) {
+function mailchimp_cron() {
   $queue = \Drupal::queue(MAILCHIMP_QUEUE_CRON);
   $queue->createQueue();
 
@@ -1377,10 +1418,7 @@ function mailchimp_cron($batch_limit = NULL) {
   if ($queue_count > 0) {
     $config = \Drupal::config('mailchimp.settings');
 
-    if (is_null($batch_limit)) {
-      $batch_limit = $config->get('batch_limit');
-    }
-
+    $batch_limit = $config->get('batch_limit');
     $batch_size = ($queue_count < $batch_limit) ? $queue_count : $batch_limit;
     $count = 0;
 
@@ -1393,7 +1431,6 @@ function mailchimp_cron($batch_limit = NULL) {
       $count++;
     }
   }
-  return isset($batch_size) ? $batch_size : $queue_count;
 }
 
 /**
@@ -1422,12 +1459,12 @@ function mailchimp_page_bottom(array &$page_bottom) {
   if (!empty($config->get('enable_connected'))) {
     // Limit JavaScript embed to pre-configured paths.
     $connected_site_paths = $config->get('connected_paths');
+    $valid_paths = explode("\r\n", $connected_site_paths);
 
-    $current_path = \Drupal::service('path.current')->getPath();
-    $current_alias = \Drupal::service('path_alias.manager')->getAliasByPath($current_path);
+    $path = \Drupal::service('path.current')->getPath();
+    $path = str_replace('/', '', $path);
 
-    if (\Drupal::service('path.matcher')->matchPath($current_path, $connected_site_paths) ||
-        \Drupal::service('path.matcher')->matchPath($current_alias, $connected_site_paths) ) {
+    if ((\Drupal::service('path.matcher')->isFrontPage() && in_array('<front>', $valid_paths)) || in_array($path, $valid_paths)) {
       $connected_site_id = $config->get('connected_id');
 
       if (!empty($connected_site_id)) {

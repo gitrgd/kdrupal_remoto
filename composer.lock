@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ec11ae44dc3b533fbc2b5bbf3ab0ad99",
+    "content-hash": "12b8221495b46bcc1d95df7a931d22a1",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -3879,34 +3879,33 @@
         },
         {
             "name": "drupal/mailchimp",
-            "version": "2.1.0-rc1",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/mailchimp.git",
-                "reference": "2.1.0-rc1"
+                "reference": "2.0.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/mailchimp-2.1.0-rc1.zip",
-                "reference": "2.1.0-rc1",
-                "shasum": "a13c964c316ad7729dd5f8c70b97b155d756917a"
+                "url": "https://ftp.drupal.org/files/projects/mailchimp-2.0.0.zip",
+                "reference": "2.0.0",
+                "shasum": "066a1756582692c8fe885f93fd86d01de05f6067"
             },
             "require": {
                 "drupal/core": "^8.7.7 || ^9",
-                "thinkshout/mailchimp-api-php": "^2.1"
+                "thinkshout/mailchimp-api-php": "^2.0"
             },
             "require-dev": {
-                "drupal/mailchimp_events": "*",
                 "drupal/mailchimp_lists": "*"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "2.1.0-rc1",
-                    "datestamp": "1626302238",
+                    "version": "2.0.0",
+                    "datestamp": "1608773827",
                     "security-coverage": {
-                        "status": "not-covered",
-                        "message": "RC releases are not covered by Drupal security advisories."
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
                     }
                 }
             },
@@ -13661,9 +13660,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "drupal/mailchimp": 5
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],

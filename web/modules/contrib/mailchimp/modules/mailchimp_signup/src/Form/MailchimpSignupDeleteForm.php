@@ -80,8 +80,6 @@ class MailchimpSignupDeleteForm extends EntityConfirmFormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $this->entity->delete();
 
-    mailchimp_signup_invalidate_cache();
-
     $this->routerBuilder->setRebuildNeeded();
 
     $this->messenger->addStatus($this->t('Signup Form %label has been deleted.', ['%label' => $this->entity->label()]));

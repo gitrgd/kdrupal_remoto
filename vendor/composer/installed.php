@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '06ced6e42b51fe48ec60224852c53c5b71c60604',
+        'reference' => '1f34f33d1cbac15c711bad085821bd38fa5be86b',
         'name' => 'drupal-composer/drupal-project',
         'dev' => true,
     ),
@@ -334,7 +334,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '06ced6e42b51fe48ec60224852c53c5b71c60604',
+            'reference' => '1f34f33d1cbac15c711bad085821bd38fa5be86b',
             'dev_requirement' => false,
         ),
         'drupal/action' => array(
@@ -1061,12 +1061,12 @@
             'dev_requirement' => false,
         ),
         'drupal/mailchimp' => array(
-            'pretty_version' => '2.1.0-rc1',
-            'version' => '2.1.0.0-RC1',
+            'pretty_version' => '2.0.0',
+            'version' => '2.0.0.0',
             'type' => 'drupal-module',
             'install_path' => __DIR__ . '/../../web/modules/contrib/mailchimp',
             'aliases' => array(),
-            'reference' => '2.1.0-rc1',
+            'reference' => '2.0.0',
             'dev_requirement' => false,
         ),
         'drupal/mailsystem' => array(

@@ -4,8 +4,6 @@ namespace Drupal\mailchimp\Form;
 
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Language\LanguageManagerInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Url;
 use Drupal\Core\Link;
 use Mailchimp\MailchimpAPIException;
@@ -14,31 +12,6 @@ use Mailchimp\MailchimpAPIException;
  * Configure Mailchimp settings for this site.
  */
 class MailchimpAdminSettingsForm extends ConfigFormBase {
-  /**
-   * The language manager.
-   *
-   * @var \Drupal\Core\Language\LanguageManagerInterface
-   */
-  protected $languageManager;
-
-  /**
-   * Creates a new MailchimpAdminSettingsForm instance.
-   *
-   * @param \Drupal\Core\Language\LanguageManagerInterface $languageManager
-   *   The language manager.
-   */
-  public function __construct(LanguageManagerInterface $languageManager) {
-    $this->languageManager = $languageManager;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public static function create(ContainerInterface $container) {
-    return new static(
-      $container->get('language_manager')
-    );
-  }
 
   /**
    * {@inheritdoc}
@@ -106,10 +79,6 @@ class MailchimpAdminSettingsForm extends ConfigFormBase {
     $connected_sites_options = [];
     if (!empty($connected_sites) && !empty($connected_sites->sites)) {
       foreach ($connected_sites->sites as $site) {
-        if (empty($site->domain)) {
-          $site->domain = t('Unlabeled site :id',
-            [':id' => $site->foreign_id,]);
-        }
         $connected_sites_options[$site->foreign_id] = $site->domain;
       }
     }
@@ -138,7 +107,7 @@ class MailchimpAdminSettingsForm extends ConfigFormBase {
         '#type' => 'textarea',
         '#default_value' => $config->get('connected_paths'),
         '#prefix' => $this->t("<p><b>Configure paths to embed Mailchimp's JavaScript code on.</b></p>"),
-        '#description' => $this->t("Specify pages using their paths. The '*' character is a wildcard. Enter one path per line. %front is the front page.<br>If you have created a pop-up subscription form in Mailchimp, it will appear on paths defined here.", ['%front' => '<front>']),
+        '#description' => $this->t('Specify pages using their paths. Enter one path per line. <front> is the front page. If you have created a pop-up subscription form in Mailchimp, it will appear on paths defined here.'),
       ];
     }
     else {
@@ -186,16 +155,15 @@ class MailchimpAdminSettingsForm extends ConfigFormBase {
       '#default_value' => $config->get('batch_limit'),
     ];
 
-    $hash = $config->get('webhook_hash') ? $config->get('webhook_hash') : md5(uniqid(mt_rand(), TRUE));
+    global $base_url;
+    $current_webhook_hash = $config->get('webhook_hash');
 
     $form['webhook_hash'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Webhook Hash'),
-      '#default_value' => $hash,
+      '#default_value' => $current_webhook_hash ? $current_webhook_hash : md5(uniqid(mt_rand(), TRUE)),
       '#description' => $this->t('Hash to validate incoming webhooks. Whatever you put here should be appended to the URL you provide Mailchimp.'),
-      '#suffix' => t("Your webhook URL: :url:", [
-        ':url:' => mailchimp_webhook_url($hash),
-      ]),
+      '#suffix' => '<strong>Your webhook URL:</strong> ' . $base_url . '/mailchimp/webhook/[hash]',
     ];
 
     return parent::buildForm($form, $form_state);
