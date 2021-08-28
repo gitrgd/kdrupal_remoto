@@ -15,8 +15,8 @@ use Drupal\views\Plugin\views\style\StylePluginBase;
  *
  * @ViewsStyle(
  *   id = "mlayout_4",
- *   title = @Translation("Gavias Magazine Layout #4"),
- *   help = @Translation("Displays items as Magazine Layout #4."),
+ *   title = @Translation("Magazine Layout #4"),
+ *   help = @Translation("Magazine Layout #4: Post Large with Grid Small Posts."),
  *   theme = "views_view_mlayout_4",
  *   display_types = {"normal"}
  * )

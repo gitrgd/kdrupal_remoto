@@ -2555,27 +2555,30 @@
         },
         {
             "name": "drupal/admin_toolbar",
-            "version": "2.4.0",
-            "version_normalized": "2.4.0.0",
+            "version": "3.0.2",
+            "version_normalized": "3.0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/admin_toolbar.git",
-                "reference": "8.x-2.4"
+                "reference": "3.0.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/admin_toolbar-8.x-2.4.zip",
-                "reference": "8.x-2.4",
-                "shasum": "6240047b8d91ac78f98d861ba8282af971fa0b38"
+                "url": "https://ftp.drupal.org/files/projects/admin_toolbar-3.0.2.zip",
+                "reference": "3.0.2",
+                "shasum": "a3b7a8030695d0c1d49ec57786321e2dd142184a"
             },
             "require": {
                 "drupal/core": "^8.8.0 || ^9.0"
             },
+            "require-dev": {
+                "drupal/admin_toolbar_tools": "*"
+            },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.4",
-                    "datestamp": "1601999178",
+                    "version": "3.0.2",
+                    "datestamp": "1629907124",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -4803,46 +4806,42 @@
         },
         {
             "name": "drupal/mailchimp",
-            "version": "1.12.0",
-            "version_normalized": "1.12.0.0",
+            "version": "2.1.0-rc1",
+            "version_normalized": "2.1.0.0-RC1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/mailchimp.git",
-                "reference": "8.x-1.12"
+                "reference": "2.1.0-rc1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/mailchimp-8.x-1.12.zip",
-                "reference": "8.x-1.12",
-                "shasum": "37bc8f433c53d8054e0d5bc93b664a35012fe606"
+                "url": "https://ftp.drupal.org/files/projects/mailchimp-2.1.0-rc1.zip",
+                "reference": "2.1.0-rc1",
+                "shasum": "a13c964c316ad7729dd5f8c70b97b155d756917a"
             },
             "require": {
                 "drupal/core": "^8.7.7 || ^9",
-                "thinkshout/mailchimp-api-php": "2.0.0"
+                "thinkshout/mailchimp-api-php": "^2.1"
             },
             "require-dev": {
+                "drupal/mailchimp_events": "*",
                 "drupal/mailchimp_lists": "*"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.12",
-                    "datestamp": "1608688401",
+                    "version": "2.1.0-rc1",
+                    "datestamp": "1626302238",
                     "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
+                        "status": "not-covered",
+                        "message": "RC releases are not covered by Drupal security advisories."
                     }
                 }
             },
             "installation-source": "dist",
-            "autoload": {
-                "psr-0": {
-                    "Mailchimp": "src/"
-                }
-            },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0+"
+                "GPL-2.0-or-later"
             ],
             "authors": [
                 {
@@ -13769,27 +13768,27 @@
         },
         {
             "name": "thinkshout/mailchimp-api-php",
-            "version": "2.0.0",
-            "version_normalized": "2.0.0.0",
+            "version": "v2.1.1",
+            "version_normalized": "2.1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thinkshout/mailchimp-api-php.git",
-                "reference": "ffa6cf96efe3a7e8e0de8309737a7dae40f51981"
+                "reference": "eae0e4647ca724bbd5982bb179891af11f641578"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thinkshout/mailchimp-api-php/zipball/ffa6cf96efe3a7e8e0de8309737a7dae40f51981",
-                "reference": "ffa6cf96efe3a7e8e0de8309737a7dae40f51981",
+                "url": "https://api.github.com/repos/thinkshout/mailchimp-api-php/zipball/eae0e4647ca724bbd5982bb179891af11f641578",
+                "reference": "eae0e4647ca724bbd5982bb179891af11f641578",
                 "shasum": ""
             },
             "require": {
-                "guzzlehttp/guzzle": "^6.2.1",
+                "guzzlehttp/guzzle": "^6.2.1|^7.0.0",
                 "php": ">=5.4.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^6.2.2"
             },
-            "time": "2018-02-27T17:52:03+00:00",
+            "time": "2021-08-05T15:12:34+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -13807,7 +13806,7 @@
             ],
             "support": {
                 "issues": "https://github.com/thinkshout/mailchimp-api-php/issues",
-                "source": "https://github.com/thinkshout/mailchimp-api-php/tree/master"
+                "source": "https://github.com/thinkshout/mailchimp-api-php/tree/v2.1.1"
             },
             "install-path": "../thinkshout/mailchimp-api-php"
         },

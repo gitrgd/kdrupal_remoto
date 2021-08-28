@@ -16,7 +16,6 @@ class GvaAjaxController extends ControllerBase {
 
    public function gavias_ajax_view() {
       $view = $_REQUEST['view'];
-      $output = '';
       if($view){
          $_view =  preg_split("/-----/", $view);
          if(isset($_view[0]) && isset($_view[1])){

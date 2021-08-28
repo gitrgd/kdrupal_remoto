@@ -12,9 +12,9 @@ function gavias_sliderlayer_load($sid) {
     $sliderlayers->status =  $result->status;
     $sliderlayers->sort_index =  $result->sort_index;
     $json = base64_decode($result->layersparams);
-    $sliderlayers->layers = json_decode($json);
+    $sliderlayers->layers = json_decode($json);  
     $json = base64_decode($result->params);
-    $sliderlayers->settings = json_decode($json);
+    $sliderlayers->settings = json_decode($json);   
   }
   return $sliderlayers;
 }
@@ -39,7 +39,7 @@ function gavias_slider_load_frontend($sid=0) {
             ->fields('d')
             ->condition('group_id', $sid, '=')
             ->orderBy('sort_index', 'ESC')
-            ->execute();
+            ->execute();     
 
   $slideshow = new stdClass();
 
@@ -54,6 +54,7 @@ function gavias_slider_load_frontend($sid=0) {
     $json_slide = base64_decode($slide->params);
     $slideparams = json_decode($json_slide);
     $slideshow->slides[$i] = $slideparams;
+    $slideshow->slides[$i]->id = $slide->id;
     if (!empty($slideshow->slides[$i]->background_image_uri)) {
       $slideshow->slides[$i]->background_image = ($slideshow->slides[$i]->background_image_uri);
     }

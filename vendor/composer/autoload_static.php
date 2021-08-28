@@ -762,13 +762,6 @@ class ComposerStaticInite64273fe483f573ee51b218eb74889bb
                 0 => __DIR__ . '/..' . '/stack/builder/src',
             ),
         ),
-        'M' => 
-        array (
-            'Mailchimp' => 
-            array (
-                0 => __DIR__ . '/../..' . '/web/modules/contrib/mailchimp/src',
-            ),
-        ),
         'D' => 
         array (
             'Dflydev\\PlaceholderResolver' => 

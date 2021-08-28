@@ -10,10 +10,9 @@
    </div>
 </div>
 <script type="text/javascript">
-<!--//--><![CDATA[//><!--
-  jQuery(document).ready(function($){
 
+  jQuery(document).ready(function($){
     jQuery('#<?php print $_id ?>').show().revolution(<?php print $ss ?>);
   });
-//--><!]]>
+
 </script>
