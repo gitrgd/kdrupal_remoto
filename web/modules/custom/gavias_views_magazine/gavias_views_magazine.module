@@ -116,6 +116,20 @@ function template_preprocess_views_view_mlayout_5(&$variables) {
 }
 
 /**
+ * Default template: views_view_mlayout_6.html.twig.
+ */
+function template_preprocess_views_view_mlayout_6(&$variables) {
+  $handler = $variables['view']->style_plugin;
+  $settings = $handler->options;
+  $variables['attributes']['class'][] = 'gva-view-mlayout-6';
+  $variables['attributes']['class'][] = isset($settings['el_class']) && $settings['el_class'] ? $settings['el_class'] : '';
+  $variables['attributes']['id'] = isset($settings['el_id']) && $settings['el_id'] ? $settings['el_id'] : false;
+  $variables['number_post_column'] = isset($settings['number_post_column']) && $settings['number_post_column'] ? $settings['number_post_column'] : 4;
+  template_preprocess_views_view_unformatted($variables);
+}
+
+
+/**
  * Implements hook_help().
  */
 function gavias_views_magazine_help($route_name, RouteMatchInterface $route_match) {

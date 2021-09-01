@@ -35,7 +35,7 @@
           </tr>
 
           <tr>
-            <td>
+            <td style="position: relative;">
               <label>Background image</label>
               <?php print gavias_sliderlayer_field_upload_slider(); ?>
             </td>
@@ -94,24 +94,8 @@
                 <option value="">None</option>
                 <option value="youtube">Youtube</option>
                 <option value="vimeo">Vimeo</option>
+                <option value="html5">HTML 5</option>
               </select>
-            </td>
-            <td>
-              <label>Youtube Video(example: T8--OggjJKQ)</label>
-              <input name="youtube_video" type="text" class="slide-option form-text"/>
-            </td>
-            <td>
-              <label>Vimeo Video(example: 30300114)</label>
-              <input name="vimeo_video" type="text" class="slide-option form-text"/>
-            </td>
-          </tr>
-          
-          <tr>
-            <td>
-              <label>Video Arguments Youtube</label>
-              <input name="video_youtube_args" type="text" class="slide-option form-text"/>
-              <label>Video Arguments Vimeo</label>
-              <input name="video_vimeo_args" type="text" class="slide-option form-text"/>
             </td>
             <td>
               <label>Video Start At</label>
@@ -120,6 +104,37 @@
             <td>
              <label>Video End At</label>
               <input name="video_end_at" type="text" class="slide-option form-text"/>
+            </td>
+            
+          </tr>
+          
+          <tr>
+            <td>
+              <label>Youtube Video(example: T8--OggjJKQ)</label>
+              <input name="youtube_video" type="text" class="slide-option form-text"/>
+              <label>Video Arguments Youtube</label>
+              <input name="video_youtube_args" type="text" class="slide-option form-text"/>
+            </td>
+            <td>
+              <label>Vimeo Video(example: 30300114)</label>
+              <input name="vimeo_video" type="text" class="slide-option form-text"/>
+              <label>Video Arguments Vimeo</label>
+              <input name="video_vimeo_args" type="text" class="slide-option form-text"/>
+            </td>
+            <td>
+              <label>MP4 Video Link:</label>
+              <input name="html5_mp4" type="text" class="slide-option form-text"/>
+              <label>MP4 Video Next Slide End:</label>
+              <select name="mp4_nextslideatend" class="slide-option form-select">
+                <option value="true">True</option>
+                <option value="false">False</option>
+              </select>
+              <label>MP4 Video Loop:</label>
+              <select name="mp4_videoloop" class="slide-option form-select">
+                <option value="loopandnoslidestop">Loop And No Slide Stop</option>
+                <option value="loop">Loop</option>
+                <option value="none">None</option>
+              </select>
             </td>
           </tr>
 
@@ -141,7 +156,7 @@
           <tr>
             <td>
               <label>Slide Delay</label>
-              <input type="text" name="data_masterspeed" class="form-text slide-option">
+              <input type="text" name="delay" class="form-text slide-option">
               <label>Data Parallax</label>
               <select name="data_parallax" class="slide-option form-select">
                   <option value="1">1</option>

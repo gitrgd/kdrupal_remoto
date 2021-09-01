@@ -29,10 +29,10 @@ function gavias_sliderlayer_block_content($sid) {
   $ss->shadow= isset($settings->shadow) ? $settings->shadow : 0;                       
   $ss->dottedOverlay = isset($settings->dottedOverlay) ? $settings->dottedOverlay : 'none';        
   $ss->startDelay=0;                                
-  $ss->lazyType = "smart";                
-  $ss->spinner="spinner0";
-  $ss->shuffle="off"; 
-  
+  $ss->lazyType = "none";                
+  $ss->spinner = "spinner0";
+  $ss->shuffle = "off"; 
+  $ss->debugMode = 0;
   //print "<pre>"; print_r($settings); die();
 
   $ss->parallax = new stdClass();
@@ -100,7 +100,7 @@ function gavias_sliderlayer_slides($vars){
   $vars['attributes_array']['class'] = 'gavias_sliderlayer rev_slider_wrapper fullwidthbanner-container';
   $style = array();
   $style[] = 'height:'. ((isset($settings->gridheight) && $settings->gridheight) ? $settings->gridheight : '700') . 'px';
-  $vars['attributes_array']['style'] = implode($style, ';');
+  $vars['attributes_array']['style'] = implode(';', $style);
   
   $vars['content'] = '';
   $i = 1;
@@ -148,14 +148,15 @@ function gavias_sliderlayer_slide($vars, $index){
   if(!isset($slide->scalestart)){$slide->scalestart=0;}
   if(!isset($slide->scaleend)){$slide->scaleend=0;}
   if(!isset($slide->data_parallax)){$slide->data_parallax=0;}
-  
+  if(!$slide->background_color){$slide->background_color='#f2f2f2';}
   $data_kenburns = 'off';
   if(isset($slide->scalestart) && $slide->scalestart && $slide->scalestart != 0){
     $data_kenburns = 'on';
   }
   $path_image = substr(base_path(), 0, -1);
+  if(!isset($slide->delay)) $slide->delay = 300;
   if($slide->background_image_uri){
-    $vars['content'] = "<img class=\"rev-slidebg\" src=\"{$path_image}{$slide->background_image_uri}\" alt=\"\"  data-duration=\"{$settings->delay}\" data-bgparallax=\"{$slide->data_parallax}\"  data-scalestart=\"{$slide->scalestart}\" data-scaleend=\"{$slide->scaleend}\" data-kenburns=\"{$data_kenburns}\"  data-bgrepeat=\"{$slide->background_repeat}\" style=\"background-color:{$slide->background_color}\" data-bgfit=\"{$slide->background_fit}\" data-bgposition=\"{$slide->background_position}\" />";
+    $vars['content'] = "<img class=\"rev-slidebg\" src=\"{$path_image}{$slide->background_image_uri}\" alt=\"\"  data-duration=\"{$slide->delay}\" data-bgparallax=\"{$slide->data_parallax}\"  data-scalestart=\"{$slide->scalestart}\" data-scaleend=\"{$slide->scaleend}\" data-kenburns=\"{$data_kenburns}\"  data-bgrepeat=\"{$slide->background_repeat}\" style=\"background-color:{$slide->background_color}\" data-bgfit=\"{$slide->background_fit}\" data-bgposition=\"{$slide->background_position}\" />";
   }else{
     $vars['content'] = "<img class=\"rev-slidebg\" src=\"{$path_image}/{$module_path}/vendor/revolution/assets/transparent.png\" data-bgrepeat=\"repeat\" style=\"background-color:{$slide->background_color}\" />";
   }
@@ -177,12 +178,12 @@ function gavias_sliderlayer_slide($vars, $index){
 
   // Array
   $vars['attributes_video_array'] = array();
-  if(isset($slide->video_source) && (isset($slide->youtube_video) || isset($slide->vimeo_video))){
-    if($slide->video_source &&($slide->youtube_video || $slide->vimeo_video)){
+  if(isset($slide->video_source) && (isset($slide->youtube_video) || isset($slide->vimeo_video) || isset($slide->html5_mp4))){
+    if($slide->video_source &&($slide->youtube_video || $slide->vimeo_video || $slide->html5_mp4)){
       $vars['attributes_video_array']['data-forcerewind'] = 'on';
       $vars['attributes_video_array']['data-volume'] = 'mute';
       if(!isset($slide->video_youtube_args) && empty($slide->video_youtube_args)){
-        $slide->video_youtube_args = 'version=3&enablejsapi=1&html5=1&hd=1&wmode=opaque&showinfo=0&ref=0;origin=http://server.local;autoplay=1;';
+        $slide->video_youtube_args = 'version=3&enablejsapi=1&html5=1&hd=1&wmode=opaque&showinfo=0&ref=0;autoplay=1;';
       }
       if(!isset($slide->video_vimeo_args) && empty($slide->video_vimeo_args)){
         $slide->video_vimeo_args = 'title=0&byline=0&portrait=0&api=1';
@@ -192,6 +193,10 @@ function gavias_sliderlayer_slide($vars, $index){
       }
       if($slide->video_source == 'vimeo'){
         $vars['attributes_video_array']['data-videoattributes'] = $slide->video_vimeo_args;
+      }
+      if($slide->video_source == 'html5'){
+        $vars['attributes_video_array']['data-nextslideatend'] = isset($slide->mp4_nextslideatend) ? $slide->mp4_nextslideatend : true;
+        $vars['attributes_video_array']['data-videoloop'] = isset($slide->mp4_videoloop) ? $slide->mp4_videoloop : 'loopandnoslidestop';
       }
       $vars['attributes_video_array']['data-videorate'] = '1.5';
       $vars['attributes_video_array']['data-videowidth'] = '100%';
@@ -203,18 +208,21 @@ function gavias_sliderlayer_slide($vars, $index){
       if($slide->video_source == 'vimeo' && $slide->vimeo_video){
         $vars['attributes_video_array']['data-vimeoid'] = $slide->vimeo_video;
       }
+      if($slide->video_source == 'html5' && $slide->html5_mp4){
+        $vars['attributes_video_array']['data-videomp4'] = $slide->html5_mp4;
+      }
       if(isset($slide->video_start_at) && $slide->video_start_at){
         $vars['attributes_video_array']['data-videostartat'] = $slide->video_start_at;
       }
       if(isset($slide->video_end_at) && $slide->video_end_at){
         $vars['attributes_video_array']['data-videoendat'] = $slide->video_end_at;
       }
-      $vars['attributes_video_array']['data-videoloop'] = 'loopandnoslidestop';
+      //$vars['attributes_video_array']['data-videoloop'] = 'loopandnoslidestop';
       $vars['attributes_video_array']['data-forceCover'] = '1';
       $vars['attributes_video_array']['data-aspectratio'] = '16:9';
       $vars['attributes_video_array']['data-autoplay'] = 'true';
       $vars['attributes_video_array']['data-autoplayonlyfirsttime'] = 'false';
-      $vars['attributes_video_array']['data-nextslideatend'] = 'false';
+      //$vars['attributes_video_array']['data-nextslideatend'] = 'false';
 
       $vars['attributes_video_array']['class'] = 'rs-background-video-layer';
 

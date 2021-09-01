@@ -24,40 +24,37 @@
         "cweagans/composer-patches": "^1.7",
         "drupal/address": "^1.7",
         "drupal/addtoany": "^1.12",
-        "drupal/admin_toolbar": "^2.0",
+        "drupal/admin_toolbar": "^3.0",
         "drupal/block_class": "^1.1",
         "drupal/commerce": "^2.8",
         "drupal/commerce_paypal": "^1.0",
         "drupal/config_update": "^1.5",
         "drupal/console": "^1.0.2",
         "drupal/contact_block": "^1.4",
-        "drupal/core-composer-scaffold": "^8.9",
-        "drupal/core-recommended": "^8.9",
+        "drupal/core-composer-scaffold": "^9.0.0",
+        "drupal/core-project-message": "^9.0.0",
+        "drupal/core-recommended": "^9.0.0",
         "drupal/ctools": "^3.2",
         "drupal/entity": "^1.0",
-        "drupal/entity_activity": "^1.0",
         "drupal/entity_reference_revisions": "^1.7",
         "drupal/features": "^3.8",
-        "drupal/field_collection": "^1.0",
         "drupal/fontawesome": "^2.15",
         "drupal/image_url_formatter": "^1.0",
-        "drupal/imce": "^1.6",
+        "drupal/imce": "^2.4",
         "drupal/inline_entity_form": "^1.0",
         "drupal/libraries": "^3.0",
         "drupal/ludwig": "^1.0",
-        "drupal/mailchimp": "^1.11",
+        "drupal/mailchimp": "2.0.0",
         "drupal/mailsystem": "^4.2",
         "drupal/paragraphs": "^1.11",
         "drupal/pathauto": "^1.6",
         "drupal/profile": "^1.0",
         "drupal/simplenews": "^2.0",
-        "drupal/swiftmailer": "^1.0",
+        "drupal/swiftmailer": "^2.0",
         "drupal/token": "^1.6",
         "drupal/token_filter": "^1.0",
         "drupal/tvi": "^1.0",
         "drupal/twitter_block": "^3.0",
-        "drupal/upgrade_rector": "^1.0@alpha",
-        "drupal/upgrade_status": "3.x-dev@dev",
         "drupal/views_infinite_scroll": "^1.6",
         "drush/drush": "^10.0.0",
         "vlucas/phpdotenv": "^2.4",
@@ -65,10 +62,7 @@
         "webmozart/path-util": "^2.3"
     },
     "require-dev": {
-        "drupal/core-dev": "^8.8"
-    },
-    "conflict": {
-        "drupal/drupal": "*"
+        "drupal/core-dev": "^9.0.0"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -104,6 +98,11 @@
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
             "drush/Commands/{$name}": ["type:drupal-drush"]
         },
+        "patches": {
+        "drupal/core": {
+          "Solucionar un bug": "https://www.drupal.org/files/issues/2020-07-24/core-delete_node_error-3153455-36-9.x.patch"
+        }
+      },
         "drupal-scaffold": {
           "locations": {
              "web-root": "web/"

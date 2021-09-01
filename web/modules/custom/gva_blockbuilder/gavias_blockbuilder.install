@@ -1,7 +1,7 @@
 <?php
 
 function gavias_blockbuilder_schema() {
-  if(!db_table_exists('gavias_blockbuilder')){
+  if(!\Drupal::database()->schema()->tableExists('gavias_blockbuilder')){ 
     $schema['gavias_blockbuilder'] = array(
       'fields' => array(
         'id' => array(

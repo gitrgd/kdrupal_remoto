@@ -29,7 +29,7 @@ class DuplicateFormPopup extends FormBase{
     if(\Drupal::request()->attributes->get('bid')) $bid = \Drupal::request()->attributes->get('bid');
     if(\Drupal::request()->attributes->get('random')) $random = \Drupal::request()->attributes->get('random');
     if (is_numeric($bid) && $bid > 0) {
-      $bblock = db_select('{gavias_blockbuilder}', 'd')
+      $bblock = \Drupal::database()->select('{gavias_blockbuilder}', 'd')
           ->fields('d', array('id', 'title', 'body_class'))
           ->condition('id', $bid)
           ->execute()
@@ -119,7 +119,7 @@ class DuplicateFormPopup extends FormBase{
       $bid = $form['id']['#value'];
 
       if (is_numeric($bid) && $bid > 0) {
-        $bblock = db_select('{gavias_blockbuilder}', 'd')
+        $bblock = \Drupal::database()->select('{gavias_blockbuilder}', 'd')
             ->fields('d', array('id', 'title', 'params'))
             ->condition('id', $bid)
             ->execute()
@@ -128,7 +128,7 @@ class DuplicateFormPopup extends FormBase{
         $bblock = array('id' => 0, 'title' => '', 'body_class'=>'', 'params'=>'');
       }    
 
-      $pid = db_insert("gavias_blockbuilder")
+      $pid = \Drupal::database()->insert("gavias_blockbuilder")
       ->fields(array(
           'title'       => $form['title']['#value'],
           'body_class'  => $form['body_class']['#value'],
@@ -213,7 +213,7 @@ class DuplicateFormPopup extends FormBase{
     $html = '';
     $html .= '<span class="gbb-item active id-'.$pid.'">';
     $html .= '<a class="select" data-id="'.$pid.'" title="'. $body_class .'">' . $title  . '</a>';
-    $html .= ' <span class="action">( <a class="edit gva-popup-iframe" href="'.\Drupal::url('gavias_blockbuilder.admin.edit', array('bid'=>$pid)).'" title="'. $body_class .'">Edit</a>';
+    $html .= ' <span class="action">( <a class="edit gva-popup-iframe" href="'. Url::fromRoute('gavias_blockbuilder.admin.edit', array('bid'=>$pid))->toString() .'" title="'. $body_class .'">Edit</a>';
     $html .= ' | <a>Please save and refesh if you want duplicate</a>) </span>';
     $html .= '</span>';
 

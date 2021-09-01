@@ -4,6 +4,7 @@ use Drupal\Core\Form\FormBuilderInterface;
 use Drupal\Core\Form\FormInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Symfony\Component\HttpFoundation;
+use Drupal\Core\Url;
 class AddForm implements FormInterface {
    /**
    * Implements \Drupal\Core\Form\FormInterface::getFormID().
@@ -19,7 +20,7 @@ class AddForm implements FormInterface {
       $bid = 0;
       if(\Drupal::request()->attributes->get('bid')) $bid = \Drupal::request()->attributes->get('bid');
       if (is_numeric($bid) && $bid > 0) {
-        $bblock = db_select('{gavias_blockbuilder}', 'd')
+        $bblock = \Drupal::database()->select('{gavias_blockbuilder}', 'd')
           ->fields('d', array('id', 'title', 'body_class'))
           ->condition('id', $bid)
           ->execute()
@@ -78,7 +79,7 @@ class AddForm implements FormInterface {
   public function submitForm(array &$form, FormStateInterface $form_state) {
       if (is_numeric($form['id']['#value']) && $form['id']['#value'] > 0) {
         
-          $pid = db_update("gavias_blockbuilder")
+          $pid = \Drupal::database()->update("gavias_blockbuilder")
             ->fields(array(
                 'title'       => $form['title']['#value'],
                 'body_class'  => $form['body_class']['#value']
@@ -87,11 +88,11 @@ class AddForm implements FormInterface {
             ->execute();  
 
           \Drupal::service('plugin.manager.block')->clearCachedDefinitions();
-        drupal_set_message("blockbuilder '{$form['title']['#value']}' has been update");
-        $response = new \Symfony\Component\HttpFoundation\RedirectResponse(\Drupal::url('gavias_blockbuilder.admin'));
+        \Drupal::messenger()->addMessage("blockbuilder '{$form['title']['#value']}' has been update");
+        $response = new \Symfony\Component\HttpFoundation\RedirectResponse(Url::fromRoute('gavias_blockbuilder.admin')->toString());
         $response->send();
       } else {
-        $pid = db_insert("gavias_blockbuilder")
+        $pid = \Drupal::database()->insert("gavias_blockbuilder")
           ->fields(array(
               'title'       => $form['title']['#value'],
               'body_class'  => $form['body_class']['#value'],
@@ -99,8 +100,8 @@ class AddForm implements FormInterface {
           ))
           ->execute();
           \Drupal::service('plugin.manager.block')->clearCachedDefinitions();
-        drupal_set_message("blockbuilder '{$form['title']['#value']}' has been created");
-        $response = new \Symfony\Component\HttpFoundation\RedirectResponse(\Drupal::url('gavias_blockbuilder.admin'));
+        \Drupal::messenger()->addMessage("blockbuilder '{$form['title']['#value']}' has been created");
+        $response = new \Symfony\Component\HttpFoundation\RedirectResponse(Url::fromRoute('gavias_blockbuilder.admin')->toString());
         $response->send();
       } 
    }

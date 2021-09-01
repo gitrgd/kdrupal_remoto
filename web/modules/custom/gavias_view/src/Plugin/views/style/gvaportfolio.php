@@ -100,10 +100,22 @@ class gvaportfolio extends StylePluginBase {
       '#description' => t('List id for term show in tabs filter, eg: 1, 2, 3, 4, 5. Show all term if empty')
     );
 
-     $form['el_class'] = array(
+    $form['el_class'] = array(
       '#type' => 'textfield',
       '#title' => $this->t('Extra class name'),
       '#default_value' => $this->options['el_class'],
+    );
+
+    $form['slideset'] = array(
+      '#type' => 'checkbox',
+      '#title' => $this->t('Use Slideset'),
+      '#default_value' => $this->options['slideset'],
+    );
+
+    $form['bootstrap_4'] = array(
+      '#type' => 'checkbox',
+      '#title' => $this->t('Theme use Bootstrap 4'),
+      '#default_value' => $this->options['bootstrap_4'],
     );
   }
 }

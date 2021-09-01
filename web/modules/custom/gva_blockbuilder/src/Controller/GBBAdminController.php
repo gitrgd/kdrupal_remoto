@@ -17,7 +17,7 @@ class GBBAdminController extends ControllerBase {
     $page['#attached']['library'][] = 'gavias_blockbuilder/gavias_blockbuilder.assets.admin';
 
     $header = array( 'ID', 'Title', 'Shortcode', 'Action');
-    $results = db_select('{gavias_blockbuilder}', 'd')
+    $results = \Drupal::database()->select('{gavias_blockbuilder}', 'd')
             ->fields('d', array('id', 'title', 'body_class'))
             ->orderBy('title', 'ASC')
             ->execute();
@@ -29,10 +29,10 @@ class GBBAdminController extends ControllerBase {
       $tmp[] = $row->title;
       $tmp[] = "[gbb name=\"{$row->body_class}\"]";
       $tmp[] = t('<a href="@link">Edit</a> | <a href="@link_2">Config</a> |  <a href="@link_3">Delete</a> | <a href="@link_4">Duplicate</a>', array(
-            '@link' => \Drupal::url('gavias_blockbuilder.admin.add', array('bid' => $row->id)),
-            '@link_2' => \Drupal::url('gavias_blockbuilder.admin.edit', array('bid' => $row->id)),
-            '@link_3' => \Drupal::url('gavias_blockbuilder.admin.delete', array('bid' => $row->id)),
-            '@link_4' => \Drupal::url('gavias_blockbuilder.admin.clone', array('bid' => $row->id)),
+            '@link' => Url::fromRoute('gavias_blockbuilder.admin.add', array('bid' => $row->id))->toString(),
+            '@link_2' => Url::fromRoute('gavias_blockbuilder.admin.edit', array('bid' => $row->id))->toString(),
+            '@link_3' => Url::fromRoute('gavias_blockbuilder.admin.delete', array('bid' => $row->id))->toString(),
+            '@link_4' => Url::fromRoute('gavias_blockbuilder.admin.clone', array('bid' => $row->id))->toString()
         ));
       $rows[] = $tmp;
     }
@@ -40,7 +40,7 @@ class GBBAdminController extends ControllerBase {
       '#theme' => 'table',
       '#header' => $header,
       '#rows' => $rows,
-      '#empty' => t('No Block builder block available. <a href="@link">Add Block Builder</a>.', array('@link' => \Drupal::url('gavias_blockbuilder.admin.add', array('bid'=>0)))),
+      '#empty' => t('No Block builder block available. <a href="@link">Add Block Builder</a>.', array('@link' => Url::fromRoute('gavias_blockbuilder.admin.add', array('bid'=>0))->toString() )),
     );
     return $page;
   }
@@ -174,11 +174,11 @@ class GBBAdminController extends ControllerBase {
 
     $page['#attributes']['classes_array'][] = 'form-blockbuilder';
 
-    $abs_url_config = \Drupal::url('gavias_blockbuilder.admin.save', array(), array('absolute' => FALSE)); 
+    $abs_url_config = Url::fromRoute('gavias_blockbuilder.admin.save', array(), array('absolute' => FALSE))->toString(); 
     
     $page['#attached']['drupalSettings']['gavias_blockbuilder']['saveConfigURL'] = $abs_url_config;
 
-    $abs_url_config = \Drupal::url('gavias_blockbuilder.admin.get_images_upload', array(), array('absolute' => FALSE));
+    $abs_url_config = Url::fromRoute('gavias_blockbuilder.admin.get_images_upload', array(), array('absolute' => FALSE))->toString();
 
     $page['#attached']['drupalSettings']['gavias_blockbuilder']['get_images_upload_url'] = $abs_url_config;
 
@@ -191,7 +191,7 @@ class GBBAdminController extends ControllerBase {
       $url_redirect = $_GET['destination'];
       $destination = true;
     }else{
-      $url_redirect = \Drupal::url('gavias_blockbuilder.admin.edit', array('bid' => $bid));
+      $url_redirect = Url::fromRoute('gavias_blockbuilder.admin.edit', array('bid' => $bid))->toString();
     }
 
     $page['#attached']['drupalSettings']['gavias_blockbuilder']['url_redirect'] = $url_redirect;
@@ -220,7 +220,7 @@ class GBBAdminController extends ControllerBase {
     } 
     if($params==null) $params = '';
 
-    db_update("gavias_blockbuilder")
+    \Drupal::database()->update("gavias_blockbuilder")
           ->fields(array(
               'params' => $params,
           ))

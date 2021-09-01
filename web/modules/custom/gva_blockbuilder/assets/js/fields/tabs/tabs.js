@@ -48,7 +48,7 @@ jQuery(document).ready(function($){
 		e.preventDefault();
 		
 		// decrease tabs counter
-		var tabs_counter = $(this).parents('td').children('.gbb-tabs-count');
+		var tabs_counter = $(this).parents('div.field-content').children('.gbb-tabs-count');
 		tabs_counter.val(tabs_counter.val()*1 - 1);
 		
 		$(this).parent().fadeOut(300, function(){$(this).remove();});

@@ -28,7 +28,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#fff;
-	font-family:Arial;
+	
 	font-size:20px;
 	font-weight:700;
 	line-height:20px;
@@ -44,7 +44,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#fff;
-	font-family:Arial;
+	
 	font-size:14px;
 	font-weight:700;
 	line-height:20px;
@@ -59,7 +59,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#fff;
-	font-family:Arial;
+	
 	font-size:20px;
 	font-weight:700;
 	line-height:20px;
@@ -74,7 +74,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#fff;
-	font-family:Arial;
+	
 	font-size:40px;
 	font-weight:700;
 	line-height:40px;
@@ -89,7 +89,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#fff;
-	font-family:Arial;
+	
 	font-size:60px;
 	font-weight:700;
 	letter-spacing:-2px;
@@ -106,7 +106,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#fff;
-	font-family:Arial;
+	
 	font-size:60px;
 	font-weight:800;
 	line-height:60px;
@@ -123,7 +123,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#000;
-	font-family:Arial;
+	
 	font-size:60px;
 	font-weight:700;
 	line-height:60px;
@@ -139,7 +139,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#000;
-	font-family:"Open Sans", sans-serif;
+	
 	font-size:24px;
 	font-weight:800;
 	line-height:20px;
@@ -154,7 +154,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#fff;
-	font-family:"Open Sans", sans-serif;
+	
 	font-size:24px;
 	font-weight:800;
 	line-height:20px;
@@ -169,7 +169,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#000;
-	font-family:"Open Sans", sans-serif;
+	
 	font-size:24px;
 	font-weight:300;
 	line-height:20px;
@@ -185,7 +185,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#fff;
-	font-family:"Open Sans", sans-serif;
+	
 	font-size:30px;
 	font-weight:800;
 	letter-spacing:0;
@@ -202,7 +202,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#fff;
-	font-family:"Open Sans", sans-serif;
+	
 	font-size:30px;
 	font-weight:300;
 	letter-spacing:0;
@@ -218,7 +218,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#555;
-	font-family:Arial;
+	
 	font-size:14px;
 	line-height:22px;
 	margin:0;
@@ -249,7 +249,7 @@ website:   	http://www.themepunch.com
 {
 	background-color:transparent;
 	color:rgba(0,0,0,0.85);
-	font-family:"Open Sans";
+	
 	font-size:30px;
 	font-weight:300;
 	line-height:30px;
@@ -261,7 +261,7 @@ website:   	http://www.themepunch.com
 {
 	background-color:transparent;
 	color:rgba(0,0,0,0.85);
-	font-family:"Open Sans";
+	
 	font-size:16px;
 	font-weight:300;
 	line-height:26px;
@@ -276,7 +276,7 @@ website:   	http://www.themepunch.com
 	background-color:#000;
 	border-radius:0;
 	color:#fff;
-	font-family:"Open Sans";
+	
 	font-size:50px;
 	font-weight:300;
 	line-height:70px;
@@ -292,7 +292,7 @@ website:   	http://www.themepunch.com
 	background-color:#db4360;
 	border-radius:0;
 	color:#fff;
-	font-family:"Open Sans";
+	
 	font-size:50px;
 	font-weight:300;
 	line-height:70px;
@@ -308,7 +308,7 @@ website:   	http://www.themepunch.com
 	background-color:#fff;
 	border-radius:0;
 	color:#000;
-	font-family:"Open Sans";
+	
 	font-size:50px;
 	font-weight:300;
 	line-height:70px;
@@ -324,7 +324,7 @@ website:   	http://www.themepunch.com
 	background-color:#67ae73;
 	border-radius:0;
 	color:#fff;
-	font-family:"Open Sans";
+	
 	font-size:50px;
 	font-weight:300;
 	line-height:70px;
@@ -340,7 +340,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#fff;
-	font-family:Arial;
+	
 	font-size:36px;
 	font-weight:700;
 	height:auto;
@@ -361,7 +361,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#666;
-	font-family:"Open Sans";
+	
 	font-size:60px;
 	font-weight:800;
 	line-height:60px;
@@ -378,7 +378,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#666;
-	font-family:"Open Sans";
+	
 	font-size:34px;
 	font-weight:300;
 	line-height:30px;
@@ -395,7 +395,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#757575;
-	font-family:"Open Sans";
+	
 	font-size:18px;
 	font-weight:300;
 	line-height:26px;
@@ -425,7 +425,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#34495e;
-	font-family:"Open Sans";
+	
 	font-size:58px;
 	font-weight:800;
 	line-height:60px;
@@ -439,7 +439,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#fff;
-	font-family:"Open Sans";
+	
 	font-size:20px;
 	font-weight:800;
 	line-height:20px;
@@ -454,7 +454,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#e33a0c;
-	font-family:"Open Sans";
+	
 	font-size:24px;
 	font-weight:800;
 	line-height:30px;
@@ -469,7 +469,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#e33a0c;
-	font-family:"Open Sans";
+	
 	font-size:21px;
 	font-weight:300;
 	line-height:26px;
@@ -484,7 +484,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#fff;
-	font-family:"Open Sans";
+	
 	font-size:20px;
 	font-weight:800;
 	line-height:20px;
@@ -499,7 +499,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#f39c12;
-	font-family:"Open Sans";
+	
 	font-size:24px;
 	font-weight:800;
 	line-height:30px;
@@ -513,7 +513,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#fff;
-	font-family:"Open Sans";
+	
 	font-size:20px;
 	font-weight:800;
 	line-height:20px;
@@ -539,7 +539,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#fff;
-	font-family:"Open Sans";
+	
 	font-size:58px;
 	font-weight:800;
 	line-height:60px;
@@ -553,7 +553,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#fff;
-	font-family:"Open Sans";
+	
 	font-size:30px;
 	font-weight:300;
 	line-height:36px;
@@ -568,7 +568,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#fff;
-	font-family:"Open Sans";
+	
 	font-size:34px;
 	font-weight:300;
 	line-height:40px;
@@ -583,7 +583,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#fff;
-	font-family:"Open Sans";
+	
 	font-size:34px;
 	font-weight:300;
 	line-height:40px;
@@ -599,7 +599,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#fff;
-	font-family:"Open Sans";
+	
 	font-size:20px;
 	font-weight:800;
 	line-height:20px;
@@ -614,7 +614,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#000;
-	font-family:"Open Sans";
+	
 	font-size:30px;
 	font-weight:300;
 	line-height:36px;
@@ -629,7 +629,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#000;
-	font-family:"Open Sans";
+	
 	font-size:58px;
 	font-weight:800;
 	line-height:60px;
@@ -643,7 +643,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#34495e;
-	font-family:"Open Sans";
+	
 	font-size:34px;
 	font-weight:300;
 	line-height:40px;
@@ -658,7 +658,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#fff;
-	font-family:"Open Sans";
+	
 	font-size:17px;
 	font-weight:300;
 	line-height:28px;
@@ -680,7 +680,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#fff;
-	font-family:"Open Sans";
+	
 	font-size:40px;
 	font-weight:800;
 	line-height:40px;
@@ -695,7 +695,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#000;
-	font-family:"Open Sans";
+	
 	font-size:30px;
 	font-weight:300;
 	line-height:30px;
@@ -711,7 +711,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#212a40;
-	font-family:roboto;
+	
 	font-size:33px;
 	font-weight:500;
 	line-height:43px;
@@ -726,7 +726,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#fff;
-	font-family:"Source Sans Pro";
+	
 	font-size:60px;
 	font-weight:700;
 	letter-spacing:1px;
@@ -742,7 +742,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(255,255,255,0.65);
-	font-family:"Source Sans Pro";
+	
 	font-size:17px;
 	font-weight:400;
 	letter-spacing:2px;
@@ -777,7 +777,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#fff;
-	font-family:"Source Sans Pro";
+	
 	font-size:22px;
 	font-weight:400;
 	letter-spacing:0;
@@ -793,7 +793,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#333;
-	font-family:"Source Sans Pro";
+	
 	font-size:60px;
 	font-weight:700;
 	letter-spacing:1px;
@@ -809,7 +809,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#666;
-	font-family:"Source Sans Pro";
+	
 	font-size:22px;
 	font-weight:400;
 	letter-spacing:0;
@@ -858,7 +858,7 @@ website:   	http://www.themepunch.com
 	border-radius:0 0 0 0;
 	border-style:none;
 	border-width:0;
-	font-family:Permanent Marker;
+	
 	font-style:normal;
 	padding:0;
 	text-decoration:none;
@@ -873,7 +873,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#fff;
-	font-family:Roboto;
+	
 	font-size:120px;
 	font-style:normal;
 	font-weight:700;
@@ -890,7 +890,6 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#fff;
-	font-family:Nothing you could do;
 	font-size:30px;
 	font-style:normal;
 	font-weight:400;
@@ -908,7 +907,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#fff;
-	font-family:Roboto;
+	
 	font-size:17px;
 	font-style:normal;
 	font-weight:400;
@@ -926,7 +925,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#fff;
-	font-family:Roboto;
+	
 	font-size:20px;
 	font-style:normal;
 	font-weight:300;
@@ -944,7 +943,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:#fff;
-	font-family:Roboto;
+	
 	font-size:30px;
 	font-style:normal;
 	font-weight:300;
@@ -962,7 +961,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(255,255,255,1.00);
-	font-family:Roboto;
+	
 	font-size:17px;
 	font-style:normal;
 	font-weight:400;
@@ -981,7 +980,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(230,207,163,1.00);
-	font-family:Raleway;
+	
 	font-size:160px;
 	font-style:normal;
 	font-weight:300;
@@ -1000,7 +999,7 @@ website:   	http://www.themepunch.com
 	border-width:0;
 	box-shadow:rgba(0,0,0,0.1) 0 1px 3px;
 	color:rgba(230,207,163,1.00);
-	font-family:Raleway;
+	
 	font-size:20px;
 	font-style:normal;
 	font-weight:400;
@@ -1018,7 +1017,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(0,0,0,1.00);
-	font-family:Raleway;
+	
 	font-size:20px;
 	font-style:normal;
 	font-weight:700;
@@ -1037,7 +1036,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(0,0,0,1.00);
-	font-family:Raleway;
+	
 	font-size:17px;
 	font-style:normal;
 	font-weight:300;
@@ -1055,7 +1054,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(255,255,255,1.00);
-	font-family:Raleway;
+	
 	font-size:80px;
 	font-style:normal;
 	font-weight:900;
@@ -1072,7 +1071,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(255,255,255,1.00);
-	font-family:Raleway;
+	
 	font-size:30px;
 	font-style:normal;
 	font-weight:100;
@@ -1090,7 +1089,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(255,255,255,1.00);
-	font-family:Raleway;
+	
 	font-size:17px;
 	font-style:normal;
 	font-weight:300;
@@ -1108,7 +1107,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(255,255,255,1.00);
-	font-family:Raleway;
+	
 	font-size:12px;
 	font-style:normal;
 	font-weight:600;
@@ -1126,7 +1125,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(0,0,0,1.00);
-	font-family:Raleway;
+	
 	font-size:60px;
 	font-style:normal;
 	font-weight:900;
@@ -1144,7 +1143,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(0,0,0,1.00);
-	font-family:Raleway;
+	
 	font-size:20px;
 	font-style:normal;
 	font-weight:400;
@@ -1162,7 +1161,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(255,255,255,1.00);
-	font-family:Raleway;
+	
 	font-size:130px;
 	font-style:normal;
 	font-weight:100;
@@ -1180,7 +1179,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(255,255,255,1.00);
-	font-family:Raleway;
+	
 	font-size:130px;
 	font-style:normal;
 	font-weight:900;
@@ -1197,7 +1196,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(0,0,0,1.00);
-	font-family:Raleway;
+	
 	font-size:32px;
 	font-style:normal;
 	font-weight:400;
@@ -1215,7 +1214,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(255,255,255,1.00);
-	font-family:Roboto;
+	
 	font-size:20px;
 	font-style:normal;
 	font-weight:900;
@@ -1232,7 +1231,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(255,255,255,1.00);
-	font-family:Roboto Slab;
+	
 	font-size:70px;
 	font-style:normal;
 	font-weight:400;
@@ -1249,7 +1248,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(255,255,255,1.00);
-	font-family:Roboto Slab;
+	
 	font-size:15px;
 	font-style:normal;
 	font-weight:300;
@@ -1277,7 +1276,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(255,255,255,1.00);
-	font-family:Raleway;
+	
 	font-size:80px;
 	font-style:normal;
 	font-weight:100;
@@ -1295,7 +1294,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(119,119,119,1.00);
-	font-family:Raleway;
+	
 	font-size:20px;
 	font-style:normal;
 	font-weight:300;
@@ -1340,7 +1339,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(255,255,255,1.00);
-	font-family:Raleway;
+	
 	font-size:20px;
 	font-style:normal;
 	font-weight:300;
@@ -1369,7 +1368,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(255,255,255,1.00);
-	font-family:Raleway;
+	
 	font-size:17px;
 	font-style:normal;
 	font-weight:300;
@@ -1387,7 +1386,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(255,255,255,0.35);
-	font-family:Raleway;
+	
 	font-size:20px;
 	font-style:normal;
 	font-weight:300;
@@ -1405,7 +1404,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(255,255,255,1.00);
-	font-family:Arial;
+	
 	font-size:20px;
 	font-style:normal;
 	font-weight:400;
@@ -1433,7 +1432,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(51,51,51,1.00);
-	font-family:Raleway;
+	
 	font-size:90px;
 	font-style:normal;
 	font-weight:100;
@@ -1450,7 +1449,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(153,153,153,1.00);
-	font-family:Raleway;
+	
 	font-size:15px;
 	font-style:normal;
 	font-weight:400;
@@ -1467,7 +1466,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(153,153,153,1.00);
-	font-family:Raleway;
+	
 	font-size:16px;
 	font-style:normal;
 	font-weight:600;
@@ -1484,7 +1483,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(255,255,255,1.00);
-	font-family:Raleway;
+	
 	font-size:15px;
 	font-style:normal;
 	font-weight:500;
@@ -1514,7 +1513,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(255,255,255,1.00);
-	font-family:Raleway;
+	
 	font-size:90px;
 	font-style:normal;
 	font-weight:100;
@@ -1532,7 +1531,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(255,255,255,0.35);
-	font-family:Raleway;
+	
 	font-size:15px;
 	font-style:normal;
 	font-weight:400;
@@ -1550,7 +1549,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(255,255,255,0.65);
-	font-family:Raleway;
+	
 	font-size:16px;
 	font-style:normal;
 	font-weight:600;
@@ -1568,7 +1567,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(255,255,255,1.00);
-	font-family:Raleway;
+	
 	font-size:30px;
 	font-style:normal;
 	font-weight:900;
@@ -1598,7 +1597,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(255,255,255,1.00);
-	font-family:Raleway;
+	
 	font-size:70px;
 	font-style:normal;
 	font-weight:800;
@@ -1615,7 +1614,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(255,255,255,1.00);
-	font-family:Raleway;
+	
 	font-size:13px;
 	font-style:normal;
 	font-weight:500;
@@ -1634,7 +1633,7 @@ website:   	http://www.themepunch.com
 	border-style:solid;
 	border-width:1px;
 	color:rgba(255,255,255,1.00);
-	font-family:Raleway;
+	
 	font-size:14px;
 	font-style:normal;
 	font-weight:500;
@@ -1664,7 +1663,7 @@ website:   	http://www.themepunch.com
 	border-style:solid;
 	border-width:0;
 	color:rgba(255,255,255,1.00);
-	font-family:Raleway;
+	
 	font-size:30px;
 	font-style:normal;
 	font-weight:400;
@@ -1683,7 +1682,7 @@ website:   	http://www.themepunch.com
 	border-style:solid;
 	border-width:1px;
 	color:rgba(255,255,255,1.00);
-	font-family:Raleway;
+	
 	font-size:14px;
 	font-style:normal;
 	font-weight:500;
@@ -1713,7 +1712,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(255,255,255,1.00);
-	font-family:"Permanent Marker";
+	
 	font-size:17px;
 	font-style:normal;
 	font-weight:100;
@@ -1731,7 +1730,7 @@ website:   	http://www.themepunch.com
 	border-style:solid;
 	border-width:2px;
 	color:rgba(255,255,255,1.00);
-	font-family:Raleway;
+	
 	font-size:20px;
 	font-style:normal;
 	font-weight:300;
@@ -1761,7 +1760,7 @@ website:   	http://www.themepunch.com
 	border-style:solid;
 	border-width:1px;
 	color:rgba(255,255,255,1.00);
-	font-family:Roboto;
+	
 	font-size:13px;
 	font-style:normal;
 	font-weight:700;
@@ -1791,7 +1790,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(168,216,238,1.00);
-	font-family:Roboto;
+	
 	font-size:15px;
 	font-style:normal;
 	font-weight:900;
@@ -1809,7 +1808,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(255,255,255,1.00);
-	font-family:"Roboto Slab";
+	
 	font-size:50px;
 	font-style:normal;
 	font-weight:400;
@@ -1827,7 +1826,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(255,255,255,1.00);
-	font-family:"Roboto Slab";
+	
 	font-size:50px;
 	font-style:normal;
 	font-weight:400;
@@ -1845,7 +1844,7 @@ website:   	http://www.themepunch.com
 	border-style:solid;
 	border-width:1px;
 	color:rgba(255,255,255,1.00);
-	font-family:Raleway;
+	
 	font-size:14px;
 	font-style:normal;
 	font-weight:500;
@@ -1875,7 +1874,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(255,255,255,1.00);
-	font-family:Raleway;
+	
 	font-size:30px;
 	font-style:normal;
 	font-weight:900;
@@ -1893,7 +1892,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(255,255,255,1.00);
-	font-family:Raleway;
+	
 	font-size:12px;
 	font-style:normal;
 	font-weight:600;
@@ -1912,7 +1911,7 @@ website:   	http://www.themepunch.com
 	border-style:solid;
 	border-width:1px;
 	color:rgba(255,255,255,1.00);
-	font-family:Raleway;
+	
 	font-size:14px;
 	font-style:normal;
 	font-weight:500;
@@ -1942,7 +1941,7 @@ website:   	http://www.themepunch.com
 	border-style:solid;
 	border-width:1px;
 	color:rgba(255,255,255,1.00);
-	font-family:Raleway;
+	
 	font-size:14px;
 	font-style:normal;
 	font-weight:500;
@@ -1972,7 +1971,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:2px;
 	color:rgba(255,255,255,1.00);
-	font-family:Raleway;
+	
 	font-size:16px;
 	font-style:normal;
 	font-weight:600;
@@ -2002,7 +2001,7 @@ website:   	http://www.themepunch.com
 	border-style:solid;
 	border-width:2px;
 	color:rgba(255,255,255,1.00);
-	font-family:Roboto;
+	
 	font-size:17px;
 	font-style:normal;
 	font-weight:500;
@@ -2032,7 +2031,7 @@ website:   	http://www.themepunch.com
 	border-style:solid;
 	border-width:0;
 	color:rgba(255,255,255,1.00);
-	font-family:Raleway;
+	
 	font-size:15px;
 	font-style:normal;
 	font-weight:600;
@@ -2062,7 +2061,7 @@ website:   	http://www.themepunch.com
 	border-style:solid;
 	border-width:2px;
 	color:rgba(255,255,255,1.00);
-	font-family:Raleway;
+	
 	font-size:15px;
 	font-style:normal;
 	font-weight:600;
@@ -2091,7 +2090,7 @@ website:   	http://www.themepunch.com
 	border-style:solid;
 	border-width:2px;
 	color:rgba(255,255,255,1.00);
-	font-family:Raleway;
+	
 	font-size:17px;
 	font-style:normal;
 	font-weight:600;
@@ -2121,7 +2120,7 @@ website:   	http://www.themepunch.com
 	border-style:solid;
 	border-width:2px;
 	color:rgba(255,255,255,1.00);
-	font-family:Raleway;
+	
 	font-size:17px;
 	font-style:normal;
 	font-weight:600;
@@ -2151,7 +2150,7 @@ website:   	http://www.themepunch.com
 	border-style:solid;
 	border-width:1px;
 	color:rgba(255,255,255,1.00);
-	font-family:Raleway;
+	
 	font-size:15px;
 	font-style:normal;
 	font-weight:600;
@@ -2181,7 +2180,7 @@ website:   	http://www.themepunch.com
 	border-style:solid;
 	border-width:2px;
 	color:rgba(255,255,255,1.00);
-	font-family:Roboto;
+	
 	font-size:15px;
 	font-style:normal;
 	font-weight:900;
@@ -2210,7 +2209,7 @@ website:   	http://www.themepunch.com
 	border-style:solid;
 	border-width:0;
 	color:rgba(255,255,255,1.00);
-	font-family:Roboto;
+	
 	font-size:17px;
 	font-style:normal;
 	font-weight:700;
@@ -2239,7 +2238,7 @@ website:   	http://www.themepunch.com
 	border-style:solid;
 	border-width:2px;
 	color:rgba(33,42,64,0.50);
-	font-family:Roboto;
+	
 	font-size:17px;
 	font-style:normal;
 	font-weight:700;
@@ -2268,7 +2267,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(111,124,130,1.00);
-	font-family:roboto;
+	
 	font-size:19px;
 	font-style:normal;
 	font-weight:400;
@@ -2287,7 +2286,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(41,46,49,1.00);
-	font-family:roboto;
+	
 	font-size:25px;
 	font-style:normal;
 	font-weight:300;
@@ -2317,7 +2316,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(41,46,49,1.00);
-	font-family:roboto;
+	
 	font-size:21px;
 	font-style:normal;
 	font-weight:300;
@@ -2336,7 +2335,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(185,186,187,1.00);
-	font-family:roboto;
+	
 	font-size:15px;
 	font-style:normal;
 	font-weight:400;
@@ -2355,7 +2354,7 @@ website:   	http://www.themepunch.com
 	border-style:solid;
 	border-width:0;
 	color:rgba(255,255,255,1.00);
-	font-family:Roboto;
+	
 	font-size:17px;
 	font-style:normal;
 	font-weight:700;
@@ -2384,7 +2383,7 @@ website:   	http://www.themepunch.com
 	border-style:solid;
 	border-width:2px;
 	color:rgba(255,255,255,1.00);
-	font-family:Roboto;
+	
 	font-size:17px;
 	font-style:normal;
 	font-weight:700;
@@ -2413,7 +2412,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(255,255,255,1.00);
-	font-family:Roboto;
+	
 	font-size:15px;
 	font-style:normal;
 	font-weight:500;
@@ -2431,7 +2430,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(136,153,166,1.00);
-	font-family:Roboto;
+	
 	font-size:15px;
 	font-style:normal;
 	font-weight:500;
@@ -2449,7 +2448,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(135,153,165,1.00);
-	font-family:Roboto;
+	
 	font-size:15px;
 	font-style:normal;
 	font-weight:500;
@@ -2478,7 +2477,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(136,153,166,1.00);
-	font-family:Roboto;
+	
 	font-size:15px;
 	font-style:normal;
 	font-weight:500;
@@ -2496,7 +2495,7 @@ website:   	http://www.themepunch.com
 	border-style:none;
 	border-width:0;
 	color:rgba(41,47,51,1.00);
-	font-family:Roboto;
+	
 	font-size:20px;
 	font-style:normal;
 	font-weight:500;
@@ -2510,7 +2509,6 @@ website:   	http://www.themepunch.com
 .revtp-searchform input[type="email"],
 .revtp-form input[type="text"],
 .revtp-form input[type="email"]{ 	
-	font-family: "Arial", sans-serif;
     font-size: 15px;
     color: #000;
     background-color: #fff;
@@ -2538,7 +2536,7 @@ website:   	http://www.themepunch.com
     line-height: 100px;
     font-weight: 800;
     font-style: normal;
-    font-family: Raleway;
+    
     padding: 10px 0px 10px 0;
     text-decoration: none;
     background-color: transparent;
@@ -2555,7 +2553,7 @@ website:   	http://www.themepunch.com
     line-height: 24px;
     font-weight: 500;
     font-style: normal;
-    font-family: Raleway;
+    
     padding: 0 0 0 0px;
     text-decoration: none;
     background-color: transparent;
@@ -2573,7 +2571,7 @@ website:   	http://www.themepunch.com
     line-height: 13px;
     font-weight: 500;
     font-style: normal;
-    font-family: Raleway;
+    
     padding: 15px 50px 15px 50px;
     text-decoration: none;
     background-color: rgba(0, 0, 0, 0);
@@ -2601,7 +2599,7 @@ website:   	http://www.themepunch.com
     line-height: 28px;
     font-weight: 500;
     font-style: normal;
-    font-family: Raleway;
+    
     padding: 30px 30px 30px 30px;
     text-decoration: none;
     background-color: rgba(255, 255, 255, 1.00);
@@ -2618,7 +2616,7 @@ website:   	http://www.themepunch.com
     line-height: 13px;
     font-weight: 700;
     font-style: normal;
-    font-family: Raleway;
+    
     padding: 15px 70px 15px 50px;
     text-decoration: none;
     background-color: rgba(255, 255, 255, 1.00);
@@ -2646,7 +2644,7 @@ website:   	http://www.themepunch.com
     line-height: 20px;
     font-weight: 700;
     font-style: normal;
-    font-family: Raleway;
+    
     padding: 14px 14px 14px 16px;
     text-decoration: none;
     background-color: rgba(0, 0, 0, 0);
@@ -2674,7 +2672,7 @@ website:   	http://www.themepunch.com
     line-height: 12px;
     font-weight: 600;
     font-style: normal;
-    font-family: Raleway;
+    
     padding: 5px 5px 5px 5px;
     text-decoration: none;
     background-color: rgba(0, 0, 0, 0.35);
@@ -2692,7 +2690,7 @@ website:   	http://www.themepunch.com
     line-height: 30px;
     font-weight: 900;
     font-style: normal;
-    font-family: Raleway;
+    
     padding: 5px 5px 5px 5px;
     text-decoration: none;
     background-color: rgba(0, 0, 0, 1.00);
@@ -2709,7 +2707,7 @@ website:   	http://www.themepunch.com
     line-height: 50px;
     font-weight: 400;
     font-style: normal;
-    font-family: Roboto;
+    
     padding: 0 0 0 0px;
     text-decoration: none;
     background-color: transparent;
@@ -2726,7 +2724,7 @@ website:   	http://www.themepunch.com
     line-height: 30px;
     font-weight: 300;
     font-style: normal;
-    font-family: Roboto;
+    
     padding: 0 0 0 0px;
     text-decoration: none;
     background-color: transparent;
@@ -2743,7 +2741,7 @@ website:   	http://www.themepunch.com
     line-height: 25px;
     font-weight: 500;
     font-style: normal;
-    font-family: Roboto;
+    
     padding: 12px 20px 12px 20px;
     text-decoration: none;
     background-color: rgba(255, 255, 255, 0.05);
@@ -2773,7 +2771,7 @@ website:   	http://www.themepunch.com
     line-height: 70px;
     font-weight: 800;
     font-style: normal;
-    font-family: Raleway;
+    
     padding: 0px 0px 0px 0;
     text-decoration: none;
     background-color: transparent;
@@ -2790,7 +2788,7 @@ website:   	http://www.themepunch.com
     line-height: 20px;
     font-weight: 700;
     font-style: normal;
-    font-family: Raleway;
+    
     padding: 20px 50px 20px 50px;
     text-decoration: none;
     background-color: rgba(0, 0, 0, 0);
@@ -2818,7 +2816,7 @@ website:   	http://www.themepunch.com
     line-height: 20px;
     font-weight: 400;
     font-style: normal;
-    font-family: Raleway;
+    
     padding: 0 0 0 0px;
     text-decoration: none;
     background-color: transparent;
@@ -2840,7 +2838,7 @@ website:   	http://www.themepunch.com
     line-height: 45px;
     font-weight: 600;
     font-style: normal;
-    font-family: Raleway;
+    
     padding: 0 0 0 0px;
     text-decoration: none;
     background-color: transparent;
@@ -2857,7 +2855,7 @@ website:   	http://www.themepunch.com
     line-height: 24px;
     font-weight: 600;
     font-style: normal;
-    font-family: Raleway;
+    
     padding: 0 0 0 0px;
     text-decoration: none;
     background-color: transparent;
@@ -2874,7 +2872,7 @@ website:   	http://www.themepunch.com
     line-height: 20px;
     font-weight: 400;
     font-style: normal;
-    font-family: Raleway;
+    
     padding: 10px 10px 10px 10px;
     text-decoration: none;
     background-color: transparent;
@@ -2901,7 +2899,7 @@ website:   	http://www.themepunch.com
     line-height: 70px;
     font-weight: 500;
     font-style: normal;
-    font-family: Raleway;
+    
     padding: 0 0 0 0px;
     text-decoration: none;
     background-color: transparent;
@@ -2918,7 +2916,7 @@ website:   	http://www.themepunch.com
     line-height: 25px;
     font-weight: 500;
     font-style: normal;
-    font-family: Raleway;
+    
     padding: 0 0 0 0px;
     text-decoration: none;
     background-color: transparent;
@@ -2935,7 +2933,7 @@ website:   	http://www.themepunch.com
     line-height: 28px;
     font-weight: 500;
     font-style: normal;
-    font-family: Raleway;
+    
     padding: 0 0 0 0px;
     text-decoration: none;
     background-color: transparent;
@@ -2952,7 +2950,7 @@ website:   	http://www.themepunch.com
     line-height: 13px;
     font-weight: 700;
     font-style: normal;
-    font-family: Raleway;
+    
     padding: 15px 50px 15px 50px;
     text-decoration: none;
     background-color: rgba(0, 0, 0, 0);
@@ -2980,7 +2978,7 @@ website:   	http://www.themepunch.com
     line-height: 13px;
     font-weight: 700;
     font-style: normal;
-    font-family: Raleway;
+    
     padding: 14px 14px 14px 16px;
     text-decoration: none;
     background-color: rgba(0, 0, 0, 0);
@@ -3008,7 +3006,7 @@ website:   	http://www.themepunch.com
     line-height: 55px;
     font-weight: 400;
     font-style: normal;
-    font-family: "Roboto Slab";
+    
     padding: 0 0 10px 0;
     text-decoration: none;
     background-color: transparent;
@@ -3025,7 +3023,7 @@ website:   	http://www.themepunch.com
     line-height: 20px;
     font-weight: 900;
     font-style: normal;
-    font-family: Roboto;
+    
     padding: 0 0 0 0px;
     text-decoration: none;
     background-color: transparent;
@@ -3042,7 +3040,7 @@ website:   	http://www.themepunch.com
     line-height: 17px;
     font-weight: 700;
     font-style: normal;
-    font-family: Roboto;
+    
     padding: 12px 35px 12px 35px;
     text-decoration: none;
     background-color: rgba(255, 255, 255, 0);
@@ -3085,7 +3083,6 @@ website:   	http://www.themepunch.com
 
 .revtp-searchform input[type="submit"],
 .revtp-form input[type="submit"] {	
-	font-family: "Arial", sans-serif;
     line-height: 46px;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -3115,7 +3112,7 @@ website:   	http://www.themepunch.com
         line-height: 70px;
         font-weight: 700;
         font-style: normal;
-        font-family: Roboto Condensed;
+        
         padding: 0px 0px 10px 0px;
         text-decoration: none;
         text-align: left;
@@ -3133,7 +3130,7 @@ website:   	http://www.themepunch.com
         line-height: 25px;
         font-weight: 700;
         font-style: italic;
-        font-family: Playfair Display;
+        
         padding: 0px 0px 10px 0px;
         text-decoration: none;
         text-align: left;
@@ -3150,7 +3147,7 @@ website:   	http://www.themepunch.com
         line-height: 30px;
         font-weight: 400;
         font-style: normal;
-        font-family: Roboto Condensed;
+        
         padding: 0px 0px 0px 0px;
         text-decoration: none;
         text-align: center;
@@ -3167,7 +3164,7 @@ website:   	http://www.themepunch.com
         line-height: 30px;
         font-weight: 300;
         font-style: normal;
-        font-family: Roboto;
+        
         padding: 10px 8px 7px 10px;
         text-decoration: none;
         text-align: left;
@@ -3196,7 +3193,7 @@ website:   	http://www.themepunch.com
         line-height: 30px;
         font-weight: 300;
         font-style: normal;
-        font-family: Roboto;
+        
         padding: 10px 8px 7px 10px;
         text-decoration: none;
         text-align: left;
@@ -3225,7 +3222,7 @@ website:   	http://www.themepunch.com
         line-height: 25px;
         font-weight: 700;
         font-style: italic;
-        font-family: Playfair Display;
+        
         padding: 0px 0px 10px 0px;
         text-decoration: none;
         text-align: left;
@@ -3242,7 +3239,7 @@ website:   	http://www.themepunch.com
         line-height: 70px;
         font-weight: 700;
         font-style: normal;
-        font-family: Roboto Condensed;
+        
         padding: 0px 0px 10px 0px;
         text-decoration: none;
         text-align: center;
@@ -3260,7 +3257,7 @@ website:   	http://www.themepunch.com
         line-height: 30px;
         font-weight: 300;
         font-style: normal;
-        font-family: Roboto;
+        
         padding: 10px 8px 7px 10px;
         text-decoration: none;
         text-align: left;
@@ -3289,7 +3286,7 @@ website:   	http://www.themepunch.com
         line-height: 30px;
         font-weight: 400;
         font-style: normal;
-        font-family: Roboto Condensed;
+        
         padding: 0px 0px 0px 0px;
         text-decoration: none;
         text-align: center;
@@ -3306,7 +3303,7 @@ website:   	http://www.themepunch.com
         line-height: 15px;
         font-weight: 400;
         font-style: normal;
-        font-family: Roboto Condensed;
+        
         padding: 0px 0px 0px 0px;
         text-decoration: none;
         text-align: center;
@@ -3351,7 +3348,7 @@ website:   	http://www.themepunch.com
         line-height: 70px;
         font-weight: 400;
         font-style: normal;
-        font-family: Playfair Display;
+        
         padding: 0px 0px 0px 0px;
         text-decoration: none;
         text-align: center;
@@ -3368,7 +3365,7 @@ website:   	http://www.themepunch.com
         line-height: 14px;
         font-weight: 400;
         font-style: normal;
-        font-family: Lato;
+        
         padding: 0px 0px 0px 0px;
         text-decoration: none;
         text-align: center;
@@ -3386,7 +3383,7 @@ website:   	http://www.themepunch.com
         line-height: 13px;
         font-weight: 400;
         font-style: normal;
-        font-family: Lato;
+        
         padding: 15px 50px 15px 50px;
         text-decoration: none;
         text-align: left;
@@ -3415,7 +3412,7 @@ website:   	http://www.themepunch.com
         line-height: 24px;
         font-weight: 400;
         font-style: normal;
-        font-family: roboto;
+        
         padding: 0 0 0 0px;
         text-decoration: none;
         background-color: transparent;
@@ -3433,7 +3430,7 @@ website:   	http://www.themepunch.com
         line-height: px;
         font-weight: 400;
         font-style: normal;
-        font-family: ;
+        
         padding: 0px 0px 0px 0px;
         text-decoration: none;
         text-align: left;
@@ -3461,7 +3458,7 @@ website:   	http://www.themepunch.com
         line-height: 50px;
         font-weight: 400;
         font-style: normal;
-        font-family: Playfair Display;
+        
         padding: 0px 0px 0px 0px;
         text-decoration: none;
         text-align: left;
@@ -3478,7 +3475,7 @@ website:   	http://www.themepunch.com
         line-height: 50px;
         font-weight: 400;
         font-style: normal;
-        font-family: Playfair Display;
+        
         padding: 0px 0px 0px 0px;
         text-decoration: none;
         text-align: left;
@@ -3496,7 +3493,7 @@ website:   	http://www.themepunch.com
         line-height: 40px;
         font-weight: 400;
         font-style: normal;
-        font-family: Playfair Display;
+        
         padding: 0 0 0 0px;
         text-decoration: none;
         background-color: transparent;
@@ -3514,7 +3511,7 @@ website:   	http://www.themepunch.com
         line-height: 30px;
         font-weight: 300;
         font-style: normal;
-        font-family: Roboto;
+        
         padding: 0 0 0 0px;
         text-decoration: none;
         background-color: transparent;
@@ -3532,7 +3529,7 @@ website:   	http://www.themepunch.com
         line-height: 18px;
         font-weight: 300;
         font-style: normal;
-        font-family: Roboto;
+        
         padding: 0 0 0 0px;
         text-decoration: none;
         background-color: transparent;
@@ -3551,7 +3548,7 @@ website:   	http://www.themepunch.com
         line-height: 60px;
         font-weight: 700;
         font-style: normal;
-        font-family: Roboto;
+        
         padding: 0 0 0 0px;
         text-decoration: none;
         background-color: transparent;
@@ -3569,7 +3566,7 @@ website:   	http://www.themepunch.com
         line-height: 15px;
         font-weight: 500;
         font-style: normal;
-        font-family: Roboto;
+        
         padding: 12px 75px 12px 50px;
         text-decoration: none;
         background-color: rgba(254, 207, 114, 1.00);
@@ -3597,7 +3594,7 @@ website:   	http://www.themepunch.com
         line-height: 15px;
         font-weight: 500;
         font-style: normal;
-        font-family: Roboto;
+        
         padding: 12px 35px 12px 35px;
         text-decoration: none;
         background-color: rgba(254, 207, 114, 1.00);
@@ -3625,7 +3622,7 @@ website:   	http://www.themepunch.com
         line-height: 40px;
         font-weight: 400;
         font-style: normal;
-        font-family: Playfair Display;
+        
         padding: 0 0 0 0px;
         text-decoration: none;
         background-color: transparent;
@@ -3643,7 +3640,7 @@ website:   	http://www.themepunch.com
         line-height: 18px;
         font-weight: 300;
         font-style: normal;
-        font-family: Roboto;
+        
         padding: 0 0 0 0px;
         text-decoration: none;
         background-color: transparent;
@@ -3662,7 +3659,7 @@ website:   	http://www.themepunch.com
         line-height: 60px;
         font-weight: 700;
         font-style: normal;
-        font-family: Roboto;
+        
         padding: 0 0 0 0px;
         text-decoration: none;
         background-color: transparent;
@@ -3680,7 +3677,7 @@ website:   	http://www.themepunch.com
         line-height: 15px;
         font-weight: 500;
         font-style: normal;
-        font-family: Roboto;
+        
         padding: 12px 75px 12px 50px;
         text-decoration: none;
         background-color: rgba(254, 207, 114, 1.00);
@@ -3708,7 +3705,7 @@ website:   	http://www.themepunch.com
         line-height: 15px;
         font-weight: 500;
         font-style: normal;
-        font-family: Roboto;
+        
         padding: 12px 35px 12px 35px;
         text-decoration: none;
         background-color: rgba(254, 207, 114, 1.00);
@@ -3737,7 +3734,7 @@ website:   	http://www.themepunch.com
         line-height: 20px;
         font-weight: 400;
         font-style: normal;
-        font-family: Raleway;
+        
         padding: 11px 8px 11px 12px;
         text-decoration: none;
         text-align: left;

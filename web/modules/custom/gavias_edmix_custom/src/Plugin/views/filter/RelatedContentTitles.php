@@ -23,7 +23,7 @@ class RelatedContentTitles extends ManyToOne {
     $this->valueTitle = t('Allowed related courses titles');
     $this->definition['options callback'] = array($this, 'generateOptions');
   }
-  
+
   /**
    * Helper function that generates the options.
    * @return array
@@ -37,11 +37,11 @@ class RelatedContentTitles extends ManyToOne {
     //  ;
     // $result = $query->execute();
 
-    $storage = \Drupal::entityManager()->getStorage('commerce_product');
+    $storage = \Drupal::entityTypeManager()->getStorage('commerce_product');
     $relatedContentQuery = \Drupal::entityQuery('commerce_product')
       ->condition('type', array('default'))
       ->condition('status', 1);
-    $relatedContentIds = $relatedContentQuery->execute(); 
+    $relatedContentIds = $relatedContentQuery->execute();
     $res = array();
     foreach($relatedContentIds as $contentId){
       $res[$contentId] = $storage->load($contentId)->getTitle();

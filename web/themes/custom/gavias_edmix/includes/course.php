@@ -1,9 +1,10 @@
 <?php
-
 use Drupal\Core\Database\Query\Condition;
+use Drupal\Core\Url;
 
 function gavias_edmix_check_registered_course($uid, $course_id){
-  $results = \Drupal::database()->select('{commerce_order_item}', 'oi');
+  if($uid == 0) return false;
+  $results = Drupal::database()->select('{commerce_order_item}', 'oi');
   $results->leftJoin('{commerce_order}', 'o', 'oi.order_id = o.order_id');
   $results->leftJoin('{commerce_product_variation_field_data}', 'v', 'oi.purchased_entity = v.variation_id');
   $results->fields('v', array('product_id', 'type'));
@@ -51,23 +52,6 @@ function gavias_edmix_preprocess_course(&$vars){
   if(gavias_edmix_check_registered_course($uid, $id)){
     $vars['product']['variations'] = '<div class="user-registered">' . t('Registered') . '</div>';
   }
-
-  $course_free = true;
-  $results = \Drupal::database()->select('{commerce_product_variation_field_data}', 'v');
-  $results->fields('v', array('product_id', 'price__number'));
-  $results->condition('v.product_id', $id, '=');
-  $variations = $results->execute()->fetchAll(PDO::FETCH_ASSOC);
-  foreach ($variations as $key => $variation) {
-    if( $variation['price__number'] != 0){
-      $course_free = false;
-    }
-  }
-
-  if($course_free){
-    $vars['product']['variations'] = '<div class="user-registered">' . t('Free') . '</div>';
-    $vars['product']['variation_price'] = '';
-  }
-
 
   $vars['video_link'] = $video_link;
   $vars['title'] = $title;
@@ -124,12 +108,12 @@ function gavias_edmix_preprocess_node__lesson(&$variables) {
             $lesson_content = $variables['content']['field_lesson_content'];
           }
         }else{
-          $lesson_content = '<div class="alert alert-info fade in alert-dismissable">' . t('Please you must PURCHASE the course to view this lesson. ') . '<a href="'. base_path() .'user"><strong>' . t('Login Page') . '</strong></a></div>';
+          $lesson_content = '<div class="alert alert-info fade in alert-dismissable">' . t('Please Registered to view this lesson. ') . '<a href="'. Url::fromRoute('user.login')->toString() .'"><strong>' . t('Login Page') . '</strong></a></div>';
         }
 
       }elseif ($lesson_access == 'logged_in'){
         if (!$user->id()) {
-          $lesson_content = '<div class="alert alert-info fade in alert-dismissable">' . t('Please Login to view this lesson. ') . '<a href="'. base_path() .'user"><strong>' . t('Login Page') . '</strong></a></div>';
+          $lesson_content = '<div class="alert alert-info fade in alert-dismissable">' . t('Please Login to view this lesson. ') . '<a href="'. Url::fromRoute('user.login')->toString() .'"><strong>' . t('Login Page') . '</strong></a></div>';
         }
         else {
           if(isset($variables['content']['field_lesson_content'])){
@@ -149,7 +133,7 @@ function gavias_edmix_preprocess_node__lesson(&$variables) {
             $lesson_content = $variables['content']['field_lesson_content'];
           }
         }else{
-          $lesson_content = '<div class="alert alert-info fade in alert-dismissable">' . t('Please register for course to view this lesson. ') . '<a href="'. base_path() .'user"><strong>' . t('Login Page') . '</strong></a></div>';
+          $lesson_content = '<div class="alert alert-info fade in alert-dismissable">' . t('Please register for course to view this lesson. ') . '<a href="'. base_path() .'/user"><strong>' . t('Login Page') . '</strong></a></div>';
         }
       }
     }

@@ -13,7 +13,7 @@
 /.git/
 /__MACOSX/
 /phpunit*
-/drush/
+/drush/contrib/
 /scripts/
 /.ddev/
 
