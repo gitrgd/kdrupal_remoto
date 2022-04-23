@@ -56,7 +56,7 @@
         "drupal/tvi": "^1.0",
         "drupal/twitter_block": "^3.0",
         "drupal/views_infinite_scroll": "^1.6",
-        "drush/drush": "^10.0.0",
+        "drush/drush": "^10.6",
         "vlucas/phpdotenv": "^2.4",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3"

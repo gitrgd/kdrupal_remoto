@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'beddb5e5bfe24a3733f01a84b37b3f02503a7c08',
+        'reference' => '2557a681db1825a4243485973ebc078ae9c1535b',
         'name' => 'drupal-composer/drupal-project',
         'dev' => true,
     ),
@@ -334,7 +334,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'beddb5e5bfe24a3733f01a84b37b3f02503a7c08',
+            'reference' => '2557a681db1825a4243485973ebc078ae9c1535b',
             'dev_requirement' => false,
         ),
         'drupal/action' => array(
@@ -1424,12 +1424,12 @@
             ),
         ),
         'drush/drush' => array(
-            'pretty_version' => '10.6.0',
-            'version' => '10.6.0.0',
+            'pretty_version' => '10.6.2',
+            'version' => '10.6.2.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../drush/drush',
             'aliases' => array(),
-            'reference' => 'c86d327359baddb0a2f51bb458703826469a0445',
+            'reference' => '0a570a16ec63259eb71195aba5feab532318b337',
             'dev_requirement' => false,
         ),
         'easyrdf/easyrdf' => array(
