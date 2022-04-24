@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'cf377cabf0fefa271beaabbe0fbc1b3d041872c2',
+        'reference' => 'd4987f06d494e3a91d5ceab3bb9c726295b08438',
         'name' => 'drupal-composer/drupal-project',
         'dev' => true,
     ),
@@ -328,7 +328,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'cf377cabf0fefa271beaabbe0fbc1b3d041872c2',
+            'reference' => 'd4987f06d494e3a91d5ceab3bb9c726295b08438',
             'dev_requirement' => false,
         ),
         'drupal/action' => array(
@@ -1061,12 +1061,12 @@
             'dev_requirement' => false,
         ),
         'drupal/mailchimp' => array(
-            'pretty_version' => '2.0.0',
-            'version' => '2.0.0.0',
+            'pretty_version' => '2.0.2',
+            'version' => '2.0.2.0',
             'type' => 'drupal-module',
             'install_path' => __DIR__ . '/../../web/modules/contrib/mailchimp',
             'aliases' => array(),
-            'reference' => '2.0.0',
+            'reference' => '2.0.2',
             'dev_requirement' => false,
         ),
         'drupal/mailsystem' => array(
@@ -1178,12 +1178,12 @@
             ),
         ),
         'drupal/pathauto' => array(
-            'pretty_version' => '1.9.0',
-            'version' => '1.9.0.0',
+            'pretty_version' => '1.10.0',
+            'version' => '1.10.0.0',
             'type' => 'drupal-module',
             'install_path' => __DIR__ . '/../../web/modules/contrib/pathauto',
             'aliases' => array(),
-            'reference' => '8.x-1.9',
+            'reference' => '8.x-1.10',
             'dev_requirement' => false,
         ),
         'drupal/profile' => array(
@@ -1810,8 +1810,8 @@
         'psr/container-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0',
-                1 => '^1.0',
+                0 => '^1.0',
+                1 => '1.0',
             ),
         ),
         'psr/event-dispatcher-implementation' => array(
