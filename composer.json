@@ -51,6 +51,7 @@
         "drupal/profile": "^1.0",
         "drupal/simplenews": "^2.0",
         "drupal/swiftmailer": "^2.0",
+        "drupal/symfony_mailer": "^1.0@alpha",
         "drupal/token": "^1.6",
         "drupal/token_filter": "^1.0",
         "drupal/tvi": "^1.0",

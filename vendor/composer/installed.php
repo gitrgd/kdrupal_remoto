@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'd4987f06d494e3a91d5ceab3bb9c726295b08438',
+        'reference' => '0848fb3482b29afdd1b470dda06aed6bdd6d1a27',
         'name' => 'drupal-composer/drupal-project',
         'dev' => true,
     ),
@@ -328,7 +328,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'd4987f06d494e3a91d5ceab3bb9c726295b08438',
+            'reference' => '0848fb3482b29afdd1b470dda06aed6bdd6d1a27',
             'dev_requirement' => false,
         ),
         'drupal/action' => array(
@@ -1294,6 +1294,15 @@
             'reference' => '8.x-2.2',
             'dev_requirement' => false,
         ),
+        'drupal/symfony_mailer' => array(
+            'pretty_version' => '1.0.0-alpha8',
+            'version' => '1.0.0.0-alpha8',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/symfony_mailer',
+            'aliases' => array(),
+            'reference' => '1.0.0-alpha8',
+            'dev_requirement' => false,
+        ),
         'drupal/syslog' => array(
             'dev_requirement' => false,
             'replaced' => array(
@@ -1814,6 +1823,15 @@
                 1 => '1.0',
             ),
         ),
+        'psr/event-dispatcher' => array(
+            'pretty_version' => '1.0.0',
+            'version' => '1.0.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../psr/event-dispatcher',
+            'aliases' => array(),
+            'reference' => 'dbefd12671e8a14ec7f180cab83036ed26714bb0',
+            'dev_requirement' => false,
+        ),
         'psr/event-dispatcher-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
@@ -2302,6 +2320,15 @@
             'aliases' => array(),
             'reference' => 'ec23fb51d9b531f7fcd2279afe5b474e624c2445',
             'dev_requirement' => true,
+        ),
+        'symfony/mailer' => array(
+            'pretty_version' => 'v5.4.7',
+            'version' => '5.4.7.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/mailer',
+            'aliases' => array(),
+            'reference' => '03332035eef89557db9eb7ead4e899685d5962b9',
+            'dev_requirement' => false,
         ),
         'symfony/mime' => array(
             'pretty_version' => 'v5.4.0',
