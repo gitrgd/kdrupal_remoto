@@ -30,6 +30,7 @@
 
 # Carpeta Vendor
 /vendor/drush/
+/vendor/drupal/coder/
 
 # Ignore configuration files that may contain sensitive information
 /web/sites/**/example.*
