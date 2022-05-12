@@ -10,9 +10,7 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Theme\ThemeManagerInterface;
 use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Session\AccountInterface;
-use Drupal\user\Entity\User;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\Mime\Address;
 use Symfony\Component\Mime\Email as SymfonyEmail;
 
 /**
@@ -105,13 +103,6 @@ class Email implements InternalEmailInterface {
   protected $account;
 
   /**
-   * Whether to switch account for rendering.
-   *
-   * @var bool
-   */
-  protected $switchAccount = FALSE;
-
-  /**
    * @var string
    */
   protected $theme = '';
@@ -189,11 +180,12 @@ class Email implements InternalEmailInterface {
   /**
    * {@inheritdoc}
    */
-  public function addProcessor(string $id, int $phase, callable $function, int $weight = self::DEFAULT_WEIGHT) {
+  public function addProcessor(callable $function, int $phase = self::PHASE_BUILD, int $weight = self::DEFAULT_WEIGHT, string $id = NULL) {
     $this->valid(self::PHASE_INIT, self::PHASE_INIT);
-    $this->processors[$phase][$id] = [
+    $this->processors[$phase][] = [
       'function' => $function,
       'weight' => $weight,
+      'id' => $id,
     ];
     return $this;
   }
@@ -201,16 +193,8 @@ class Email implements InternalEmailInterface {
   /**
    * {@inheritdoc}
    */
-  public function setLangcode(string $langcode) {
-    $this->valid(self::PHASE_BUILD);
-    $this->langcode = $langcode;
-    return $this;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   public function getLangcode() {
+    $this->valid(self::PHASE_POST_SEND, self::PHASE_PRE_RENDER);
     return $this->langcode;
   }
 
@@ -257,38 +241,9 @@ class Email implements InternalEmailInterface {
   /**
    * {@inheritdoc}
    */
-  public function setAccount(AccountInterface $account = NULL, bool $switch = FALSE) {
-    $this->valid(self::PHASE_BUILD);
-    $to = $this->getTo();
-
-    if (empty($account)) {
-      if (count($to) == 1) {
-        $account = user_load_by_mail($to[0]);
-      }
-      if (empty($account)) {
-        $account = User::getAnonymousUser();
-      }
-    }
-
-    $this->account = $account;
-    $this->switchAccount = $switch;
-
-    if (!isset($this->langcode)) {
-      $this->setLangcode($account->getPreferredLangcode());
-    }
-
-    if (empty($to) && ($email = $account->getEmail())) {
-      $this->setTo(new Address($email, $account->getDisplayName()));
-    }
-
-    return $this;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getAccount(bool $switch = FALSE) {
-    return ($switch && !$this->switchAccount) ? NULL : $this->account;
+  public function getAccount() {
+    $this->valid(self::PHASE_POST_SEND, self::PHASE_PRE_RENDER);
+    return $this->account;
   }
 
   /**
@@ -447,17 +402,9 @@ class Email implements InternalEmailInterface {
   /**
    * {@inheritdoc}
    */
-  public function process(int $phase) {
-    $phase_valid = [
-      self::PHASE_BUILD => self::PHASE_INIT,
-      self::PHASE_PRE_RENDER => self::PHASE_BUILD,
-      self::PHASE_POST_RENDER => self::PHASE_POST_RENDER,
-    ];
-    $this->valid($phase_valid[$phase], $phase_valid[$phase]);
-    $this->phase = $phase;
-
-    $processors = $this->processors[$phase] ?? [];
-    uasort($processors, function ($a, $b) {
+  public function process() {
+    $processors = $this->processors[$this->phase] ?? [];
+    usort($processors, function ($a, $b) {
       return $a['weight'] <=> $b['weight'];
     });
 
@@ -466,6 +413,24 @@ class Email implements InternalEmailInterface {
     }
 
     return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function initDone() {
+    $this->valid(self::PHASE_INIT, self::PHASE_INIT);
+    $this->phase = self::PHASE_BUILD;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function customize(string $langcode, AccountInterface $account) {
+    $this->valid(self::PHASE_BUILD);
+    $this->langcode = $langcode;
+    $this->account = $account;
+    $this->phase = self::PHASE_PRE_RENDER;
   }
 
   /**
@@ -504,6 +469,18 @@ class Email implements InternalEmailInterface {
 
     if ($this->subject) {
       $this->inner->subject($this->subject);
+    }
+
+    $this->inner->sender($this->sender->getSymfony());
+    $headers = $this->getHeaders();
+    foreach ($this->addresses as $name => $addresses) {
+      $value = [];
+      foreach ($addresses as $address) {
+        $value[] = $address->getSymfony();
+      }
+      if ($value) {
+        $headers->addMailboxListHeader($name, $value);
+      }
     }
 
     $this->phase = self::PHASE_POST_SEND;

@@ -10,22 +10,22 @@ use Drupal\symfony_mailer\EmailInterface;
 interface EmailProcessorInterface {
 
   /**
+   * Mapping from phase to default function name.
+   *
+   * @var string[]
+   */
+  public const FUNCTION_NAMES = [
+    EmailInterface::PHASE_BUILD => 'build',
+    EmailInterface::PHASE_PRE_RENDER => 'preRender',
+    EmailInterface::PHASE_POST_RENDER => 'postRender',
+  ];
+
+  /**
    * Initializes an email to call this email processor.
    *
    * @param \Drupal\symfony_mailer\EmailInterface $email
    *   The email to initialize.
    */
   public function init(EmailInterface $email);
-
-  /**
-   * Gets the weight of the email processor.
-   *
-   * @param int $phase
-   *   The phase that will run, one of the EmailInterface::PHASE_ constants.
-   *
-   * @return int
-   *   The weight.
-   */
-  public function getWeight(int $phase);
 
 }

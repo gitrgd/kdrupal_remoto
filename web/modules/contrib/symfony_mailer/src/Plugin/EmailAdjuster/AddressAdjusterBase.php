@@ -3,11 +3,11 @@
 namespace Drupal\symfony_mailer\Plugin\EmailAdjuster;
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\symfony_mailer\Address;
 use Drupal\symfony_mailer\EmailInterface;
 use Drupal\symfony_mailer\MailerHelperTrait;
 use Drupal\symfony_mailer\Processor\EmailAdjusterBase;
 use Drupal\user\Entity\User;
-use Symfony\Component\Mime\Address;
 
 /**
  * Defines a base class for Email Adjusters that set an address field.
@@ -17,35 +17,25 @@ abstract class AddressAdjusterBase extends EmailAdjusterBase {
   use MailerHelperTrait;
 
   /**
-   * Sets the address in the appropriate header.
-   *
-   * @param \Drupal\symfony_mailer\EmailInterface $email
-   *   The email to process.
-   * @param \Symfony\Component\Mime\Address[] $addresses
-   *   The addresses to set.
-   */
-  abstract protected function setAddresses(EmailInterface $email, array $addresses);
-
-  /**
    * {@inheritdoc}
    */
-  public function postRender(EmailInterface $email) {
+  public function build(EmailInterface $email) {
     foreach ($this->configuration['addresses'] as $item) {
       $value = $item['value'];
       $display = $item['display'];
 
       if ($value === '<site>') {
-        $addresses[] = $this->helper()->getSiteAddress();
+        $addresses[] = $value;
       }
       elseif ((strpos($value, '@') === FALSE) && ($user = User::load($value))) {
-        $addresses[] = new Address($user->getEmail(), $user->getDisplayName());
+        $addresses[] = $user;
       }
       else {
         $addresses[] = new Address($value, $display);
       }
     }
 
-    $this->setAddresses($email, $addresses);
+    $email->setAddress(static::NAME, $addresses);
   }
 
   /**
@@ -62,10 +52,7 @@ abstract class AddressAdjusterBase extends EmailAdjusterBase {
     ];
 
     // Synchronise with any existing form state.
-    $addresses = $form_state->getValue(['config', $id, 'addresses']);
-    if (!is_array($addresses)) {
-      $addresses = $this->configuration['addresses'];
-    }
+    $addresses = $form_state->getValue(['config', $id, 'addresses']) ?? $this->configuration['addresses'] ?? [[]];
 
     foreach ($addresses as $item) {
       $form_item['value'] = [
@@ -146,11 +133,22 @@ abstract class AddressAdjusterBase extends EmailAdjusterBase {
    */
   public static function addressesValidate($element, FormStateInterface $form_state, $form) {
     $id = $element['#parents'][1];
-    $addresses = $form_state->getValue(['config', $id, 'addresses']);
+    $addresses = $form_state->getValue(['config', $id, 'addresses']) ?? [];
+
+    // Remove any empty addresses.
     $addresses = array_filter($addresses, function ($a) {
       return !empty($a['value']);
     });
-    $form_state->setValueForElement($element, $addresses);
+
+    // Raise an error for no addresses if the policy is being saved. Skip this
+    // for the non-primary 'Add address' button.
+    if (empty($addresses) && ($form_state->getTriggeringElement()['#button_type'] == 'primary')) {
+      $label = \Drupal::service('plugin.manager.email_adjuster')->getDefinition($id)['label'];
+      $form_state->setError($element, t('You must set at least one %label address.', ['%label' => $label]));
+    }
+    else {
+      $form_state->setValueForElement($element, $addresses);
+    }
   }
 
 }
