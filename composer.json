@@ -44,19 +44,20 @@
         "drupal/inline_entity_form": "^1.0",
         "drupal/libraries": "^3.0",
         "drupal/ludwig": "^1.0",
-        "drupal/mailchimp": "2.0.0",
+        "drupal/mailchimp": "^2.0",
         "drupal/mailsystem": "^4.2",
         "drupal/paragraphs": "^1.11",
-        "drupal/pathauto": "^1.6",
+        "drupal/pathauto": "^1.10",
         "drupal/profile": "^1.0",
         "drupal/simplenews": "^2.0",
         "drupal/swiftmailer": "^2.0",
+        "drupal/symfony_mailer": "^1.0@alpha",
         "drupal/token": "^1.6",
         "drupal/token_filter": "^1.0",
         "drupal/tvi": "^1.0",
         "drupal/twitter_block": "^3.0",
         "drupal/views_infinite_scroll": "^1.6",
-        "drush/drush": "^10.0.0",
+        "drush/drush": "^10.6",
         "vlucas/phpdotenv": "^2.4",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3"
@@ -67,7 +68,15 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/installers": true,
+            "dealerdirect/phpcodesniffer-composer-installer": false,
+            "drupal/console-extend-plugin": true,
+            "cweagans/composer-patches": true,
+            "drupal/core-composer-scaffold": true,
+            "drupal/core-project-message": true
+        }
     },
     "autoload": {
         "classmap": [
