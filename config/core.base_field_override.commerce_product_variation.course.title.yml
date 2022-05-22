@@ -1,0 +1,18 @@
+uuid: e6fa47cc-f771-4010-8999-672a1e40380e
+langcode: es
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_variation_type.course
+id: commerce_product_variation.course.title
+field_name: title
+entity_type: commerce_product_variation
+bundle: course
+label: Título
+description: 'The variation title.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

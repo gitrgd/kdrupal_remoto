@@ -1,0 +1,18 @@
+uuid: 58cca617-00bb-4ee3-9b90-06d58d9e222f
+langcode: es
+status: true
+dependencies:
+  config:
+    - node.type.team
+id: node.team.created
+field_name: created
+entity_type: node
+bundle: team
+label: Fecha
+description: 'La fecha en que el nodo fue creado.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

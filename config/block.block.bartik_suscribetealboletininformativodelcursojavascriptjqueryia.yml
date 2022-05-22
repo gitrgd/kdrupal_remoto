@@ -1,0 +1,35 @@
+uuid: cd9bd538-0633-4a22-8f1e-0c2ada49589b
+langcode: es
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:47937ad8-cd88-48e3-b509-90013255aed1'
+  module:
+    - block_content
+    - gaviasthemer
+    - system
+  theme:
+    - bartik
+third_party_settings:
+  gaviasthemer:
+    classes: block_suscrip_cursos
+id: bartik_suscribetealboletininformativodelcursojavascriptjqueryia
+theme: bartik
+region: header
+weight: 0
+provider: null
+plugin: 'block_content:47937ad8-cd88-48e3-b509-90013255aed1'
+settings:
+  id: 'block_content:47937ad8-cd88-48e3-b509-90013255aed1'
+  label: 'Suscríbete al boletín informativo del curso JAVASCRIPT / JQUERY (IA)'
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    context_mapping: {  }
+    pages: /product/12

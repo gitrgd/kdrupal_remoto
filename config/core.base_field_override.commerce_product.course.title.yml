@@ -1,0 +1,18 @@
+uuid: 1c6b8ed5-6035-456a-97ab-146c63495c70
+langcode: es
+status: true
+dependencies:
+  config:
+    - commerce_product.commerce_product_type.course
+id: commerce_product.course.title
+field_name: title
+entity_type: commerce_product
+bundle: course
+label: Título
+description: 'The product title.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

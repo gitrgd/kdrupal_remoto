@@ -1,0 +1,18 @@
+uuid: da9d28a2-e6ea-401a-a739-c7392e6d2f07
+langcode: es
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.portfolio_tags
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: taxonomy_term.portfolio_tags
+target_entity_type_id: taxonomy_term
+target_bundle: portfolio_tags
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,22 @@
+uuid: 3e22fc87-bc8b-423a-9207-d0dc4abc28dd
+langcode: es
+status: true
+dependencies:
+  config:
+    - comment.type.default_product_comments
+id: comment.default_product_comments.uid
+field_name: uid
+entity_type: comment
+bundle: default_product_comments
+label: 'ID de Usuario'
+description: 'El ID de usuario del autor del comentario.'
+required: false
+translatable: false
+default_value:
+  -
+    target_id: '0'
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference
