@@ -1,10 +1,10 @@
-<?php 
+<?php
 namespace Drupal\gavias_blockbuilder\shortcodes;
 use Drupal\views\Views;
 use Drupal\views\Element\View;
 if(!class_exists('gsc_view')):
    class gsc_view{
-      
+
       public function render_form(){
          $view_options = Views::getViewsAsOptions(TRUE, 'all', NULL, FALSE, TRUE);
          $view_display = array();
@@ -22,7 +22,7 @@ if(!class_exists('gsc_view')):
             'type' => 'gsc_view',
             'title' => ('Drupal View'),
             'size' => 12,
-            
+
             'fields' => array(
                array(
                   'id'        => 'title_admin',
@@ -96,7 +96,7 @@ if(!class_exists('gsc_view')):
                   'desc'      => t('Entrance animation'),
                   'options'   => gavias_blockbuilder_animate_aos(),
                ),
-            ),                                      
+            ),
          );
          return $fields;
       }
@@ -118,12 +118,12 @@ if(!class_exists('gsc_view')):
             'remove_margin'      => 'off',
             'animate'            => ''
          ), $attr));
-         
+
          if(!$view) return "None view choose";
 
          $output = '';
          $class = array();
-         $class[] = $align_title; 
+         $class[] = $align_title;
          $class[] = $el_class;
          $class[] = $style_text;
          $class[] = 'remove-margin-' . $remove_margin;
@@ -133,7 +133,7 @@ if(!class_exists('gsc_view')):
 
          if(isset($_view[0]) && isset($_view[1])){
             $output .= '<div>';
-               $output .= '<div class="widget block gsc-block-view  gsc-block-drupal block-view '.implode($class, ' ') .'" ' . gavias_print_animate_aos($animate) .'>';
+               $output .= '<div class="widget block gsc-block-view  gsc-block-drupal block-view '.implode(' ', $class) .'" ' . gavias_print_animate_aos($animate) .'>';
                if($title && $show_title == 'title_block'){
                   $output .= '<h2 class="block-title title-shortcode"><span>' . $title . '</span></h2>';
                }
@@ -164,18 +164,14 @@ if(!class_exists('gsc_view')):
                      $output .= '<div>Missing view, block "'.$view_tmp.'"</div>';
                }
             $output .= '</div></div>';
-            
+
             $view = null;
             $v_output = null;
-         } 
-         return $output;  
+         }
+         return $output;
       }
 
     public function load_shortcode(){ }
 
    }
 endif;
-   
-
-
-

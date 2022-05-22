@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace Drupal\gavias_blockbuilder\shortcodes;
 if(!class_exists('gsc_drupal_block')):
    class gsc_drupal_block{
@@ -7,7 +7,7 @@ if(!class_exists('gsc_drupal_block')):
             'type' => 'gsc_drupal_block',
             'title' => ('Drupal Block'),
             'size' => 12,
-            
+
             'fields' => array(
                array(
                   'id'        => 'title',
@@ -67,7 +67,7 @@ if(!class_exists('gsc_drupal_block')):
                   'desc'      => t('Entrance animation'),
                   'options'   => gavias_blockbuilder_animate_aos(),
                ),
-            ),                                      
+            ),
          );
          return $fields;
       }
@@ -87,20 +87,20 @@ if(!class_exists('gsc_drupal_block')):
             'remove_margin'      => 'off',
             'animate'            => ''
          ), $attr));
-         
+
          $output = '';
          $class = array();
-         $class[] = $align_title; 
+         $class[] = $align_title;
          $class[] = $el_class;
          $class[] = 'hidden-title-' . $hidden_title;
          $class[] = 'remove-margin-' . $remove_margin;
          $class[] = $style_text;
          if($block_drupal){
-            $output .= '<div class="widget gsc-block-drupal '.implode($class, ' ') .'" '. gavias_print_animate_aos($animate) .'>';
+            $output .= '<div class="widget gsc-block-drupal '.implode(' ', $class) .'" '. gavias_print_animate_aos($animate) .'>';
               $output .= gavias_blockbuilder_render_block($block_drupal);
             $output .= '</div>';
-         } 
-         return $output;  
+         }
+         return $output;
       }
 
        public function load_shortcode(){
@@ -108,7 +108,3 @@ if(!class_exists('gsc_drupal_block')):
        }
    }
 endif;
-   
-
-
-

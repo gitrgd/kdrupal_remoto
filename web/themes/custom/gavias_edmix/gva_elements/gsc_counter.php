@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace Drupal\gavias_blockbuilder\shortcodes;
 if(!class_exists('gsc_counter')):
    class gsc_counter{
@@ -65,8 +65,8 @@ if(!class_exists('gsc_counter')):
                   'sub_desc'  => t('Entrance animation'),
                   'options'   => gavias_blockbuilder_animate_aos(),
                ),
-         
-            ),                                      
+
+            ),
          );
          return $fields;
       }
@@ -98,10 +98,10 @@ if(!class_exists('gsc_counter')):
          if($style) $style = 'style="'.$style.'"';
          ?>
          <?php ob_start() ?>
-         <div class="widget milestone-block <?php if(count($class) > 0){ print implode($class, ' '); } ?>" <?php print gavias_print_animate_aos($animate) ?>>
+         <div class="widget milestone-block <?php if(count($class) > 0){ print implode(' ', $class); } ?>" <?php print gavias_print_animate_aos($animate) ?>>
             <?php if($icon){ ?>
                <div class="milestone-icon"><span <?php print $style ?> class="<?php print $icon; ?>"></span></div>
-            <?php } ?>   
+            <?php } ?>
             <div class="milestone-right">
                <div class="milestone-number" <?php print $style ?>><?php print $number; ?></div>
                <div class="milestone-text"><?php print $title ?></div>
@@ -116,7 +116,3 @@ if(!class_exists('gsc_counter')):
        }
    }
 endif;
-   
-
-
-

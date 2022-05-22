@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace Drupal\gavias_blockbuilder\shortcodes;
 if(!class_exists('gsc_testimonial_single')):
    class gsc_testimonial_single{
@@ -6,7 +6,7 @@ if(!class_exists('gsc_testimonial_single')):
       public function render_form(){
          $fields = array(
             'type' => 'gsc_testimonial_single',
-            'title' => ('Testimonial single'), 
+            'title' => ('Testimonial single'),
             'size' => 3,'fields' => array(
                array(
                   'id'        => 'title',
@@ -35,9 +35,9 @@ if(!class_exists('gsc_testimonial_single')):
                   'type'      => 'select',
                   'title'     => 'Skin Text for box',
                   'options'   => array(
-                     'text-dark'  => t('Text Dark'), 
+                     'text-dark'  => t('Text Dark'),
                      'text-light' => t('Text Light')
-                  ) 
+                  )
                ),
                array(
                   'id'        => 'animate',
@@ -45,7 +45,7 @@ if(!class_exists('gsc_testimonial_single')):
                   'title'     => t('Animation'),
                   'desc'      => t('Entrance animation for element'),
                   'options'   => gavias_blockbuilder_animate_aos(),
-               ), 
+               ),
                array(
                   'id'     => 'el_class',
                   'type'      => 'text',
@@ -53,7 +53,7 @@ if(!class_exists('gsc_testimonial_single')):
                   'desc'      => t('Style particular content element differently - add a class name and refer to it in custom CSS.'),
                ),
 
-            ),                                       
+            ),
          );
          return $fields;
       }
@@ -80,25 +80,25 @@ if(!class_exists('gsc_testimonial_single')):
 
          ?>
          <?php ob_start() ?>
-        
-         <div class="widget gsc-testimonial-single <?php if(count($class)>0) print implode($class, ' ') ?>" <?php print gavias_print_animate_aos($animate) ?>>
+
+         <div class="widget gsc-testimonial-single <?php if(count($class)>0) print implode(' ', $class) ?>" <?php print gavias_print_animate_aos($animate) ?>>
             <div class="box-content">
                <?php if($video){ ?> 
                   <div class="video"><a class="popup-video" href="<?php print $video ?>"><?php print t('Play video') ?></a></div>
                <?php } ?>
                <?php if(gavias_render_textarealangs($content)){ ?>
                   <div class="quote"><?php print gavias_render_textarealangs($content); ?></div>
-               <?php } ?> 
+               <?php } ?>
                <div class="info">
                   <?php if(gavias_render_textlangs($title)){ ?>
                      <div class="title"><?php print gavias_render_textlangs($title); ?></div>
-                  <?php } ?>  
+                  <?php } ?>
                   <?php if(gavias_render_textlangs($job)){ ?>
                      <div class="job"><?php print gavias_render_textlangs($job); ?></div>
-                  <?php } ?>   
-               </div>    
+                  <?php } ?>
+               </div>
             </div>
-         </div> 
+         </div>
 
          <?php return ob_get_clean() ?>
        <?php
@@ -107,5 +107,5 @@ if(!class_exists('gsc_testimonial_single')):
       public function load_shortcode(){
          add_shortcode( 'testimonial_single', array($this, 'sc_testimonial_single') );
       }
-   } 
-endif;   
+   }
+endif;
