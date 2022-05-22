@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'af855bc9223d6057099d33f1862774c7857dbbdc',
+        'reference' => '91b133bcdb46152f4aeb95df460e6a0f7d2a4c79',
         'name' => 'drupal-composer/drupal-project',
         'dev' => true,
     ),
@@ -328,7 +328,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'af855bc9223d6057099d33f1862774c7857dbbdc',
+            'reference' => '91b133bcdb46152f4aeb95df460e6a0f7d2a4c79',
             'dev_requirement' => false,
         ),
         'drupal/action' => array(
@@ -546,6 +546,24 @@
             'replaced' => array(
                 0 => '9.3.13',
             ),
+        ),
+        'drupal/config_filter' => array(
+            'pretty_version' => '1.9.0',
+            'version' => '1.9.0.0',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/config_filter',
+            'aliases' => array(),
+            'reference' => '8.x-1.9',
+            'dev_requirement' => false,
+        ),
+        'drupal/config_split' => array(
+            'pretty_version' => '1.8.0',
+            'version' => '1.8.0.0',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/config_split',
+            'aliases' => array(),
+            'reference' => '8.x-1.8',
+            'dev_requirement' => false,
         ),
         'drupal/config_translation' => array(
             'dev_requirement' => false,
@@ -1187,12 +1205,12 @@
             'dev_requirement' => false,
         ),
         'drupal/profile' => array(
-            'pretty_version' => '1.3.0',
-            'version' => '1.3.0.0',
+            'pretty_version' => '1.4.0',
+            'version' => '1.4.0.0',
             'type' => 'drupal-module',
             'install_path' => __DIR__ . '/../../web/modules/contrib/profile',
             'aliases' => array(),
-            'reference' => '8.x-1.3',
+            'reference' => '8.x-1.4',
             'dev_requirement' => false,
         ),
         'drupal/quickedit' => array(
