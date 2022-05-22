@@ -1,0 +1,35 @@
+uuid: 19725518-726a-42a9-95ca-f304a5e5c72e
+langcode: es
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:723d9330-e7ea-478f-8d29-b8adbc497221'
+  module:
+    - block_content
+    - gaviasthemer
+    - system
+  theme:
+    - gavias_edmix
+third_party_settings:
+  gaviasthemer:
+    classes: block_suscrip_cursos
+id: suscribetealboletininformativodelcursophp7ia
+theme: gavias_edmix
+region: after_content
+weight: 0
+provider: null
+plugin: 'block_content:723d9330-e7ea-478f-8d29-b8adbc497221'
+settings:
+  id: 'block_content:723d9330-e7ea-478f-8d29-b8adbc497221'
+  label: 'Suscríbete al boletín informativo del curso PHP 7 (IA)'
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    context_mapping: {  }
+    pages: /product/13

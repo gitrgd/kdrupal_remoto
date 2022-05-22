@@ -1,0 +1,29 @@
+uuid: e48f00cc-9daa-4681-a11b-d2527722d4b0
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:f68ff84d-6af0-4c49-8b85-ae338addc541'
+  module:
+    - block_content
+    - gaviasthemer
+  theme:
+    - bartik
+third_party_settings:
+  gaviasthemer:
+    classes: ''
+id: bartik_linkfooter
+theme: bartik
+region: footer_second
+weight: -17
+provider: null
+plugin: 'block_content:f68ff84d-6af0-4c49-8b85-ae338addc541'
+settings:
+  id: 'block_content:f68ff84d-6af0-4c49-8b85-ae338addc541'
+  label: 'Links de interés'
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

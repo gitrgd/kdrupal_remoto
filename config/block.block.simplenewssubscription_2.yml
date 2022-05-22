@@ -1,0 +1,28 @@
+uuid: e6068b32-c4a8-4b43-8731-df62a0eaad63
+langcode: es
+status: true
+dependencies:
+  module:
+    - gaviasthemer
+    - simplenews
+  theme:
+    - gavias_edmix
+third_party_settings:
+  gaviasthemer:
+    classes: ''
+id: simplenewssubscription_2
+theme: gavias_edmix
+region: footer_third
+weight: -16
+provider: null
+plugin: simplenews_subscription_block
+settings:
+  id: simplenews_subscription_block
+  label: 'Nuestros cursos (Novedades!)'
+  label_display: visible
+  provider: simplenews
+  newsletters:
+    kreativdrupal_informacion_cursos: kreativdrupal_informacion_cursos
+  message: 'Si deseas recibir las últimas novedades sobre nuestros cursos, suscríbete a nuestro boletín informativo!'
+  unique_id: 1ecae5d7-14cd-436d-a764-e586222f7050
+visibility: {  }
