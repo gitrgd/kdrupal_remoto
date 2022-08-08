@@ -4,12 +4,14 @@ namespace Drupal\symfony_mailer;
 
 use Drupal\Component\Render\MarkupInterface;
 use Drupal\Component\Render\PlainTextOutput;
+use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Config\Entity\ConfigEntityInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Theme\ThemeManagerInterface;
 use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\user\Entity\User;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Mime\Email as SymfonyEmail;
 
@@ -59,9 +61,9 @@ class Email implements InternalEmailInterface {
   protected $subType;
 
   /**
-   * @var string
+   * @var \Drupal\Core\Config\Entity\ConfigEntityInterface
    */
-  protected $entity_id;
+  protected $entity;
 
   /**
    * Current phase, one of the PHASE_ constants.
@@ -74,6 +76,20 @@ class Email implements InternalEmailInterface {
    * @var array
    */
   protected $body = [];
+
+  /**
+   * The email subject.
+   *
+   * @var \Drupal\Component\Render\MarkupInterface|string
+   */
+  protected $subject;
+
+  /**
+   * Whether to replace variables in the email subject.
+   *
+   * @var bool
+   */
+  protected $subjectReplace;
 
   /**
    * @var array
@@ -130,18 +146,21 @@ class Email implements InternalEmailInterface {
    *   The entity type manager.
    * @param \Drupal\Core\Theme\ThemeManagerInterface $theme_manager
    *   The theme manager.
+   * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
+   *   The configuration factory.
    * @param string $type
-   *   Type. @see \Drupal\symfony_mailer\BaseEmailInterface::getType()
+   *   Type. @see self::getType()
    * @param string $sub_type
-   *   Sub-type. @see \Drupal\symfony_mailer\BaseEmailInterface::getSubType()
-   * @param \Drupal\Core\Config\Entity\ConfigEntityInterface $entity
-   *   (optional) Entity. @see \Drupal\symfony_mailer\BaseEmailInterface::getEntity()
+   *   Sub-type. @see self::getSubType()
+   * @param \Drupal\Core\Config\Entity\ConfigEntityInterface|null $entity
+   *   (optional) Entity. @see self::getEntity()
    */
-  public function __construct(MailerInterface $mailer, RendererInterface $renderer, EntityTypeManagerInterface $entity_type_manager, ThemeManagerInterface $theme_manager, string $type, string $sub_type, ?ConfigEntityInterface $entity) {
+  public function __construct(MailerInterface $mailer, RendererInterface $renderer, EntityTypeManagerInterface $entity_type_manager, ThemeManagerInterface $theme_manager, ConfigFactoryInterface $config_factory, string $type, string $sub_type, ?ConfigEntityInterface $entity) {
     $this->mailer = $mailer;
     $this->renderer = $renderer;
     $this->entityTypeManager = $entity_type_manager;
     $this->themeManager = $theme_manager;
+    $this->configFactory = $config_factory;
     $this->type = $type;
     $this->subType = $sub_type;
     $this->entity = $entity;
@@ -156,11 +175,11 @@ class Email implements InternalEmailInterface {
    * @param \Symfony\Component\DependencyInjection\ContainerInterface $container
    *   The current service container.
    * @param string $type
-   *   Type. @see \Drupal\symfony_mailer\BaseEmailInterface::getType()
+   *   Type. @see self::getType()
    * @param string $sub_type
-   *   Sub-type. @see \Drupal\symfony_mailer\BaseEmailInterface::getSubType()
-   * @param \Drupal\Core\Config\Entity\ConfigEntityInterface $entity
-   *   (optional) Entity. @see \Drupal\symfony_mailer\BaseEmailInterface::getEntity()
+   *   Sub-type. @see self::getSubType()
+   * @param \Drupal\Core\Config\Entity\ConfigEntityInterface|null $entity
+   *   (optional) Entity. @see self::getEntity()
    *
    * @return static
    *   A new email object.
@@ -171,6 +190,7 @@ class Email implements InternalEmailInterface {
       $container->get('renderer'),
       $container->get('entity_type.manager'),
       $container->get('theme.manager'),
+      $container->get('config.factory'),
       $type,
       $sub_type,
       $entity
@@ -258,21 +278,11 @@ class Email implements InternalEmailInterface {
   /**
    * {@inheritdoc}
    */
-  public function appendBody($body) {
-    $this->valid(self::PHASE_PRE_RENDER);
-    $name = 'n' . count($this->body);
-    $this->body[$name] = $body;
-    return $this;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function appendBodyEntity(EntityInterface $entity, $view_mode = 'full') {
+  public function setBodyEntity(EntityInterface $entity, $view_mode = 'full') {
     $this->valid(self::PHASE_PRE_RENDER);
     $build = $this->entityTypeManager->getViewBuilder($entity->getEntityTypeId())
       ->view($entity, $view_mode);
-    $this->appendBody($build);
+    $this->setBody($build);
     return $this;
   }
 
@@ -282,6 +292,24 @@ class Email implements InternalEmailInterface {
   public function getBody() {
     $this->valid(self::PHASE_PRE_RENDER);
     return $this->body;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setSubject($subject, bool $replace = FALSE) {
+    // We must not force conversion of the subject to a string as this could
+    // cause translation before switching to the correct language.
+    $this->subject = $subject;
+    $this->subjectReplace = $replace;
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getSubject() {
+    return $this->subject;
   }
 
   /**
@@ -440,6 +468,15 @@ class Email implements InternalEmailInterface {
     $this->valid(self::PHASE_PRE_RENDER, self::PHASE_PRE_RENDER);
 
     // Render subject.
+    if ($this->subjectReplace && $this->variables) {
+      $subject = [
+        '#type' => 'inline_template',
+        '#template' => $this->subject,
+        '#context' => $this->variables,
+      ];
+      $this->subject = $this->renderer->renderPlain($subject);
+    }
+
     if ($this->subject instanceof MarkupInterface) {
       $this->subject = PlainTextOutput::renderFromHtml($this->subject);
     }
@@ -490,11 +527,10 @@ class Email implements InternalEmailInterface {
   /**
    * Checks that a function was called in the correct phase.
    *
-   * @param int $phase
-   *   The correct phase, one of the PHASE_ constants.
-   * @param bool $exact
-   *   If TRUE, require the exact phase, if FALSE allow earlier phases (later
-   *   phases for post-render).
+   * @param int $max_phase
+   *   Latest allowed phase, one of the PHASE_ constants.
+   * @param int $min_phase
+   *   (Optional) Earliest allowed phase, one of the PHASE_ constants.
    *
    * @return $this
    */
@@ -506,6 +542,32 @@ class Email implements InternalEmailInterface {
       throw new \LogicException("$caller function is only valid in phases $min_phase-$max_phase, called in $this->phase.");
     }
     return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   *
+   * Serialization is intended only for testing.
+   *
+   * @internal
+   */
+  public function __serialize() {
+    // Exclude $this->params, $this->variables as they may not serialize.
+    return [$this->type, $this->subType, $this->entity ? $this->entity->id() : '', $this->phase, $this->subject, $this->langcode, $this->account ? $this->account->id() : '', $this->theme, $this->libraries, $this->transportDsn, $this->inner, $this->addresses, $this->sender];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function __unserialize(array $data) {
+    [$this->type, $this->subType, $entity_id, $this->phase, $this->subject, $this->langcode, $account_id, $this->theme, $this->libraries, $this->transportDsn, $this->inner, $this->addresses, $this->sender] = $data;
+
+    if ($entity_id) {
+      $this->entity = $this->configFactory->get($entity_id);
+    }
+    if ($account_id) {
+      $this->account = User::load($account_id);
+    }
   }
 
 }

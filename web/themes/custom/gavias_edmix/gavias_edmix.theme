@@ -69,7 +69,10 @@ function gavias_edmix_preprocess_page(&$variables) {
   $custom_account = '';
   $user = \Drupal::currentUser();
   if($user->id()){
-    $custom_account = "Howdy, <a class=\"link-user\" href=\"{$base_url}/user/\"><span>{$user->getAccountname()}</span></a>-<a href=\"{$base_url}/user/logout\">Logout</a>";
+    /**
+    *  $custom_account = "Howdy, <a class=\"link-user\" href=\"{$base_url}/user/\"><span>{$user->getAccountname()}</span></a>-<a href=\"{$base_url}/user/logout\">Logout</a>";
+    */
+    $custom_account = t('Howdy') . " , <a class=\"link-user\" href=\"{$base_url}/user/\"><span>{$user->getAccountname()}</span></a>-<a href=\"{$base_url}/user/logout\">" . t('Logout') . "</a>";
   }
   $variables['custom_account'] = $custom_account;
   $variables['login_link'] = Url::fromRoute('user.login')->toString();

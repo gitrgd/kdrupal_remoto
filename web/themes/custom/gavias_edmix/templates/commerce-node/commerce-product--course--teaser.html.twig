@@ -19,7 +19,7 @@
  * @ingroup themeable
  */
 #}
-<div class="course-block">      
+<div class="course-block">
   <div class="course-block-inner">
     <div class="image lightGallery">
       {{ product.field_course_images }}
@@ -29,23 +29,22 @@
     </div>
     <div class="course-content">
       <div class="content-inner">
-        <h4 class="title"><a href="{{ product_url }}" rel="bookmark">{{ title }}</a> </h4> 
+        <h4 class="title"><a href="{{ product_url }}" rel="bookmark">{{ title }}</a> </h4>
         <div class="teacher">{{product.field_course_teacher}}</div>
-      </div>   
+      </div>
       <div class="content-action">
         <div class="left"><a href="{{ product_url }}">{{ 'Apply now'|t }}</a></div>
         <div class="right">
-            {% if not product.variation_price == 0 %}  
+            {% if not product.variation_price == 0 %}
             <div class="course-price">
             {{ product.variation_price }} </div>
             {% else %}
-            <div class="course-price gratis">{{ 'GRATIS'|t }}</div>
+            <div class="course-price gratis">{{ 'PRÓXIMAMENTE'|t }}</div>
             {% endif %}
         </div>
-          
-          
-      </div> 
+
+
+      </div>
     </div>
   </div>
 </div>
-        

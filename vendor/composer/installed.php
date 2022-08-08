@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '91b133bcdb46152f4aeb95df460e6a0f7d2a4c79',
+        'reference' => '33536a28d9b243a40b3758710c111fd05507a24d',
         'name' => 'drupal-composer/drupal-project',
         'dev' => true,
     ),
@@ -328,7 +328,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '91b133bcdb46152f4aeb95df460e6a0f7d2a4c79',
+            'reference' => '33536a28d9b243a40b3758710c111fd05507a24d',
             'dev_requirement' => false,
         ),
         'drupal/action' => array(
@@ -1276,6 +1276,15 @@
             'reference' => '8.x-2.0-beta2',
             'dev_requirement' => false,
         ),
+        'drupal/smtp' => array(
+            'pretty_version' => '1.0.0',
+            'version' => '1.0.0.0',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/smtp',
+            'aliases' => array(),
+            'reference' => '8.x-1.0',
+            'dev_requirement' => false,
+        ),
         'drupal/standard' => array(
             'dev_requirement' => false,
             'replaced' => array(
@@ -1313,12 +1322,12 @@
             'dev_requirement' => false,
         ),
         'drupal/symfony_mailer' => array(
-            'pretty_version' => '1.0.0-alpha9',
-            'version' => '1.0.0.0-alpha9',
+            'pretty_version' => '1.0.0-alpha10',
+            'version' => '1.0.0.0-alpha10',
             'type' => 'drupal-module',
             'install_path' => __DIR__ . '/../../web/modules/contrib/symfony_mailer',
             'aliases' => array(),
-            'reference' => '1.0.0-alpha9',
+            'reference' => '1.0.0-alpha10',
             'dev_requirement' => false,
         ),
         'drupal/syslog' => array(
@@ -1743,6 +1752,15 @@
             'aliases' => array(),
             'reference' => '77a32518733312af16a44300404e945338981de3',
             'dev_requirement' => true,
+        ),
+        'phpmailer/phpmailer' => array(
+            'pretty_version' => 'v6.6.3',
+            'version' => '6.6.3.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../phpmailer/phpmailer',
+            'aliases' => array(),
+            'reference' => '9400f305a898f194caff5521f64e5dfa926626f3',
+            'dev_requirement' => false,
         ),
         'phpspec/prophecy' => array(
             'pretty_version' => 'v1.15.0',

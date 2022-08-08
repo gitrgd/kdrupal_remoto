@@ -3,7 +3,6 @@
 namespace Drupal\symfony_mailer;
 
 use Drupal\Core\Entity\EntityInterface;
-use Drupal\Core\Session\AccountInterface;
 
 /**
  * Defines the interface for an Email.
@@ -72,7 +71,7 @@ interface EmailInterface extends BaseEmailInterface {
    * @param int $phase
    *   (Optional) The phase to run in, one of the EmailInterface::PHASE_
    *   constants.
-   * @param int
+   * @param int $weight
    *   (Optional) The weight, lower values run earlier.
    * @param string $id
    *   (Optional) An ID that can be used to alter or debug.
@@ -115,7 +114,7 @@ interface EmailInterface extends BaseEmailInterface {
    *
    * @param string $key
    *   Parameter key to set.
-   * @param $value
+   * @param mixed $value
    *   Parameter value to set.
    *
    * @return $this
@@ -172,7 +171,7 @@ interface EmailInterface extends BaseEmailInterface {
    *
    * Valid: before rendering.
    *
-   * @param $body
+   * @param mixed $body
    *   Unrendered email body array.
    *
    * @return $this
@@ -180,22 +179,7 @@ interface EmailInterface extends BaseEmailInterface {
   public function setBody($body);
 
   /**
-   * Appends content to the email body array.
-   *
-   * Valid: before rendering.
-   *
-   * @param $body
-   *   Unrendered body part to append to the existing body array.
-   *
-   * @return $this
-   */
-  public function appendBody($body);
-
-  /**
-   * Appends an entity to the email body array.
-   *
-   * WARNING: rendering as a trusted user can expose private information . Call
-   * ::setAccount() unless you are sure this cannot occur.
+   * Builds the email body array from an entity.
    *
    * Valid: before rendering.
    *
@@ -206,7 +190,7 @@ interface EmailInterface extends BaseEmailInterface {
    *
    * @return $this
    */
-  public function appendBodyEntity(EntityInterface $entity, $view_mode = 'full');
+  public function setBodyEntity(EntityInterface $entity, $view_mode = 'full');
 
   /**
    * Gets the unrendered email body array.
@@ -217,6 +201,26 @@ interface EmailInterface extends BaseEmailInterface {
    *   Body render array.
    */
   public function getBody();
+
+  /**
+   * Sets the email subject.
+   *
+   * @param \Drupal\Component\Render\MarkupInterface|string $subject
+   *   The email subject.
+   * @param bool $replace
+   *   (Optional) TRUE to replace variables in the email subject.
+   *
+   * @return $this
+   */
+  public function setSubject($subject, bool $replace = FALSE);
+
+  /**
+   * Gets the email subject.
+   *
+   * @return \Drupal\Component\Render\MarkupInterface|string
+   *   The email subject, or NULL if not set.
+   */
+  public function getSubject();
 
   /**
    * Sets variables available in the email template.
@@ -237,7 +241,7 @@ interface EmailInterface extends BaseEmailInterface {
    *
    * @param string $key
    *   Variable key to set.
-   * @param $value
+   * @param mixed $value
    *   Variable value to set.
    *
    * @return $this
@@ -359,6 +363,6 @@ interface EmailInterface extends BaseEmailInterface {
    * @return string
    *   Transport DSN.
    */
-  public function getTransportDSN();
+  public function getTransportDsn();
 
 }
