@@ -1,0 +1,27 @@
+uuid: bfa3eddf-450d-4a5d-a556-75b7f39e1f75
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.courses
+  module:
+    - gaviasthemer
+    - views
+  theme:
+    - bartik
+third_party_settings:
+  gaviasthemer:
+    classes: ''
+id: bartik_exposedformcoursescourse_filter
+theme: bartik
+region: header
+weight: -16
+provider: null
+plugin: 'views_exposed_filter_block:courses-course_filter'
+settings:
+  id: 'views_exposed_filter_block:courses-course_filter'
+  label: ''
+  label_display: '0'
+  provider: views
+  views_label: ''
+visibility: {  }

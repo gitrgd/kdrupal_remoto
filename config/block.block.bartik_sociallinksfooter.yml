@@ -1,0 +1,29 @@
+uuid: e388df0c-11cf-4408-b146-293e4d1961a2
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:7e26e9e5-a2f4-4e12-9643-7c8954f954ef'
+  module:
+    - block_content
+    - gaviasthemer
+  theme:
+    - bartik
+third_party_settings:
+  gaviasthemer:
+    classes: ''
+id: bartik_sociallinksfooter
+theme: bartik
+region: header
+weight: -14
+provider: null
+plugin: 'block_content:7e26e9e5-a2f4-4e12-9643-7c8954f954ef'
+settings:
+  id: 'block_content:7e26e9e5-a2f4-4e12-9643-7c8954f954ef'
+  label: 'CONÉCTATE CON NOSOTROS'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: 'Social links footer'
+  view_mode: full
+visibility: {  }

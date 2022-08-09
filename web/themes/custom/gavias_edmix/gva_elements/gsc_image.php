@@ -1,12 +1,12 @@
-<?php 
+<?php
 namespace Drupal\gavias_blockbuilder\shortcodes;
 if(!class_exists('gsc_image')):
    class gsc_image{
-      
+
       public function render_form(){
          $fields =array(
             'type' => 'gsc_image',
-            'title' => ('Image'), 
+            'title' => ('Image'),
             'size' => 3,
             'fields' => array(
                array(
@@ -18,11 +18,11 @@ if(!class_exists('gsc_image')):
                   'id'        => 'align',
                   'type'      => 'select',
                   'title'     => t('Align Image'),
-                  'options'   => array( 
-                     ''          => 'None', 
-                     'left'      => 'Left', 
-                     'right'     => 'Right', 
-                     'center'    => 'Center', 
+                  'options'   => array(
+                     ''          => 'None',
+                     'left'      => 'Left',
+                     'right'     => 'Right',
+                     'center'    => 'Center',
                   ),
                ),
                array(
@@ -61,7 +61,7 @@ if(!class_exists('gsc_image')):
                   'title'     => t('Extra class name'),
                   'desc'      => t('Style particular content element differently - add a class name and refer to it in custom CSS.'),
                ),
-            ),                                       
+            ),
          );
          return $fields;
       }
@@ -83,17 +83,17 @@ if(!class_exists('gsc_image')):
             'animate'      => '',
             'el_class'     => ''
          ), $attr));
-            
-         $image = $base_url . $image; 
+
+         $image = $base_url . $image;
 
          if( $align ) $align = 'text-'. $align;
-         
+
          if( $target=='on' ){
             $target = 'target="_blank"';
          } else {
             $target = '';
          }
-         
+
          if( $margin ){
             $margin = 'style="margin-top:'. intval( $margin ) .'px"';
          } else {
@@ -105,25 +105,21 @@ if(!class_exists('gsc_image')):
          $class_array[] = $el_class;
          ?>
          <?php ob_start() ?>
-            <div class="widget gsc-image<?php if(count($class_array) > 0) print (' ' . implode($class_array, ' ')) ?>" <?php print $margin ?> <?php print gavias_print_animate_aos($animate) ?>>
+            <div class="widget gsc-image<?php if(count($class_array) > 0) print (' ' . implode(' ', $class_array)) ?>" <?php print $margin ?> <?php print gavias_print_animate_aos($animate) ?>>
                <div class="widget-content">
                   <?php if($link){ ?>
                      <a href="<?php print $link ?>" <?php print $target ?>>
-                  <?php } ?> 
+                  <?php } ?>
                     <img src="<?php print $image ?>" alt="<?php print $alt ?>" />
                   <?php if($link){print '</a>'; } ?>
                </div>
-            </div>    
-         <?php return ob_get_clean() ?>  
-         <?php       
+            </div>
+         <?php return ob_get_clean() ?>
+         <?php
       }
 
       public function load_shortcode(){
          add_shortcode( 'image', array('gsc_image', 'sc_image') );
       }
    }
-endif;   
-
-
-
-
+endif;

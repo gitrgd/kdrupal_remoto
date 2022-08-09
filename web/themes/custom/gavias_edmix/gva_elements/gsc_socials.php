@@ -1,13 +1,13 @@
-<?php 
+<?php
 namespace Drupal\gavias_blockbuilder\shortcodes;
 if(!class_exists('gsc_socials')):
    class gsc_socials{
       public function render_form(){
          $fields = array(
             'type'      => 'gsc_socials',
-            'title'     => t('Socials'), 
-            'size'      => 3, 
-            
+            'title'     => t('Socials'),
+            'size'      => 3,
+
             'fields'    => array(
                array(
                   'id'        => 'title',
@@ -19,8 +19,8 @@ if(!class_exists('gsc_socials')):
                   'id'        => 'style',
                   'type'      => 'select',
                   'options'   => array(
-                     'style-1'      => t('Style 1'), 
-                     'style-2'      => t('Style 2'), 
+                     'style-1'      => t('Style 1'),
+                     'style-2'      => t('Style 2'),
                   ),
                   'title'  => t('Style'),
                ),
@@ -37,7 +37,7 @@ if(!class_exists('gsc_socials')):
                   'desc'      => t('Entrance animation'),
                   'options'   => gavias_blockbuilder_animate_aos(),
                ),
-            ),                                       
+            ),
          );
          for($i=1; $i<=10; $i++){
             $fields['fields'][] = array(
@@ -58,8 +58,8 @@ if(!class_exists('gsc_socials')):
             );
          }
          return $fields;
-      } 
-      
+      }
+
       public function render_content( $item ) {
          if( ! key_exists('content', $item['fields']) ) $item['fields']['content'] = '';
          print self::sc_socials( $item['fields'], $item['fields']['content'] );
@@ -85,7 +85,7 @@ if(!class_exists('gsc_socials')):
 
          ?>
          <?php ob_start() ?>
-         <div class="widget gsc-socials <?php print implode($class, ' ') ?>" <?php print gavias_print_animate_aos($animate) ?>>
+         <div class="widget gsc-socials <?php print implode(' ', $class) ?>" <?php print gavias_print_animate_aos($animate) ?>>
             <?php for($i=1; $i<=10; $i++){ ?>
                <?php $icon = "icon_{$i}"; $link = "link_{$i}"; ?>
                <?php if($$icon && $$link){ ?>
@@ -102,4 +102,3 @@ if(!class_exists('gsc_socials')):
       }
    }
 endif;
-

@@ -1,0 +1,28 @@
+uuid: 5e672b8e-292d-479c-ab27-1e29e2af15ae
+langcode: en
+status: true
+dependencies:
+  module:
+    - gaviasthemer
+    - simplenews
+  theme:
+    - bartik
+third_party_settings:
+  gaviasthemer:
+    classes: ''
+id: bartik_simplenewssubscription
+theme: bartik
+region: header
+weight: -17
+provider: null
+plugin: simplenews_subscription_block
+settings:
+  id: simplenews_subscription_block
+  label: 'Novedades sobre nuestros cursos!'
+  label_display: visible
+  provider: simplenews
+  newsletters:
+    default: default
+  message: 'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras eleifend egestas justo.'
+  unique_id: d8679eef-0a1b-4eaa-86cc-51db877b1a3c
+visibility: {  }

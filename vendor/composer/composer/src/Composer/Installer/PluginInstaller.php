@@ -40,7 +40,7 @@ class PluginInstaller extends LibraryInstaller
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function supports($packageType)
     {
@@ -48,7 +48,20 @@ class PluginInstaller extends LibraryInstaller
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
+     */
+    public function prepare($type, PackageInterface $package, PackageInterface $prevPackage = null)
+    {
+        // fail install process early if it is going to fail due to a plugin not being allowed
+        if (($type === 'install' || $type === 'update') && !$this->composer->getPluginManager()->arePluginsDisabled('local')) {
+            $this->composer->getPluginManager()->isPluginAllowed($package->getName(), false);
+        }
+
+        return parent::prepare($type, $package, $prevPackage);
+    }
+
+    /**
+     * @inheritDoc
      */
     public function download(PackageInterface $package, PackageInterface $prevPackage = null)
     {
@@ -61,7 +74,7 @@ class PluginInstaller extends LibraryInstaller
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function install(InstalledRepositoryInterface $repo, PackageInterface $package)
     {
@@ -84,7 +97,7 @@ class PluginInstaller extends LibraryInstaller
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function update(InstalledRepositoryInterface $repo, PackageInterface $initial, PackageInterface $target)
     {
@@ -99,7 +112,7 @@ class PluginInstaller extends LibraryInstaller
         return $promise->then(function () use ($self, $pluginManager, $initial, $target, $repo) {
             try {
                 Platform::workaroundFilesystemIssues();
-                $pluginManager->deactivatePackage($initial, true);
+                $pluginManager->deactivatePackage($initial);
                 $pluginManager->registerPackage($target, true);
             } catch (\Exception $e) {
                 $self->rollbackInstall($e, $repo, $target);
@@ -109,7 +122,7 @@ class PluginInstaller extends LibraryInstaller
 
     public function uninstall(InstalledRepositoryInterface $repo, PackageInterface $package)
     {
-        $this->composer->getPluginManager()->uninstallPackage($package, true);
+        $this->composer->getPluginManager()->uninstallPackage($package);
 
         return parent::uninstall($repo, $package);
     }
@@ -117,6 +130,8 @@ class PluginInstaller extends LibraryInstaller
     /**
      * TODO v3 should make this private once we can drop PHP 5.3 support
      * @private
+     *
+     * @return void
      */
     public function rollbackInstall(\Exception $e, InstalledRepositoryInterface $repo, PackageInterface $package)
     {
