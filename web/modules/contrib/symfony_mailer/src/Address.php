@@ -3,8 +3,8 @@
 namespace Drupal\symfony_mailer;
 
 use Drupal\Core\Session\AccountInterface;
-use Drupal\simplenews\SubscriberInterface;
 use Symfony\Component\Mime\Address as SymfonyAddress;
+use Drupal\user\Entity\User;
 
 /**
  * Defines the class for an Email address.
@@ -15,10 +15,33 @@ use Symfony\Component\Mime\Address as SymfonyAddress;
  */
 class Address implements AddressInterface {
 
+  /**
+   * The email address.
+   *
+   * @var string
+   */
   protected $email;
+
+  /**
+   * The display name, or NULL.
+   *
+   * @var string
+   */
   protected $displayName;
+
+  /**
+   * The language code, or NULL.
+   *
+   * @var string
+   */
   protected $langcode;
-  protected $address;
+
+  /**
+   * The account, or NULL.
+   *
+   * @var \Drupal\Core\Session\AccountInterface
+   */
+  protected $account;
 
   /**
    * Constructs an address object.
@@ -29,14 +52,14 @@ class Address implements AddressInterface {
    *   (Optional) The display name.
    * @param string $langcode
    *   (Optional) The language code.
-   * @param \Drupal\Core\Session\AccountInterface $address
+   * @param \Drupal\Core\Session\AccountInterface $account
    *   (Optional) The account.
    */
-  public function __construct(string $email, string $display_name = NULL, string $langcode = NULL, AccountInterface $address = NULL) {
+  public function __construct(string $email, string $display_name = NULL, string $langcode = NULL, AccountInterface $account = NULL) {
     $this->email = $email;
     $this->displayName = $display_name;
     $this->langcode = $langcode;
-    $this->account = $address;
+    $this->account = $account;
   }
 
   /**
@@ -63,7 +86,7 @@ class Address implements AddressInterface {
       return new static($address->getAddress(), $address->getName());
     }
     else {
-      throw new LogicException('Cannot convert to address.');
+      throw new \LogicException('Cannot convert to address.');
     }
   }
 
@@ -106,6 +129,8 @@ class Address implements AddressInterface {
    * {@inheritdoc}
    */
   public static function convert($addresses) {
+    $result = [];
+
     if (!is_array($addresses)) {
       $addresses = [$addresses];
     }
@@ -117,4 +142,25 @@ class Address implements AddressInterface {
     return $result;
   }
 
-};
+  /**
+   * {@inheritdoc}
+   *
+   * Serialization is intended only for testing.
+   *
+   * @internal
+   */
+  public function __serialize() {
+    return [$this->email, $this->displayName, $this->langcode, $this->account ? $this->account->id() : NULL];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function __unserialize(array $data) {
+    [$this->email, $this->displayName, $this->langcode, $account_id] = $data;
+    if ($account_id) {
+      $this->account = User::load($account_id);
+    }
+  }
+
+}

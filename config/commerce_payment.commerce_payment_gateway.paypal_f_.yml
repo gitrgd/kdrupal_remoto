@@ -1,0 +1,21 @@
+uuid: 0d21bd95-0811-4295-a973-ac23f65aaaab
+langcode: es
+status: false
+dependencies:
+  module:
+    - commerce_paypal
+id: paypal_f_
+label: 'PAYPAL (F)'
+weight: null
+plugin: paypal_payflow
+configuration:
+  display_label: 'Credit Card'
+  mode: test
+  payment_method_types:
+    - credit_card
+  partner: KREATIVDRUPAL
+  vendor: KD
+  user: kreativdrupal-facilitator@gmail.com
+  password: ''
+conditions: {  }
+conditionOperator: AND

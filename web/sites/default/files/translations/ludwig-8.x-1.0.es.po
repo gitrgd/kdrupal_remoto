@@ -1,10 +1,10 @@
 # Spanish translation of Ludwig (8.x-1.0)
-# Copyright (c) 2017 by the Spanish translation team
+# Copyright (c) 2020 by the Spanish translation team
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Ludwig (8.x-1.0)\n"
-"POT-Creation-Date: 2017-07-03 11:46+0000\n"
+"POT-Creation-Date: 2020-05-31 19:25+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Language-Team: Spanish\n"
 "MIME-Version: 1.0\n"
@@ -15,7 +15,7 @@ msgstr ""
 msgid "Status"
 msgstr "Estado"
 msgid "List"
-msgstr "Lista"
+msgstr "Listado"
 msgid "Download"
 msgstr "Descargar"
 msgid "Version"

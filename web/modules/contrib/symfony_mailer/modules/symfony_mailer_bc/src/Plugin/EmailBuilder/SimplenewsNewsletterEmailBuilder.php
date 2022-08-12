@@ -36,7 +36,7 @@ class SimplenewsNewsletterEmailBuilder extends SimplenewsEmailBuilderBase {
    *   The newsletter issue to send.
    * @param \Drupal\simplenews\SubscriberInterface $subscriber
    *   The subscriber.
-   * @param bool $test
+   * @param bool|null $test
    *   (Optional) TRUE to send a test email.
    */
   public function createParams(EmailInterface $email, ContentEntityInterface $issue = NULL, SubscriberInterface $subscriber = NULL, ?bool $test = FALSE) {
@@ -53,7 +53,7 @@ class SimplenewsNewsletterEmailBuilder extends SimplenewsEmailBuilderBase {
    */
   public function build(EmailInterface $email) {
     parent::build($email);
-    $email->appendBodyEntity($email->getParam('issue'), 'email_html')
+    $email->setBodyEntity($email->getParam('issue'), 'email_html')
       ->addTextHeader('Precedence', 'bulk')
       ->setVariable('opt_out_hidden', !$email->getEntity()->isAccessible());
 

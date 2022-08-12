@@ -1,0 +1,24 @@
+uuid: b6a4749e-be5f-42fb-b498-d31d8c6e062a
+langcode: es
+status: true
+dependencies:
+  module:
+    - gaviasthemer
+    - system
+  theme:
+    - bartik
+third_party_settings:
+  gaviasthemer:
+    classes: ''
+id: bartik_messages
+theme: bartik
+region: header
+weight: -6
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: Messages
+  label_display: '0'
+  provider: system
+visibility: {  }

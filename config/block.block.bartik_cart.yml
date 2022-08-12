@@ -1,0 +1,25 @@
+uuid: 4d5da2f7-e126-4e09-89c9-e9c4b48a265b
+langcode: en
+status: true
+dependencies:
+  module:
+    - commerce_cart
+    - gaviasthemer
+  theme:
+    - bartik
+third_party_settings:
+  gaviasthemer:
+    classes: ''
+id: bartik_cart
+theme: bartik
+region: header
+weight: 0
+provider: null
+plugin: commerce_cart
+settings:
+  id: commerce_cart
+  label: Cart
+  label_display: '0'
+  provider: commerce_cart
+  dropdown: true
+visibility: {  }

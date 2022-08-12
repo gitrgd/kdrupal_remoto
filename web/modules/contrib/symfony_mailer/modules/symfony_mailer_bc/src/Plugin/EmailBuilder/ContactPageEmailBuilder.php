@@ -8,7 +8,6 @@ use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Url;
 use Drupal\symfony_mailer\EmailInterface;
 use Drupal\symfony_mailer\Entity\MailerPolicy;
-use Drupal\symfony_mailer\MailerHelperTrait;
 
 /**
  * Defines the Email Builder plug-in for contact module page forms.
@@ -30,8 +29,6 @@ use Drupal\symfony_mailer\MailerHelperTrait;
  */
 class ContactPageEmailBuilder extends ContactEmailBuilderBase {
 
-  use MailerHelperTrait;
-
   /**
    * Saves the parameters for a newly created email.
    *
@@ -39,7 +36,7 @@ class ContactPageEmailBuilder extends ContactEmailBuilderBase {
    *   The email to modify.
    * @param \Drupal\contact\MessageInterface $message
    *   Submitted message entity.
-   * @param \Drupal\Core\Session\AccountInterface $account
+   * @param \Drupal\Core\Session\AccountInterface $sender
    *   The sender.
    */
   public function createParams(EmailInterface $email, MessageInterface $message = NULL, AccountInterface $sender = NULL) {
