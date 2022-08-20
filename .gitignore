@@ -35,7 +35,7 @@
 # Ignore configuration files that may contain sensitive information
 /web/sites/**/example.*
 **/.htaccess
-!/web/.htaccess
+# !/web/.htaccess
 /web/sites/**/public/
 /web/sites/**/private/
 /web/sites/**/files-public/

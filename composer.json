@@ -39,6 +39,7 @@
         "drupal/ctools": "^3.10",
         "drupal/entity": "^1.0",
         "drupal/entity_reference_revisions": "^1.7",
+        "drupal/eu_cookie_compliance": "^1.19",
         "drupal/features": "^3.8",
         "drupal/fontawesome": "^2.15",
         "drupal/image_url_formatter": "^1.0",
