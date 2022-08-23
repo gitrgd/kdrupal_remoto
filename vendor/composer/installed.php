@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '90da8cef6a4a7a37685d9aae4f4c3a08c91d596a',
+        'reference' => '2ce07a855edbe29fdeefd7916e0021e4798f4d61',
         'name' => 'drupal-composer/drupal-project',
         'dev' => true,
     ),
@@ -232,6 +232,12 @@
             'reference' => '9ef08d471573d6a56405b06ef6830dd70c883072',
             'dev_requirement' => false,
         ),
+        'container-interop/container-interop' => array(
+            'dev_requirement' => false,
+            'replaced' => array(
+                0 => '^1.2.0',
+            ),
+        ),
         'cweagans/composer-patches' => array(
             'pretty_version' => '1.7.2',
             'version' => '1.7.2.0',
@@ -328,7 +334,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '90da8cef6a4a7a37685d9aae4f4c3a08c91d596a',
+            'reference' => '2ce07a855edbe29fdeefd7916e0021e4798f4d61',
             'dev_requirement' => false,
         ),
         'drupal/address' => array(
@@ -733,6 +739,15 @@
             'reference' => '8.x-1.9',
             'dev_requirement' => false,
         ),
+        'drupal/eu_cookie_compliance' => array(
+            'pretty_version' => '1.19.0',
+            'version' => '1.19.0.0',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/eu_cookie_compliance',
+            'aliases' => array(),
+            'reference' => '8.x-1.19',
+            'dev_requirement' => false,
+        ),
         'drupal/features' => array(
             'pretty_version' => '3.12.0',
             'version' => '3.12.0.0',
@@ -922,6 +937,24 @@
             'reference' => '8.x-3.0-alpha1',
             'dev_requirement' => false,
         ),
+        'drupal/upgrade_rector' => array(
+            'pretty_version' => '1.0.0-alpha8',
+            'version' => '1.0.0.0-alpha8',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/upgrade_rector',
+            'aliases' => array(),
+            'reference' => '8.x-1.0-alpha8',
+            'dev_requirement' => false,
+        ),
+        'drupal/upgrade_status' => array(
+            'pretty_version' => '3.16.0',
+            'version' => '3.16.0.0',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/upgrade_status',
+            'aliases' => array(),
+            'reference' => '8.x-3.16',
+            'dev_requirement' => false,
+        ),
         'drupal/views_infinite_scroll' => array(
             'pretty_version' => '1.9.0',
             'version' => '1.9.0.0',
@@ -930,6 +963,12 @@
             'aliases' => array(),
             'reference' => '8.x-1.9',
             'dev_requirement' => false,
+        ),
+        'drupal8-rector/drupal8-rector' => array(
+            'dev_requirement' => false,
+            'replaced' => array(
+                0 => '*',
+            ),
         ),
         'drush/drush' => array(
             'pretty_version' => '10.6.2',
@@ -1084,6 +1123,15 @@
             'reference' => '1ccb024ea615606ed1d676ba0fa3f22a398f3ac0',
             'dev_requirement' => false,
         ),
+        'laminas/laminas-servicemanager' => array(
+            'pretty_version' => '3.16.0',
+            'version' => '3.16.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../laminas/laminas-servicemanager',
+            'aliases' => array(),
+            'reference' => '863c66733740cd36ebf5e700f4258ef2c68a2a24',
+            'dev_requirement' => false,
+        ),
         'laminas/laminas-stdlib' => array(
             'pretty_version' => '3.7.1',
             'version' => '3.7.1.0',
@@ -1091,6 +1139,15 @@
             'install_path' => __DIR__ . '/../laminas/laminas-stdlib',
             'aliases' => array(),
             'reference' => 'bcd869e2fe88d567800057c1434f2380354fe325',
+            'dev_requirement' => false,
+        ),
+        'laminas/laminas-text' => array(
+            'pretty_version' => '2.9.0',
+            'version' => '2.9.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../laminas/laminas-text',
+            'aliases' => array(),
+            'reference' => '8879e75d03e09b0d6787e6680cfa255afd4645a7',
             'dev_requirement' => false,
         ),
         'league/container' => array(
@@ -1109,6 +1166,24 @@
             'install_path' => __DIR__ . '/../masterminds/html5',
             'aliases' => array(),
             'reference' => 'f640ac1bdddff06ea333a920c95bbad8872429ab',
+            'dev_requirement' => false,
+        ),
+        'mathieuviossat/arraytotexttable' => array(
+            'pretty_version' => 'v1.0.8',
+            'version' => '1.0.8.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../mathieuviossat/arraytotexttable',
+            'aliases' => array(),
+            'reference' => '6b1af924478cb9c3a903269e304fff006fe0dbf4',
+            'dev_requirement' => false,
+        ),
+        'mglaman/phpstan-drupal' => array(
+            'pretty_version' => '1.1.25',
+            'version' => '1.1.25.0',
+            'type' => 'phpstan-extension',
+            'install_path' => __DIR__ . '/../mglaman/phpstan-drupal',
+            'aliases' => array(),
+            'reference' => '480245d5d0bd1858e01c43d738718dab85be0ad2',
             'dev_requirement' => false,
         ),
         'mikey179/vfsstream' => array(
@@ -1142,6 +1217,21 @@
             'dev_requirement' => false,
             'replaced' => array(
                 0 => '~2.0',
+            ),
+        ),
+        'palantirnet/drupal-rector' => array(
+            'pretty_version' => '0.13.1',
+            'version' => '0.13.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../palantirnet/drupal-rector',
+            'aliases' => array(),
+            'reference' => '4814ad9fa7d19be068f75558220383967c258d10',
+            'dev_requirement' => false,
+        ),
+        'palantirnet/drupal8-rector' => array(
+            'dev_requirement' => false,
+            'replaced' => array(
+                0 => '*',
             ),
         ),
         'pear/archive_tar' => array(
@@ -1251,6 +1341,24 @@
             'aliases' => array(),
             'reference' => '135607f9ccc297d6923d49c2bcf309f509413215',
             'dev_requirement' => true,
+        ),
+        'phpstan/phpstan' => array(
+            'pretty_version' => '1.8.2',
+            'version' => '1.8.2.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../phpstan/phpstan',
+            'aliases' => array(),
+            'reference' => 'c53312ecc575caf07b0e90dee43883fdf90ca67c',
+            'dev_requirement' => false,
+        ),
+        'phpstan/phpstan-deprecation-rules' => array(
+            'pretty_version' => '1.0.0',
+            'version' => '1.0.0.0',
+            'type' => 'phpstan-extension',
+            'install_path' => __DIR__ . '/../phpstan/phpstan-deprecation-rules',
+            'aliases' => array(),
+            'reference' => 'e5ccafb0dd8d835dd65d8d7a1a0d2b1b75414682',
+            'dev_requirement' => false,
         ),
         'phpunit/php-code-coverage' => array(
             'pretty_version' => '9.2.15',
@@ -1417,6 +1525,15 @@
             'aliases' => array(),
             'reference' => '234f8fd1023c9158e2314fa9d7d0e6a83db42910',
             'dev_requirement' => true,
+        ),
+        'rector/rector' => array(
+            'pretty_version' => '0.13.10',
+            'version' => '0.13.10.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../rector/rector',
+            'aliases' => array(),
+            'reference' => 'd1e069db8ad3b4aea2b968248370c21415e4c180',
+            'dev_requirement' => false,
         ),
         'roundcube/plugin-installer' => array(
             'dev_requirement' => false,

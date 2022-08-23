@@ -1,8 +1,0 @@
-uuid: 61806c6b-8a7f-4d6e-a0dc-0261acda6c68
-langcode: es
-status: true
-dependencies: {  }
-id: fecha_corta_sin_hora
-label: 'Fecha corta sin hora'
-locked: false
-pattern: d/m/y

@@ -39,10 +39,13 @@ class ComposerStaticInitf741bddde8a107d5b34ae62a46f03a25
         '751a5a3f463e4be759be31748b61737c' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/functions/parse_cookie_header.legacy.php',
         '2f69d3914119f042cca9e44442d5ce95' => __DIR__ . '/../..' . '/web/core/includes/bootstrap.inc',
         '6db5533840cb1ae1bc049452845aa88e' => __DIR__ . '/../..' . '/web/core/includes/guzzle_php81_shim.php',
+        '9b38cf48e83f5d8f60375221cd213eee' => __DIR__ . '/..' . '/phpstan/phpstan/bootstrap.php',
+        'c9d07b32a2e02bc0fc582d4f0c1b56cc' => __DIR__ . '/..' . '/laminas/laminas-servicemanager/src/autoload.php',
         '23c18046f52bef3eea034657bafda50f' => __DIR__ . '/..' . '/symfony/polyfill-php81/bootstrap.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         'ad155f8f1cf0d418fe49e248db8c661b' => __DIR__ . '/..' . '/react/promise/src/functions_include.php',
+        '38143a9afc50997d55e4815db8489d1c' => __DIR__ . '/..' . '/rector/rector/bootstrap.php',
         '952683d815ff0a7bf322b93c0be7e4e4' => __DIR__ . '/..' . '/chi-teck/drupal-code-generator/src/bootstrap.php',
         '5a12a5271c58108e0aa33355e6ac54ea' => __DIR__ . '/..' . '/drupal/console-core/src/functions.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
@@ -55,6 +58,10 @@ class ComposerStaticInitf741bddde8a107d5b34ae62a46f03a25
         'p' => 
         array (
             'phpDocumentor\\Reflection\\' => 25,
+        ),
+        'm' => 
+        array (
+            'mglaman\\PHPStanDrupal\\' => 22,
         ),
         'c' => 
         array (
@@ -139,10 +146,12 @@ class ComposerStaticInitf741bddde8a107d5b34ae62a46f03a25
             'Prophecy\\' => 9,
             'PhpParser\\' => 10,
             'PHPStan\\PhpDocParser\\' => 21,
+            'PHPStan\\' => 8,
             'PHPMailer\\PHPMailer\\' => 20,
         ),
         'M' => 
         array (
+            'MathieuViossat\\Util\\' => 20,
             'Masterminds\\' => 12,
             'Mailchimp\\http\\' => 15,
             'Mailchimp\\' => 10,
@@ -150,7 +159,9 @@ class ComposerStaticInitf741bddde8a107d5b34ae62a46f03a25
         'L' => 
         array (
             'League\\Container\\' => 17,
+            'Laminas\\Text\\' => 13,
             'Laminas\\Stdlib\\' => 15,
+            'Laminas\\ServiceManager\\' => 23,
             'Laminas\\Feed\\' => 13,
             'Laminas\\Escaper\\' => 16,
             'Laminas\\Diactoros\\' => 18,
@@ -194,6 +205,7 @@ class ComposerStaticInitf741bddde8a107d5b34ae62a46f03a25
             'Drupal\\Composer\\Plugin\\ProjectMessage\\' => 38,
             'Drupal\\Component\\' => 17,
             'Drupal\\' => 7,
+            'DrupalRector\\' => 13,
             'DrupalPractice\\' => 15,
             'DrupalCodeGenerator\\' => 20,
             'Dotenv\\' => 7,
@@ -243,6 +255,10 @@ class ComposerStaticInitf741bddde8a107d5b34ae62a46f03a25
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
             1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+        ),
+        'mglaman\\PHPStanDrupal\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mglaman/phpstan-drupal/src',
         ),
         'cweagans\\Composer\\' => 
         array (
@@ -497,9 +513,17 @@ class ComposerStaticInitf741bddde8a107d5b34ae62a46f03a25
         array (
             0 => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src',
         ),
+        'PHPStan\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpstan/phpstan-deprecation-rules/src',
+        ),
         'PHPMailer\\PHPMailer\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
+        ),
+        'MathieuViossat\\Util\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mathieuviossat/arraytotexttable/src',
         ),
         'Masterminds\\' => 
         array (
@@ -517,9 +541,17 @@ class ComposerStaticInitf741bddde8a107d5b34ae62a46f03a25
         array (
             0 => __DIR__ . '/..' . '/league/container/src',
         ),
+        'Laminas\\Text\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laminas/laminas-text/src',
+        ),
         'Laminas\\Stdlib\\' => 
         array (
             0 => __DIR__ . '/..' . '/laminas/laminas-stdlib/src',
+        ),
+        'Laminas\\ServiceManager\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laminas/laminas-servicemanager/src',
         ),
         'Laminas\\Feed\\' => 
         array (
@@ -621,6 +653,10 @@ class ComposerStaticInitf741bddde8a107d5b34ae62a46f03a25
         'Drupal\\' => 
         array (
             0 => __DIR__ . '/..' . '/drupal/coder/coder_sniffer/Drupal',
+        ),
+        'DrupalRector\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/palantirnet/drupal-rector/src',
         ),
         'DrupalPractice\\' => 
         array (
