@@ -7,6 +7,6 @@ dependencies:
   - ludwig
 
 # Information added by Drupal.org packaging script on 2022-01-08
-version: '8.x-1.12'
+version: '2.0.3'
 project: 'ludwig'
-datestamp: 1641658504
+datestamp: 1641658437
