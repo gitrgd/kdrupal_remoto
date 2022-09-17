@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace Drupal\gavias_blockbuilder\shortcodes;
 if(!class_exists('gsc_gmap')):
    class gsc_gmap{
@@ -25,7 +25,7 @@ if(!class_exists('gsc_gmap')):
                      'SATELLITE'    => 'SATELLITE',
                      'TERRAIN'      => 'TERRAIN'
                   )
-               ), 
+               ),
                array(
                   'id'        => 'link',
                   'type'      => 'text',
@@ -49,8 +49,8 @@ if(!class_exists('gsc_gmap')):
                   'type'      => 'text',
                   'title'     => t('Extra class name'),
                   'desc'      => t('Style particular content element differently - add a class name and refer to it in custom CSS.'),
-               ),   
-            ),                                     
+               ),
+            ),
          );
          return $fields;
       }
@@ -81,8 +81,8 @@ if(!class_exists('gsc_gmap')):
       ?>
 
       <script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=true&key=AIzaSyDWg9eU2MO9E0PF1ZMw9sFVJoPVU4Z6s3o"></script>
-      <script type="text/javascript" src="<?php print (base_path() . drupal_get_path('theme', 'gavias_megaland')) ?>/vendor/gmap3.js"></script>
-      <script type="text/javascript" src="<?php print (base_path() . drupal_get_path('theme', 'gavias_megaland')) ?>/vendor/jquery.ui.map.min.js"></script>
+      <script type="text/javascript" src="<?php print (base_path() . \Drupal::service('extension.list.theme')->getPath('gavias_megaland')) ?>/vendor/gmap3.js"></script>
+      <script type="text/javascript" src="<?php print (base_path() . \Drupal::service('extension.list.theme')->getPath('gavias_megaland')) ?>/vendor/jquery.ui.map.min.js"></script>
       <div id="map_canvas_<?php echo $_id; ?>" class="map_canvas" style="width:100%; height:<?php echo $height; ?>;"></div>
 
       <script type="text/javascript">
@@ -90,7 +90,7 @@ if(!class_exists('gsc_gmap')):
             var stmapdefault = '<?php echo $link; ?>';
             var marker = {position:stmapdefault}
             var content = '<?php print $content ?>';
-        
+
             jQuery('#map_canvas_<?php echo $_id; ?>').gmap({
                'scrollwheel':false,
                'zoom': <?php echo  $zoom;  ?>  ,
@@ -102,7 +102,7 @@ if(!class_exists('gsc_gmap')):
                   self.addMarker(marker).click(function(){
                      if(content){
                         self.openInfoWindow({'content': content}, self.instance.markers[0]);
-                     }                     
+                     }
                   });
                },
                panControl: true
@@ -116,7 +116,4 @@ if(!class_exists('gsc_gmap')):
          add_shortcode( 'gmap', array($this, 'sc_gmap') );
       }
    }
- endif;  
-
-
-
+ endif;

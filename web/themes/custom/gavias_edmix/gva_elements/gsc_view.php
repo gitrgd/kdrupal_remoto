@@ -154,7 +154,7 @@ if(!class_exists('gsc_view')):
                           $v_output = ['#cache' => $v_output['#cache']];
                         }
                         if($v_output){
-                          $output .= render($v_output);
+                          $output .= \Drupal::service('renderer')->render($v_output);
                         }
                      }
                   }else{

@@ -10,7 +10,7 @@
 function gavias_edmix_include($theme, $path) {
   static $themes = array();
   if (!isset($themes[$theme])) {
-    $themes[$theme] = drupal_get_path('theme', $theme);
+    $themes[$theme] = \Drupal::service('extension.list.theme')->getPath($theme);
   }
   if ($themes[$theme] && ($file = DRUPAL_ROOT . '/' . $themes[$theme] . '/' . $path) && file_exists($file)) {
     include_once $file;
