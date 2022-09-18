@@ -1,0 +1,20 @@
+uuid: d5277f2e-f37a-481f-a32e-4d8f7fa00607
+langcode: es
+status: true
+dependencies: {  }
+id: iva
+label: IVA
+plugin: custom
+configuration:
+  display_inclusive: true
+  display_label: vat
+  round: true
+  rates:
+    -
+      id: 10a6a624-801f-4b2e-b282-8c1a23764988
+      label: IVA
+      percentage: '0.21'
+  territories:
+    -
+      country_code: ES
+      administrative_area: ''

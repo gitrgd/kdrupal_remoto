@@ -1,0 +1,9 @@
+uuid: 27725a73-3be9-4682-bbd6-48d7fd71afe1
+langcode: es
+status: true
+dependencies: {  }
+id: fichero
+label: 'Paragraph Fichero'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

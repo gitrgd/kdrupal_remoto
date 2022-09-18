@@ -1,0 +1,35 @@
+uuid: 5dedc375-b521-49ee-93f7-bf2a49d470b2
+langcode: es
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:47937ad8-cd88-48e3-b509-90013255aed1'
+  module:
+    - block_content
+    - gaviasthemer
+    - system
+  theme:
+    - bartik
+third_party_settings:
+  gaviasthemer:
+    classes: block_suscrip_cursos
+id: bartik_suscripcionacursojavascriptjqueryia
+theme: bartik
+region: header
+weight: -11
+provider: null
+plugin: 'block_content:47937ad8-cd88-48e3-b509-90013255aed1'
+settings:
+  id: 'block_content:47937ad8-cd88-48e3-b509-90013255aed1'
+  label: 'Suscripción a curso JAVASCRIPT / JQUERY (IA)'
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    context_mapping: {  }
+    pages: /product/12

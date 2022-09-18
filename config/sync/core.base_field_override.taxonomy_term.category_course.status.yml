@@ -1,0 +1,22 @@
+uuid: 975b68cf-7ad9-426f-9545-0cf64d58d15e
+langcode: es
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.category_course
+id: taxonomy_term.category_course.status
+field_name: status
+entity_type: taxonomy_term
+bundle: category_course
+label: Publicado
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Activado
+  off_label: Desactivado
+field_type: boolean

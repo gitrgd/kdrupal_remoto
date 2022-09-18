@@ -1,0 +1,36 @@
+uuid: 8e1079ec-8daa-4a4f-940f-7f4d1f814273
+langcode: es
+status: true
+dependencies:
+  config:
+    - filter.format.html_restricted
+  module:
+    - comment
+    - commerce_checkout
+    - commerce_product
+    - contact
+    - eu_cookie_compliance
+    - filter
+    - gaviasthemer
+    - media
+    - search
+    - system
+_core:
+  default_config_hash: j5zLMOdJBqC0bMvSdth5UebkprJB8g_2FXHqhfpJzow
+id: anonymous
+label: 'Usuario anónimo'
+weight: 0
+is_admin: false
+permissions:
+  - 'access checkout'
+  - 'access comments'
+  - 'access content'
+  - 'access site-wide contact form'
+  - 'access user profiles'
+  - 'administer gavias_customize preview'
+  - 'cancel account'
+  - 'display eu cookie compliance popup'
+  - 'search content'
+  - 'use text format html_restricted'
+  - 'view commerce_product'
+  - 'view media'

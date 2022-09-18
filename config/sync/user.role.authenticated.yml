@@ -1,0 +1,55 @@
+uuid: 6b2db863-3e30-469c-b468-ae286f9f1e62
+langcode: es
+status: true
+dependencies:
+  config:
+    - filter.format.basic_html
+    - filter.format.mailchimp_campaign
+  module:
+    - comment
+    - commerce_checkout
+    - commerce_order
+    - commerce_product
+    - commerce_promotion
+    - contact
+    - contextual
+    - eu_cookie_compliance
+    - field_ui
+    - filter
+    - fontawesome
+    - gaviasthemer
+    - media
+    - profile
+    - search
+    - shortcut
+    - system
+_core:
+  default_config_hash: dJ0L2DNSj5q6XVZAGsuVDpJTh5UeYkIPwKrUOOpr8YI
+id: authenticated
+label: 'Usuario autenticado'
+weight: 1
+is_admin: false
+permissions:
+  - 'access checkout'
+  - 'access comments'
+  - 'access content'
+  - 'access contextual links'
+  - 'access fontawesome additional settings'
+  - 'access shortcuts'
+  - 'access site-wide contact form'
+  - 'access user profiles'
+  - 'administer gavias_customize preview'
+  - 'administer profile fields'
+  - 'administer user display'
+  - 'cancel account'
+  - 'display eu cookie compliance popup'
+  - 'edit own comments'
+  - 'post comments'
+  - 'search content'
+  - 'skip comment approval'
+  - 'use text format basic_html'
+  - 'use text format mailchimp_campaign'
+  - 'view commerce_product'
+  - 'view commerce_promotion'
+  - 'view media'
+  - 'view own commerce_order'

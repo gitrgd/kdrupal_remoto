@@ -1,0 +1,8 @@
+uuid: f6af6457-f780-4b65-8a35-559cacb188c9
+langcode: es
+status: true
+dependencies: {  }
+name: Posts
+vid: posts
+description: 'Entradas del blog'
+weight: 0

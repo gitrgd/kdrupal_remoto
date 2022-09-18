@@ -1,0 +1,95 @@
+uuid: b14a3330-8e67-48f7-8cab-b51394eb3a32
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.event.body
+    - field.field.node.event.field_event_address
+    - field.field.node.event.field_event_image
+    - field.field.node.event.field_event_start
+    - field.field.node.event.field_event_time
+    - field.field.node.event.field_mapagoogle
+    - node.type.event
+  module:
+    - datetime
+    - image
+    - simple_gmap
+    - text
+    - user
+_core:
+  default_config_hash: X_ZWdSTtX0E5WXi737vU8PR2IYNzcqePceWtaz-cwbs
+id: node.event.default
+targetEntityType: node
+bundle: event
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_event_address:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_event_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_event_start:
+    type: datetime_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: fecha_corta_sin_hora
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_event_time:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_mapagoogle:
+    type: simple_gmap
+    label: visually_hidden
+    settings:
+      include_map: true
+      include_static_map: false
+      include_link: false
+      include_text: false
+      iframe_height: '400'
+      iframe_width: 100%
+      iframe_title: 'Mapa del evento'
+      static_scale: 1
+      zoom_level: 14
+      link_text: 'View larger map'
+      map_type: m
+      langcode: es
+      apikey: ''
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  langcode: true

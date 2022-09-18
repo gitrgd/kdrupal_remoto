@@ -1,0 +1,19 @@
+uuid: fa55b320-fa17-4303-bab0-c078f81360f9
+langcode: es
+status: false
+dependencies: {  }
+id: pro
+label: pro
+description: ''
+weight: 0
+folder: ../config/entornos/pro
+module: {  }
+theme: {  }
+blacklist:
+  - mailchimp.settings
+  - swiftmailer.transport
+  - syslog.settings
+  - system.performance
+graylist: {  }
+graylist_dependents: true
+graylist_skip_equal: true

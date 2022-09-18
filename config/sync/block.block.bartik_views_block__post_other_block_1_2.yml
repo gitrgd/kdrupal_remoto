@@ -1,0 +1,36 @@
+uuid: ff3addde-fbf8-46e1-8a6b-5afe2efbbbd5
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.post_other
+  module:
+    - ctools
+    - gaviasthemer
+    - views
+  theme:
+    - bartik
+third_party_settings:
+  gaviasthemer:
+    classes: ''
+id: bartik_views_block__post_other_block_1_2
+theme: bartik
+region: header
+weight: -8
+provider: null
+plugin: 'views_block:post_other-block_1'
+settings:
+  id: 'views_block:post_other-block_1'
+  label: 'Recent Posts'
+  label_display: visible
+  provider: views
+  views_label: 'Recent Posts'
+  items_per_page: none
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      gallery: gallery

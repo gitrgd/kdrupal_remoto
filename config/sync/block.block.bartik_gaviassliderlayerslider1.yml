@@ -1,0 +1,24 @@
+uuid: 83696b55-f613-4b40-adeb-2dfa89ab1486
+langcode: en
+status: true
+dependencies:
+  module:
+    - gavias_sliderlayer
+    - gaviasthemer
+  theme:
+    - bartik
+third_party_settings:
+  gaviasthemer:
+    classes: ''
+id: bartik_gaviassliderlayerslider1
+theme: bartik
+region: header
+weight: -14
+provider: null
+plugin: 'gavias_sliderlayer_block:gavias_sliderlayer_block____1'
+settings:
+  id: 'gavias_sliderlayer_block:gavias_sliderlayer_block____1'
+  label: 'Gavias SliderLayer - Slider #1'
+  label_display: '0'
+  provider: gavias_sliderlayer
+visibility: {  }

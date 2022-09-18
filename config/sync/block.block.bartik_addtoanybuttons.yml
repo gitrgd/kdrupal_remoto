@@ -1,0 +1,32 @@
+uuid: 2c9a5b46-4ee7-4655-9e22-f05f0e9f08f0
+langcode: es
+status: true
+dependencies:
+  module:
+    - addtoany
+    - ctools
+    - gaviasthemer
+  theme:
+    - bartik
+third_party_settings:
+  gaviasthemer:
+    classes: ''
+id: bartik_addtoanybuttons
+theme: bartik
+region: header
+weight: -15
+provider: null
+plugin: addtoany_block
+settings:
+  id: addtoany_block
+  label: 'Comparte nuestros cursos'
+  label_display: '0'
+  provider: addtoany
+visibility:
+  'entity_bundle:commerce_product':
+    id: 'entity_bundle:commerce_product'
+    negate: false
+    context_mapping:
+      commerce_product: '@commerce_product.product_route_context:commerce_product'
+    bundles:
+      course: course

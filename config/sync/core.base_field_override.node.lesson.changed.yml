@@ -1,0 +1,18 @@
+uuid: a4517194-d229-458e-8f1b-8b87dd8d5f27
+langcode: es
+status: true
+dependencies:
+  config:
+    - node.type.lesson
+id: node.lesson.changed
+field_name: changed
+entity_type: node
+bundle: lesson
+label: Modificado
+description: 'La fecha en que el nodo fue editado por última vez.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed
