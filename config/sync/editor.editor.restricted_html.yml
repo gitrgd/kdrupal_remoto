@@ -1,47 +1,41 @@
-uuid: ee60c98e-fd7a-489a-a3ca-4baa0d4664d6
+uuid: 6f9e7c51-1c87-4dda-a606-c504dd8732df
 langcode: es
 status: true
 dependencies:
   config:
     - filter.format.restricted_html
   module:
-    - ckeditor
+    - ckeditor5
 format: restricted_html
-editor: ckeditor
+editor: ckeditor5
 settings:
   toolbar:
-    rows:
-      -
-        -
-          name: Formato
-          items:
-            - Bold
-            - Italic
-        -
-          name: Enlaces
-          items:
-            - DrupalLink
-            - DrupalUnlink
-        -
-          name: Listas
-          items:
-            - BulletedList
-            - NumberedList
-        -
-          name: Multimedia
-          items:
-            - Blockquote
-            - DrupalImage
-        -
-          name: Herramientas
-          items:
-            - Source
-  plugins: {  }
+    items:
+      - bold
+      - italic
+      - '|'
+      - link
+      - '|'
+      - bulletedList
+      - numberedList
+      - '|'
+      - blockQuote
+      - drupalInsertImage
+      - '|'
+      - sourceEditing
+  plugins:
+    ckeditor5_sourceEditing:
+      allowed_tags: {  }
+    ckeditor5_list:
+      reversed: true
+      startIndex: true
+    ckeditor5_imageResize:
+      allow_resize: true
 image_upload:
   status: false
   scheme: public
   directory: inline-images
   max_size: ''
   max_dimensions:
-    width: null
-    height: null
+    width: 0
+    height: 0

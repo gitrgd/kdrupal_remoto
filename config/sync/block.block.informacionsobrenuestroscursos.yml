@@ -7,6 +7,7 @@ dependencies:
   module:
     - block_content
     - gaviasthemer
+    - language
   theme:
     - gavias_edmix
 third_party_settings:
@@ -26,4 +27,11 @@ settings:
   status: true
   info: ''
   view_mode: full
-visibility: {  }
+visibility:
+  language:
+    id: language
+    negate: false
+    context_mapping:
+      language: '@language.current_language_context:language_interface'
+    langcodes:
+      es: es
