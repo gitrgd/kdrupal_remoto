@@ -4,6 +4,9 @@ namespace Drupal\token_filter\Plugin\CKEditorPlugin;
 
 use Drupal\ckeditor\CKEditorPluginConfigurableInterface;
 use Drupal\Component\Serialization\Json;
+use Drupal\Core\Extension\ExtensionList;
+use Drupal\Core\Extension\ModuleExtensionList;
+use Drupal\Core\File\FileUrlGeneratorInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Url;
@@ -30,27 +33,50 @@ class TokenBrowser extends CKEditorPluginBase implements ContainerFactoryPluginI
   /**
    * The CSRF token manager service.
    *
-   * @var Drupal\Core\Access\CsrfTokenGenerator
+   * @var \Drupal\Core\Access\CsrfTokenGenerator
    */
   protected $csrfTokenService;
 
+  /**
+   * The token service.
+   *
+   * @var \Drupal\token\Token
+   */
   protected $tokenService;
+
+  /**
+   * The file URL generator service.
+   *
+   * @var \Drupal\Core\File\FileUrlGeneratorInterface
+   */
+  protected $fileUrlGenerator;
+
+  /**
+   * The module extension list service.
+   *
+   * @var \Drupal\Core\Extension\ModuleExtensionList
+   */
+  protected $moduleExtensionList;
 
   /**
    * {@inheritdoc}
    *
-   * @param Drupal\Core\Access\CsrfTokenGenerator $csrf_token_service
+   * @param \Drupal\Core\Access\CsrfTokenGenerator $csrf_token_service
    */
   public function __construct(
-    array $configuration,
-    $plugin_id,
-    $plugin_definition,
-    CsrfTokenGenerator $csrf_token_service,
-    Token $token_service) {
+    array                     $configuration,
+                              $plugin_id,
+                              $plugin_definition,
+    CsrfTokenGenerator        $csrf_token_service,
+    Token                     $token_service,
+    FileUrlGeneratorInterface $file_url_generator,
+    ModuleExtensionList       $module_extension_list) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
 
     $this->csrfTokenService = $csrf_token_service;
     $this->tokenService = $token_service;
+    $this->fileUrlGenerator = $file_url_generator;
+    $this->moduleExtensionList = $module_extension_list;
   }
 
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
@@ -59,7 +85,9 @@ class TokenBrowser extends CKEditorPluginBase implements ContainerFactoryPluginI
       $plugin_id,
       $plugin_definition,
       $container->get('csrf_token'),
-      $container->get('token')
+      $container->get('token'),
+      $container->get('file_url_generator'),
+      $container->get('extension.list.module'),
     );
   }
 
@@ -75,7 +103,7 @@ class TokenBrowser extends CKEditorPluginBase implements ContainerFactoryPluginI
       'tokenbrowser' => [
         'id' => 'tokenbrowser',
         'label' => t('Token browser'),
-        'image' => file_create_url($this->getImage()),
+        'image' => $this->fileUrlGenerator->generateAbsoluteString($this->getImage()),
         'link' => $this->getUrl($token_types)->toString(),
       ],
     ];
@@ -84,12 +112,12 @@ class TokenBrowser extends CKEditorPluginBase implements ContainerFactoryPluginI
   /**
    * Fetches the URL.
    *
-   * @return Drupal\Core\Url
+   * @return \Drupal\Core\Url The URL.
    *   The URL.
    *
    * @see TokenTreeController::outputTree().
    */
-  protected function getUrl($token_types = NULL) {
+  protected function getUrl($token_types = NULL): Url {
     $url = Url::fromRoute('token.tree');
     $options['query'] = [
       'options' => Json::encode($this->getQueryOptions($token_types)),
@@ -107,7 +135,7 @@ class TokenBrowser extends CKEditorPluginBase implements ContainerFactoryPluginI
    *
    * @see TreeBuilderInterface::buildRenderable() for option definitions.
    */
-  protected function getQueryOptions($token_types = NULL) {
+  protected function getQueryOptions($token_types = NULL): array {
 
     return [
       'token_types' => $token_types ?: 'all',
@@ -128,7 +156,7 @@ class TokenBrowser extends CKEditorPluginBase implements ContainerFactoryPluginI
    * @return string
    *   The string representation of the path to the image.
    */
-  protected function getImage() {
+  protected function getImage(): string {
     return $this->getModulePath('token_filter') . '/js/plugins/tokenbrowser/tokenbrowser.png';
   }
 
@@ -138,7 +166,7 @@ class TokenBrowser extends CKEditorPluginBase implements ContainerFactoryPluginI
    * Make sure that the path to the plugin.js matches the file structure of the
    * CKEditor plugin you are implementing.
    */
-  public function getFile() {
+  public function getFile(): string {
     return $this->getModulePath('token_filter') . '/js/plugins/tokenbrowser/plugin.js';
   }
 
@@ -149,13 +177,13 @@ class TokenBrowser extends CKEditorPluginBase implements ContainerFactoryPluginI
    *   The string representation of the module's path.
    */
   protected function getModulePath(string $module_name): string {
-    return drupal_get_path('module', $module_name);
+    return $this->moduleExtensionList->getPath($module_name);
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getConfig(Editor $editor) {
+  public function getConfig(Editor $editor): array {
 
     // Get settings.
     $token_types = NULL;
@@ -173,7 +201,7 @@ class TokenBrowser extends CKEditorPluginBase implements ContainerFactoryPluginI
   /**
    * {@inheritdoc}
    */
-  public function settingsForm(array $form, FormStateInterface $form_state, Editor $editor) {
+  public function settingsForm(array $form, FormStateInterface $form_state, Editor $editor): array {
 
     // Get config.
     $config = $this->getConfig($editor);
