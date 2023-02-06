@@ -1,0 +1,5 @@
+name: Html SwiftMailer
+type: module
+package: mismodulos
+description: 'Hook que permite correos HTML en Swift Mailer'
+core_version_requirement: ^9.4 || ^10.0
