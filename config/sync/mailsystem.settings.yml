@@ -4,9 +4,17 @@ langcode: es
 theme: current
 defaults:
   sender: swiftmailer
-  formatter: test_simplenews_html_mail
+  formatter: swiftmailer
 modules:
   swiftmailer:
+    none:
+      sender: swiftmailer
+      formatter: swiftmailer
+  user:
+    none:
+      sender: swiftmailer
+      formatter: swiftmailer
+  system:
     none:
       sender: swiftmailer
       formatter: swiftmailer
