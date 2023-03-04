@@ -4,7 +4,6 @@ namespace Drupal\token_filter\Plugin\CKEditorPlugin;
 
 use Drupal\ckeditor\CKEditorPluginConfigurableInterface;
 use Drupal\Component\Serialization\Json;
-use Drupal\Core\Extension\ExtensionList;
 use Drupal\Core\Extension\ModuleExtensionList;
 use Drupal\Core\File\FileUrlGeneratorInterface;
 use Drupal\Core\Form\FormStateInterface;
@@ -61,16 +60,29 @@ class TokenBrowser extends CKEditorPluginBase implements ContainerFactoryPluginI
   /**
    * {@inheritdoc}
    *
+   * @param array $configuration
+   *   A configuration array containing information about the plugin instance.
+   * @param string $plugin_id
+   *   The plugin_id for the plugin instance.
+   * @param string $plugin_definition
+   *   The plugin implementation definition.
    * @param \Drupal\Core\Access\CsrfTokenGenerator $csrf_token_service
+   *   Generates and validates CSRF tokens.
+   * @param \Drupal\token\Token $token_service
+   *   Returns the token service.
+   * @param \Drupal\Core\File\FileUrlGeneratorInterface $file_url_generator
+   *   Generates file URLs for a stream to an external or local file.
+   * @param \Drupal\Core\Extension\ModuleExtensionList $module_extension_list
+   *   Provides available extensions.
    */
   public function __construct(
-    array                     $configuration,
+    array $configuration,
                               $plugin_id,
                               $plugin_definition,
-    CsrfTokenGenerator        $csrf_token_service,
-    Token                     $token_service,
+    CsrfTokenGenerator $csrf_token_service,
+    Token $token_service,
     FileUrlGeneratorInterface $file_url_generator,
-    ModuleExtensionList       $module_extension_list) {
+    ModuleExtensionList $module_extension_list) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
 
     $this->csrfTokenService = $csrf_token_service;
@@ -79,6 +91,9 @@ class TokenBrowser extends CKEditorPluginBase implements ContainerFactoryPluginI
     $this->moduleExtensionList = $module_extension_list;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     return new static(
       $configuration,
@@ -102,7 +117,7 @@ class TokenBrowser extends CKEditorPluginBase implements ContainerFactoryPluginI
     return [
       'tokenbrowser' => [
         'id' => 'tokenbrowser',
-        'label' => t('Token browser'),
+        'label' => $this->t('Token browser'),
         'image' => $this->fileUrlGenerator->generateAbsoluteString($this->getImage()),
         'link' => $this->getUrl($token_types)->toString(),
       ],
@@ -112,10 +127,10 @@ class TokenBrowser extends CKEditorPluginBase implements ContainerFactoryPluginI
   /**
    * Fetches the URL.
    *
-   * @return \Drupal\Core\Url The URL.
+   * @return \Drupal\Core\Url
    *   The URL.
    *
-   * @see TokenTreeController::outputTree().
+   * @see TokenTreeController::outputTree()
    */
   protected function getUrl($token_types = NULL): Url {
     $url = Url::fromRoute('token.tree');
@@ -133,10 +148,10 @@ class TokenBrowser extends CKEditorPluginBase implements ContainerFactoryPluginI
    * @return array
    *   The list of query options.
    *
-   * @see TreeBuilderInterface::buildRenderable() for option definitions.
+   * @see TreeBuilderInterface::buildRenderable()
+   *   for option definitions.
    */
   protected function getQueryOptions($token_types = NULL): array {
-
     return [
       'token_types' => $token_types ?: 'all',
       'global_types' => FALSE,
@@ -209,8 +224,8 @@ class TokenBrowser extends CKEditorPluginBase implements ContainerFactoryPluginI
     // Get parent token type names, keyed by machine name.
     $parent_token_types = array_filter($this->tokenService
       ->getInfo()['types'], function ($v) {
-      return empty($v['nested']);
-    });
+        return empty($v['nested']);
+      });
     $parent_token_types = array_map(function ($v) {
       return $v['name'];
     }, $parent_token_types);
@@ -227,4 +242,5 @@ class TokenBrowser extends CKEditorPluginBase implements ContainerFactoryPluginI
 
     return $form;
   }
+
 }

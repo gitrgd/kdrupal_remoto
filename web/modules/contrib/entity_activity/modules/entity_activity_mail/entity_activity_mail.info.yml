@@ -1,0 +1,14 @@
+name: 'Entity Activity Mail'
+type: module
+description: 'Entity Activity Mail allow users to receive a logs report by mail according a frequency.'
+core_version_requirement: ^8.9 || ^9
+package: 'Community'
+configure: entity_activity_mail.settings_form
+dependencies:
+  - entity_activity:entity_activity
+  - drupal:options
+
+# Information added by Drupal.org packaging script on 2021-12-06
+version: '8.x-1.0-beta14'
+project: 'entity_activity'
+datestamp: 1638827635

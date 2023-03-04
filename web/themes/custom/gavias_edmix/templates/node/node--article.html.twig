@@ -12,7 +12,7 @@
 %}
 
 <!-- Start Display article for teaser page -->
-{% if teaser == true %} 
+{% if teaser == true %}
   <div class="post-block">
     <div class="post-image">
       {{ content.field_image }}
@@ -29,7 +29,7 @@
 
 <article{{ attributes.addClass(classes) }}>
   <div class="post-block">
-      
+
     <div class="post-thumbnail post-{{ post_format }}">
       {% if post_format == 'video' or post_format == 'audio' and gva_iframe %}
         {{ gva_iframe|raw }}
@@ -37,21 +37,21 @@
         {{ content.field_post_gallery }}
       {% else %}
         {{ content.field_image }}
-      {% endif %}  
+      {% endif %}
     </div>
 
     <div class="post-content">
       {{ title_prefix }}
          <h1{{ title_attributes.addClass('post-title') }}>{{ label }}</h1>
-      {{ title_suffix }}         
+      {{ title_suffix }}
       <div class="post-meta">
         <span class="post-categories">{{ content.field_post_category }}</span> /
         <span class="post-created"> {{date }} </span> /
-        <span class="post-comment"> 
-          <a href="{{url}}/#comments">{{ comment_count }} Comments</a>
+        <span class="post-comment">
+          <a href="{{url}}/#comments">{{ comment_count }} Comentarios</a>
         </span>
       </div>
-      
+
       {% if display_submitted %}
         <div class="node__meta hidden">
           {{ author_picture }}
@@ -59,7 +59,7 @@
             {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}
           </span>
           {{ metadata }}
-        </div>
+      </div>
       {% endif %}
 
       <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
