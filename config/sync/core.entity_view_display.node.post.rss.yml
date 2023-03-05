@@ -1,0 +1,39 @@
+uuid: f28ca19c-d765-4d7c-bbfd-9753dc3c6df9
+langcode: es
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.rss
+    - field.field.node.post.body
+    - field.field.node.post.field_comentarios
+    - field.field.node.post.field_etiquetas_blog
+    - field.field.node.post.field_imagen_post
+    - field.field.node.post.field_post_embed
+    - field.field.node.post.field_post_format
+    - field.field.node.post.field_post_gallery
+    - field.field.node.post.field_post_type
+    - field.field.node.post.field_video_post
+    - node.type.post
+  module:
+    - user
+id: node.post.rss
+targetEntityType: node
+bundle: post
+mode: rss
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  body: true
+  field_comentarios: true
+  field_etiquetas_blog: true
+  field_imagen_post: true
+  field_post_embed: true
+  field_post_format: true
+  field_post_gallery: true
+  field_post_type: true
+  field_video_post: true
+  langcode: true
