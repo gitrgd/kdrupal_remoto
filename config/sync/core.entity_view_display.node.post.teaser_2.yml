@@ -1,0 +1,55 @@
+uuid: 76fc8cec-855c-4d4f-8616-dc13065f4878
+langcode: es
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser_2
+    - field.field.node.post.body
+    - field.field.node.post.field_comentarios
+    - field.field.node.post.field_etiquetas_blog
+    - field.field.node.post.field_imagen_post
+    - field.field.node.post.field_post_embed
+    - field.field.node.post.field_post_format
+    - field.field.node.post.field_post_gallery
+    - field.field.node.post.field_post_type
+    - field.field.node.post.field_video_post
+    - image.style.medium
+    - node.type.post
+  module:
+    - image
+    - text
+    - user
+id: node.post.teaser_2
+targetEntityType: node
+bundle: post
+mode: teaser_2
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_imagen_post:
+    type: image
+    label: hidden
+    settings:
+      image_link: content
+      image_style: medium
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  field_comentarios: true
+  field_etiquetas_blog: true
+  field_post_embed: true
+  field_post_format: true
+  field_post_gallery: true
+  field_post_type: true
+  field_video_post: true
+  langcode: true
+  links: true

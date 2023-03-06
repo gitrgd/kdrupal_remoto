@@ -22,6 +22,10 @@ settings:
   label: 'Comparte nuestros cursos'
   label_display: '0'
   provider: addtoany
+  link_url: ''
+  link_title: ''
+  buttons_size: ''
+  addtoany_html: ''
 visibility:
   'entity_bundle:commerce_product':
     id: 'entity_bundle:commerce_product'

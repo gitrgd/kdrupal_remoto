@@ -1,0 +1,11 @@
+uuid: c3d14a01-05be-48f3-9af2-1313c9bca003
+langcode: es
+status: true
+dependencies:
+  config:
+    - media.type.videopost
+id: media.videopost
+target_entity_type_id: media
+target_bundle: videopost
+default_langcode: site_default
+language_alterable: false

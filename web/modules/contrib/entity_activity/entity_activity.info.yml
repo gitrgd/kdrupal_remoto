@@ -1,0 +1,16 @@
+name: 'Entity Activity'
+type: module
+description: 'Entity activity allow to configure and generate any kind of logs on any content entity type.'
+core_version_requirement: ^8.9 || ^9
+package: 'Community'
+configure: entity_activity.config_content
+dependencies:
+  - drupal:text
+  - drupal:user
+  - drupal:serialization
+  - token:token
+
+# Information added by Drupal.org packaging script on 2021-12-06
+version: '8.x-1.0-beta14'
+project: 'entity_activity'
+datestamp: 1638827635

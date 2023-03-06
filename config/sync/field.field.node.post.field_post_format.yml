@@ -1,0 +1,21 @@
+uuid: e2713c0a-0264-43db-8747-aea5dc085208
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_post_format
+    - node.type.post
+  module:
+    - options
+id: node.post.field_post_format
+field_name: field_post_format
+entity_type: node
+bundle: post
+label: 'Post format'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -5,22 +5,20 @@ dependencies:
   config:
     - field.field.node.article.body
     - field.field.node.article.comment
-    - field.field.node.article.field_entrada_blog
-    - field.field.node.article.field_es_noticia
     - field.field.node.article.field_image
+    - field.field.node.article.field_imgnoticia
     - field.field.node.article.field_post_category
     - field.field.node.article.field_post_embed
     - field.field.node.article.field_post_format
     - field.field.node.article.field_post_gallery
     - field.field.node.article.field_post_type
     - field.field.node.article.field_tags
-    - field.field.node.article.field_video
     - image.style.thumbnail
     - node.type.article
   module:
     - comment
     - image
-    - inline_entity_form
+    - media_library
     - path
     - text
 _core:
@@ -52,19 +50,6 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_entrada_blog:
-    type: options_buttons
-    weight: 125
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  field_es_noticia:
-    type: boolean_checkbox
-    weight: 122
-    region: content
-    settings:
-      display_label: true
-    third_party_settings: {  }
   field_image:
     type: image_image
     weight: 16
@@ -72,6 +57,13 @@ content:
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_imgnoticia:
+    type: media_library_widget
+    weight: 122
+    region: content
+    settings:
+      media_types: {  }
     third_party_settings: {  }
   field_post_category:
     type: options_buttons
@@ -108,31 +100,10 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_tags:
-    type: entity_reference_autocomplete_tags
+    type: options_select
     weight: 4
     region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_video:
-    type: inline_entity_form_complex
-    weight: 124
-    region: content
-    settings:
-      form_mode: default
-      override_labels: false
-      label_singular: ''
-      label_plural: ''
-      allow_new: true
-      allow_existing: false
-      match_operator: CONTAINS
-      allow_duplicate: false
-      collapsible: false
-      collapsed: false
-      revision: false
+    settings: {  }
     third_party_settings: {  }
   gva_box_layout:
     type: options_select
