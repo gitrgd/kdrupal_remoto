@@ -3,7 +3,6 @@
 namespace Drupal\Tests\system\Kernel\System;
 
 use Drupal\Core\Flood\DatabaseBackend;
-use Drupal\Core\Flood\MemoryBackend;
 use Drupal\KernelTests\KernelTestBase;
 
 /**
@@ -43,34 +42,6 @@ class FloodTest extends KernelTestBase {
     $this->assertFalse($flood->isAllowed($name, $threshold));
     // Run cron and verify event is still not allowed.
     $cron->run();
-    $this->assertFalse($flood->isAllowed($name, $threshold));
-  }
-
-  /**
-   * Tests flood control memory backend.
-   */
-  public function testMemoryBackend() {
-    $threshold = 1;
-    $window_expired = -1;
-    $name = 'flood_test_cleanup';
-
-    $request_stack = \Drupal::service('request_stack');
-    $flood = new MemoryBackend($request_stack);
-    $this->assertTrue($flood->isAllowed($name, $threshold));
-    // Register expired event.
-    $flood->register($name, $window_expired);
-    // Verify event is not allowed.
-    $this->assertFalse($flood->isAllowed($name, $threshold));
-    // Run cron and verify event is now allowed.
-    $flood->garbageCollection();
-    $this->assertTrue($flood->isAllowed($name, $threshold));
-
-    // Register unexpired event.
-    $flood->register($name);
-    // Verify event is not allowed.
-    $this->assertFalse($flood->isAllowed($name, $threshold));
-    // Run cron and verify event is still not allowed.
-    $flood->garbageCollection();
     $this->assertFalse($flood->isAllowed($name, $threshold));
   }
 

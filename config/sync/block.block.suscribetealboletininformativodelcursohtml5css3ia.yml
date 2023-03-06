@@ -1,0 +1,35 @@
+uuid: 4957ca98-9487-4e8e-bc1b-282c16447213
+langcode: es
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:8a7e2f98-26a4-4934-86f6-34b73c061143'
+  module:
+    - block_content
+    - gaviasthemer
+    - system
+  theme:
+    - gavias_edmix
+third_party_settings:
+  gaviasthemer:
+    classes: block_suscrip_cursos
+id: suscribetealboletininformativodelcursohtml5css3ia
+theme: gavias_edmix
+region: after_content
+weight: 0
+provider: null
+plugin: 'block_content:8a7e2f98-26a4-4934-86f6-34b73c061143'
+settings:
+  id: 'block_content:8a7e2f98-26a4-4934-86f6-34b73c061143'
+  label: 'Suscríbete a este curso y te enviaremos información, descuentos, novedades...'
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    context_mapping: {  }
+    pages: /product/14

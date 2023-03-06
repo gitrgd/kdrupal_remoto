@@ -23,7 +23,7 @@ abstract class SwiftMailerTestBase extends BrowserTestBase {
    *
    * @var array
    */
-  public static $modules = ['swiftmailer_test', 'swiftmailer', 'mailsystem'];
+  protected static $modules = ['swiftmailer_test', 'swiftmailer', 'mailsystem'];
 
   /**
    * @var \Drupal\swiftmailer_test\SwiftMailerDrupalStateLogger
@@ -33,7 +33,7 @@ abstract class SwiftMailerTestBase extends BrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  protected function setUp(): void {
     parent::setUp();
     $this->config('mailsystem.settings')
       ->set('defaults', [
@@ -54,7 +54,7 @@ abstract class SwiftMailerTestBase extends BrowserTestBase {
   protected function assertBodyContains($value) {
     $captured_emails = $this->container->get('state')->get('system.test_mail_collector') ?: [];
     $email = end($captured_emails);
-    $this->assertContains($value, (string) $email['body']);
+    $this->assertStringContainsString($value, (string) $email['body']);
   }
 
   /**

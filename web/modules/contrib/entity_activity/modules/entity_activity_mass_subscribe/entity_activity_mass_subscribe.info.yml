@@ -1,0 +1,12 @@
+name: 'Entity Activity Mass Subscribe'
+type: module
+description: 'Entity Activity Mass Subscribe allow users with relevant permission to mass subscribe users to an entity.'
+core_version_requirement: ^8.9 || ^9
+package: 'Community'
+dependencies:
+  - entity_activity:entity_activity
+
+# Information added by Drupal.org packaging script on 2021-12-06
+version: '8.x-1.0-beta14'
+project: 'entity_activity'
+datestamp: 1638827635

@@ -33,17 +33,22 @@
   $.fn.infiniteScrollInsertView = function ($newView) {
     // Extract the view DOM ID from the view classes.
     var matches = /(js-view-dom-id-\w+)/.exec(this.attr('class'));
+
+    if (!matches) {
+      return;
+    }
+
     var currentViewId = matches[1].replace('js-view-dom-id-', 'views_dom_id:');
 
     // Get the existing ajaxViews object.
     var view = Drupal.views.instances[currentViewId];
     // Remove once so that the exposed form and pager are processed on
     // behavior attach.
-    view.$view.removeOnce('ajax-pager');
-    view.$exposed_form.removeOnce('exposed-form');
+    once.remove('ajax-pager', view.$view);
+    once.remove('exposed-form', view.$exposed_form);
     // Make sure infinite scroll can be reinitialized.
     var $existingPager = view.$view.find(pagerSelector);
-    $existingPager.removeOnce('infinite-scroll');
+    once.remove('infinite-scroll', $existingPager);
 
     var $newRows = $newView.find(contentWrapperSelector).children();
     var $newPager = $newView.find(pagerSelector);
@@ -74,8 +79,8 @@
    */
   Drupal.behaviors.views_infinite_scroll_automatic = {
     attach : function (context, settings) {
-      $(context).find(automaticPagerSelector).once('infinite-scroll').each(function () {
-        var $pager = $(this);
+      once('infinite-scroll', automaticPagerSelector, context).forEach(function (elem) {
+        var $pager = $(elem);
         $pager.addClass('visually-hidden');
         var isLoadNeeded = function () {
           return window.innerHeight + window.pageYOffset > $pager.offset().top - scrollThreshold;
@@ -97,11 +102,26 @@
       // other than a scroll. AJAX filters are a good example of the event needing
       // to be destroyed earlier than above.
       if (trigger === 'unload') {
-        if ($(context).find(automaticPagerSelector).removeOnce('infinite-scroll').length) {
+        if (once.remove('infinite-scroll', automaticPagerSelector, context).length) {
           $window.off(scrollEvent);
         }
       }
     }
+  };
+
+  /**
+   * Views AJAX pagination filter.
+   *
+   * In case the Entity View Attachment is rendered in a view context,
+   * the default filter function prevents the required 'Use AJAX' setting
+   * to work.
+   *
+   * @return {Boolean}
+   *   Whether to apply the Views AJAX paginator. VIS requires this setting
+   *   for pagination.
+   */
+  Drupal.views.ajaxView.prototype.filterNestedViews = function () {
+    return this.$view.hasClass('view-eva') || !this.$view.parents('.view').length;
   };
 
 })(jQuery, Drupal, Drupal.debounce);

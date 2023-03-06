@@ -18,6 +18,7 @@ class GvaAjaxController extends ControllerBase {
       $view = $_REQUEST['view'];
       if($view){
          $_view =  preg_split("/-----/", $view);
+         $output = '';
          if(isset($_view[0]) && isset($_view[1])){
             $output .= '<div class="ajax-view-content clearfix">';
             try{

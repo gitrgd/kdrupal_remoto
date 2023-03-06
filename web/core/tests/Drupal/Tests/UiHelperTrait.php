@@ -3,7 +3,6 @@
 namespace Drupal\Tests;
 
 use Behat\Mink\Driver\BrowserKitDriver;
-use Behat\Mink\Driver\GoutteDriver;
 use Drupal\Component\Render\FormattableMarkup;
 use Drupal\Component\Utility\Html;
 use Drupal\Component\Utility\UrlHelper;
@@ -306,7 +305,7 @@ trait UiHelperTrait {
    * @param string|\Drupal\Core\Url $path
    *   Drupal path or URL to load into Mink controlled browser.
    * @param array $options
-   *   (optional) Options to be forwarded to the url generator.
+   *   (optional) Options to be forwarded to the URL generator.
    * @param string[] $headers
    *   An array containing additional HTTP request headers, the array keys are
    *   the header names and the array values the header values. This is useful
@@ -362,7 +361,7 @@ trait UiHelperTrait {
    * Builds an absolute URL from a system path or a URL object.
    *
    * @param string|\Drupal\Core\Url $path
-   *   A system path or a URL.
+   *   A system path or a URL object.
    * @param array $options
    *   Options to be passed to Url::fromUri().
    *
@@ -586,10 +585,6 @@ trait UiHelperTrait {
    */
   protected function isTestUsingGuzzleClient() {
     $driver = $this->getSession()->getDriver();
-    if ($driver instanceof GoutteDriver) {
-      // Legacy support of GoutteDriver.
-      return TRUE;
-    }
     if ($driver instanceof BrowserKitDriver) {
       return $driver->getClient() instanceof DrupalTestBrowser;
     }

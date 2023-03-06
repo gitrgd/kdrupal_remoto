@@ -196,7 +196,7 @@ class AutoEmbed {
 
             $errors = libxml_use_internal_errors( true );
             $old_value = null;
-            if ( function_exists( 'libxml_disable_entity_loader' ) ) {
+            if ( function_exists( 'libxml_disable_entity_loader' ) && \PHP_VERSION_ID < 80000 ) {
                     $old_value = libxml_disable_entity_loader( true );
             }
 
@@ -267,7 +267,7 @@ class AutoEmbed {
 
             return $return;
     }
-    
+
     /**
      * Grabs the response from a remote URL.
      *
@@ -352,17 +352,17 @@ class AutoEmbed {
                     if ( $v === false )
                             unset( $qs[$k] );
             }
-            $ret = http_build_query( $qs, null, '&' );
+            $ret = http_build_query( $qs, '', '&' );
             $ret = trim( $ret, '?' );
             $ret = preg_replace( '#=(&|$)#', '$1', $ret );
             $ret = $protocol . $base . $ret . $frag;
             $ret = rtrim( $ret, '?' );
             return $ret;
     }
-    
+
     /**
      * Checks and cleans a URL.
-     * 
+     *
      * @param string $url The URL to be cleaned.
      * @return string The cleaned $url.
      */
@@ -381,13 +381,13 @@ class AutoEmbed {
             if ( strpos($url, ':') === false && ! in_array( $url[0], array( '/', '#', '?' ) ) &&
                     ! preg_match('/^[a-z0-9-]+?\.php/i', $url) )
                     $url = 'http://' . $url;
-            
+
             $url = str_replace( '&amp;', '&#038;', $url );
             $url = str_replace( "'", '&#039;', $url );
 
             return $url;
     }
-    
+
     /**
     * Perform a deep string replace operation to ensure the values in $search are no longer present
     *
@@ -416,7 +416,7 @@ class AutoEmbed {
 
             return $subject;
     }
-    
+
     /**
      * Retrieve all attributes from the tag.
      *
@@ -445,5 +445,5 @@ class AutoEmbed {
             }
             return $atts;
     }
-        
+
 }

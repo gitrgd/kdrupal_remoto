@@ -1,0 +1,21 @@
+uuid: c55d1281-2af7-4e6d-bd16-6eb3a8f0c7c8
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_imgnoticia
+    - node.type.article
+id: node.article.field_imgnoticia
+field_name: field_imgnoticia
+entity_type: node
+bundle: article
+label: Imgnoticia
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings: {  }
+field_type: entity_reference

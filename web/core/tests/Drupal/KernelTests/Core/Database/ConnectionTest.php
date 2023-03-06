@@ -4,7 +4,6 @@ namespace Drupal\KernelTests\Core\Database;
 
 use Drupal\Core\Database\Connection;
 use Drupal\Core\Database\Database;
-use Drupal\Core\Database\DatabaseExceptionWrapper;
 use Drupal\Core\Database\Query\Condition;
 use Drupal\Core\Database\StatementWrapper;
 
@@ -166,18 +165,40 @@ class ConnectionTest extends DatabaseTestBase {
   }
 
   /**
-   * Ensure that you cannot execute multiple statements on MySQL.
+   * Tests per-table prefix connection option.
    */
-  public function testMultipleStatementsForNewPhp() {
-    // This just tests mysql, as other PDO integrations don't allow disabling
-    // multiple statements.
-    if (Database::getConnection()->databaseType() !== 'mysql') {
-      $this->markTestSkipped("This test only runs for MySQL");
-    }
+  public function testPerTablePrefixOption() {
+    $connection_info = Database::getConnectionInfo('default');
+    $new_connection_info = $connection_info['default'];
+    $new_connection_info['prefix'] = [
+      'default' => $connection_info['default']['prefix'],
+      'test_table' => $connection_info['default']['prefix'] . '_bar',
+    ];
+    Database::addConnectionInfo('default', 'foo', $new_connection_info);
+    $foo_connection = Database::getConnection('foo', 'default');
+    $this->assertInstanceOf(Connection::class, $foo_connection);
+    $this->assertIsString($foo_connection->getConnectionOptions()['prefix']);
+    $this->assertSame($connection_info['default']['prefix'], $foo_connection->getConnectionOptions()['prefix']);
+    $this->assertSame([
+      'test_table' => $connection_info['default']['prefix'] . '_bar',
+    ], $foo_connection->getConnectionOptions()['extra_prefix']);
+  }
 
-    // Disable the protection at the PHP level.
-    $this->expectException(DatabaseExceptionWrapper::class);
-    Database::getConnection('default', 'default')->query('SELECT * FROM {test}; SELECT * FROM {test_people}', [], ['allow_delimiter_in_query' => TRUE]);
+  /**
+   * Tests the prefix connection option in array form.
+   */
+  public function testPrefixArrayOption() {
+    $connection_info = Database::getConnectionInfo('default');
+    $new_connection_info = $connection_info['default'];
+    $new_connection_info['prefix'] = [
+      'default' => $connection_info['default']['prefix'],
+    ];
+    Database::addConnectionInfo('default', 'foo', $new_connection_info);
+    $foo_connection = Database::getConnection('foo', 'default');
+    $this->assertInstanceOf(Connection::class, $foo_connection);
+    $this->assertIsString($foo_connection->getConnectionOptions()['prefix']);
+    $this->assertSame($connection_info['default']['prefix'], $foo_connection->getConnectionOptions()['prefix']);
+    $this->assertArrayNotHasKey('extra_prefix', $foo_connection->getConnectionOptions());
   }
 
   /**
@@ -207,6 +228,13 @@ class ConnectionTest extends DatabaseTestBase {
     }
     $condition = $connection->condition('AND');
     $this->assertSame($namespace, get_class($condition));
+  }
+
+  /**
+   * Tests that the method ::hasJson() returns TRUE.
+   */
+  public function testHasJson() {
+    $this->assertTrue($this->connection->hasJson());
   }
 
 }

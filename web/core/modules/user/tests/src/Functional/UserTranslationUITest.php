@@ -19,6 +19,17 @@ class UserTranslationUITest extends ContentTranslationUITestBase {
   protected $name;
 
   /**
+   * {@inheritdoc}
+   */
+  protected $defaultCacheContexts = [
+    'languages:language_interface',
+    'theme',
+    'url.query_args:_wrapper_format',
+    'user.permissions',
+    'url.site',
+  ];
+
+  /**
    * Modules to enable.
    *
    * @var array
@@ -33,8 +44,11 @@ class UserTranslationUITest extends ContentTranslationUITestBase {
   /**
    * {@inheritdoc}
    */
-  protected $defaultTheme = 'classy';
+  protected $defaultTheme = 'stark';
 
+  /**
+   * {@inheritdoc}
+   */
   protected function setUp(): void {
     $this->entityTypeId = 'user';
     $this->testLanguageSelector = FALSE;
@@ -75,12 +89,7 @@ class UserTranslationUITest extends ContentTranslationUITestBase {
         $options = ['language' => $languages[$langcode]];
         $url = $entity->toUrl('edit-form', $options);
         $this->drupalGet($url);
-
-        $title = t('@title [%language translation]', [
-          '@title' => $entity->getTranslation($langcode)->label(),
-          '%language' => $languages[$langcode]->getName(),
-        ]);
-        $this->assertRaw($title);
+        $this->assertSession()->pageTextContains("{$entity->getTranslation($langcode)->label()} [{$languages[$langcode]->getName()} translation]");
       }
     }
   }
@@ -103,7 +112,7 @@ class UserTranslationUITest extends ContentTranslationUITestBase {
       ['language' => $this->container->get('language_manager')->getLanguage('en')]
     );
     $this->drupalGet($url);
-    $this->submitForm([], 'Cancel account');
+    $this->clickLink('Cancel account');
     $this->assertSession()->statusCodeEquals(200);
   }
 

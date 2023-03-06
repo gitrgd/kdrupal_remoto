@@ -1,0 +1,13 @@
+_core:
+  default_config_hash: x8k6uOqmSHPqpp71jYGxHF3_SAs3U-Pha3YCntQIhPU
+langcode: es
+api_key: 1389550871a457175b5a1f900ec8a32d-us18
+api_timeout: 10
+cron: true
+batch_limit: 1000
+api_classname: Mailchimp\Mailchimp
+test_mode: false
+enable_connected: true
+connected_id: 913c74a4e2b3af6
+connected_paths: ''
+webhook_hash: aa72216a3ca189dabfa09fc18f7b8cd9

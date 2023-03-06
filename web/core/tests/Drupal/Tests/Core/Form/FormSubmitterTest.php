@@ -80,7 +80,7 @@ class FormSubmitterTest extends UnitTestCase {
       ->getMock();
     $response->expects($this->any())
       ->method('prepare')
-      ->will($this->returnValue($response));
+      ->willReturn($response);
 
     $form_state = (new FormState())
       ->setSubmitted()
@@ -256,7 +256,7 @@ class FormSubmitterTest extends UnitTestCase {
     $request_stack->push(Request::create('/test-path'));
     return $this->getMockBuilder('Drupal\Core\Form\FormSubmitter')
       ->setConstructorArgs([$request_stack, $this->urlGenerator])
-      ->setMethods(['batchGet', 'drupalInstallationAttempted'])
+      ->onlyMethods(['batchGet'])
       ->getMock();
   }
 

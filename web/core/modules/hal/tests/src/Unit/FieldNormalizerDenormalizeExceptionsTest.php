@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Exception\InvalidArgumentException;
  * Tests the exceptions thrown by FieldNormalizer and FieldItemNormalizer.
  *
  * @group hal
+ * @group legacy
  */
 class FieldNormalizerDenormalizeExceptionsTest extends UnitTestCase {
 
@@ -52,11 +53,11 @@ class FieldNormalizerDenormalizeExceptionsTest extends UnitTestCase {
    */
   public function providerNormalizerDenormalizeExceptions() {
     $mock = $this->getMockBuilder('\Drupal\Core\Field\Plugin\DataType\FieldItem')
-      ->setMethods(['getParent'])
+      ->addMethods(['getParent'])
       ->getMock();
     $mock->expects($this->any())
       ->method('getParent')
-      ->will($this->returnValue(NULL));
+      ->willReturn(NULL);
     return [
       [[]],
       [['target_instance' => $mock]],

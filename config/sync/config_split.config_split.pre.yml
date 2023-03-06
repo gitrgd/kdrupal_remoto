@@ -1,0 +1,19 @@
+uuid: 0c4114a9-3b45-40e4-8e5d-1d18bfeb7596
+langcode: es
+status: false
+dependencies: {  }
+id: pre
+label: pre
+description: ''
+weight: 0
+folder: ../config/entornos/pre
+module: {  }
+theme: {  }
+blacklist:
+  - mailchimp.settings
+  - swiftmailer.transport
+  - syslog.settings
+  - system.performance
+graylist: {  }
+graylist_dependents: true
+graylist_skip_equal: true

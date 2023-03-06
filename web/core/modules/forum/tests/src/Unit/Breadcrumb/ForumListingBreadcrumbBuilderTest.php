@@ -52,20 +52,12 @@ class ForumListingBreadcrumbBuilderTest extends UnitTestCase {
     $translation_manager = $this->createMock('Drupal\Core\StringTranslation\TranslationInterface');
 
     // Make an object to test.
-    $builder = $this->getMockBuilder('Drupal\forum\Breadcrumb\ForumListingBreadcrumbBuilder')
-      ->setConstructorArgs([
-        $entity_type_manager,
-        $config_factory,
-        $forum_manager,
-        $translation_manager,
-      ])
-      ->setMethods(NULL)
-      ->getMock();
+    $builder = new ForumListingBreadcrumbBuilder($entity_type_manager, $config_factory, $forum_manager, $translation_manager);
 
     $route_match = $this->createMock('Drupal\Core\Routing\RouteMatchInterface');
     $route_match->expects($this->once())
       ->method('getRouteName')
-      ->will($this->returnValue($route_name));
+      ->willReturn($route_name);
     $route_match->expects($this->any())
       ->method('getParameter')
       ->willReturnMap($parameter_map);
@@ -204,7 +196,7 @@ class ForumListingBreadcrumbBuilderTest extends UnitTestCase {
     $route_match->expects($this->exactly(2))
       ->method('getParameter')
       ->with('taxonomy_term')
-      ->will($this->returnValue($forum_listing));
+      ->willReturn($forum_listing);
 
     // First test.
     $expected1 = [
@@ -214,9 +206,9 @@ class ForumListingBreadcrumbBuilderTest extends UnitTestCase {
     ];
     $breadcrumb = $breadcrumb_builder->build($route_match);
     $this->assertEquals($expected1, $breadcrumb->getLinks());
-    $this->assertEquals(['route'], $breadcrumb->getCacheContexts());
-    $this->assertEquals(['taxonomy_term:1', 'taxonomy_term:23', 'taxonomy_vocabulary:5'], $breadcrumb->getCacheTags());
-    $this->assertEquals(Cache::PERMANENT, $breadcrumb->getCacheMaxAge());
+    $this->assertEqualsCanonicalizing(['route'], $breadcrumb->getCacheContexts());
+    $this->assertEqualsCanonicalizing(['taxonomy_term:1', 'taxonomy_term:23', 'taxonomy_vocabulary:5'], $breadcrumb->getCacheTags());
+    $this->assertEqualsCanonicalizing(Cache::PERMANENT, $breadcrumb->getCacheMaxAge());
 
     // Second test.
     $expected2 = [
@@ -227,8 +219,8 @@ class ForumListingBreadcrumbBuilderTest extends UnitTestCase {
     ];
     $breadcrumb = $breadcrumb_builder->build($route_match);
     $this->assertEquals($expected2, $breadcrumb->getLinks());
-    $this->assertEquals(['route'], $breadcrumb->getCacheContexts());
-    $this->assertEquals(['taxonomy_term:1', 'taxonomy_term:2', 'taxonomy_term:23', 'taxonomy_vocabulary:5'], $breadcrumb->getCacheTags());
+    $this->assertEqualsCanonicalizing(['route'], $breadcrumb->getCacheContexts());
+    $this->assertEqualsCanonicalizing(['taxonomy_term:1', 'taxonomy_term:2', 'taxonomy_term:23', 'taxonomy_vocabulary:5'], $breadcrumb->getCacheTags());
     $this->assertEquals(Cache::PERMANENT, $breadcrumb->getCacheMaxAge());
 
   }

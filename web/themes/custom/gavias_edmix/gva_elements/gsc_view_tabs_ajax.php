@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace Drupal\gavias_blockbuilder\shortcodes;
 use Drupal\views\Views;
 use Drupal\views\Element\View;
@@ -34,7 +34,7 @@ if(!class_exists('gsc_view_tabs_ajax')):
                   'type'      => 'select',
                   'title'     => t('Style display'),
                   'options'   => array(
-                     'style-1'   => 'Style #1', 
+                     'style-1'   => 'Style #1',
                      'style-2'   =>'Style #2'
                   )
                ),
@@ -50,8 +50,8 @@ if(!class_exists('gsc_view_tabs_ajax')):
                   'type'      => 'text',
                   'title'     => t('Extra class name'),
                   'desc'      => t('Style particular content element differently - add a class name and refer to it in custom CSS.'),
-               ),   
-            ),                                     
+               ),
+            ),
          );
 
          for($i=1; $i<=10; $i++){
@@ -103,26 +103,26 @@ if(!class_exists('gsc_view_tabs_ajax')):
          $_id = gavias_blockbuilder_makeid();
          ?>
          <?php ob_start() ?>
-         <div class="gsc-tab-views block widget gsc-tabs-views-ajax <?php echo $el_class ?>" <?php print gavias_print_animate_aos($animate) ?>>  
+         <div class="gsc-tab-views block widget gsc-tabs-views-ajax <?php echo $el_class ?>" <?php print gavias_print_animate_aos($animate) ?>>
             <div class="block-content">
                <div class="list-links-tabs clearfix">
                   <ul class="nav nav-tabs links-ajax" data-load="ajax">
-                     <?php 
-                     for($i=1; $i<=10; $i++){ 
+                     <?php
+                     for($i=1; $i<=10; $i++){
                         $title = "title_{$i}";
                         if(!empty($$title)){
                      ?>
                         <li class="<?php print ($i==1?'active':'') ?>"><a href="javascript:void(0);" data-panel="#tab-item-<?php print ($_id . $i) ?>"><?php print $$title ?></a></li>
-                     <?php 
+                     <?php
                         }
-                     } 
+                     }
                      ?>
                   </ul>
-               </div>  
+               </div>
                <div class="tabs-container clearfix">
                   <div class="ajax-loading"></div>
                   <div class="tab-content tab-content-view">
-                     <?php for($i=1; $i<=10; $i++){ 
+                     <?php for($i=1; $i<=10; $i++){
                         $output = '';
                         $view = "view_{$i}";
                         $view_name = $view;
@@ -146,7 +146,7 @@ if(!class_exists('gsc_view_tabs_ajax')):
                                                $v_output = ['#cache' => $v_output['#cache']];
                                              }
                                              if($v_output){
-                                               $output .= render($v_output);
+                                               $output .= \Drupal::service('renderer')->render($v_output);
                                              }
                                           }
                                        }else{
@@ -161,7 +161,7 @@ if(!class_exists('gsc_view_tabs_ajax')):
                               }else{
                                  $output .= '<div>Missing view, please choose view"</div>';
                               }
-                              print '<div data-loaded="true" data-view="'.  $$view_name . '" class="tab-pane clearfix fade in '.(($i==1)?'active':'').'" id="tab-item-' . $_id . $i . '">'.$output.'</div>';     
+                              print '<div data-loaded="true" data-view="'.  $$view_name . '" class="tab-pane clearfix fade in '.(($i==1)?'active':'').'" id="tab-item-' . $_id . $i . '">'.$output.'</div>';
                            }else{
                               print '<div data-loaded="false" data-view="'.  $$view_name . '" class="tab-pane clearfix fade in '.(($i==1)?'active':'').'" id="tab-item-' . $_id . $i . '"></div>';
                            }
@@ -169,8 +169,8 @@ if(!class_exists('gsc_view_tabs_ajax')):
                      } ?>
                   </div>
                </div>
-            </div>      
-         </div>   
+            </div>
+         </div>
          <?php return ob_get_clean();
       }
 
@@ -178,7 +178,4 @@ if(!class_exists('gsc_view_tabs_ajax')):
          add_shortcode( 'sc_tab_views', array($this, 'sc_tab_views') );
       }
    }
- endif;  
-
-
-
+ endif;

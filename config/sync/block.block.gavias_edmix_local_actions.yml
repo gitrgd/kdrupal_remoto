@@ -1,0 +1,33 @@
+uuid: a7e6f033-e45e-4d7e-892c-d917b628c941
+langcode: en
+status: true
+dependencies:
+  module:
+    - gaviasthemer
+    - language
+  theme:
+    - gavias_edmix
+third_party_settings:
+  gaviasthemer:
+    classes: ''
+_core:
+  default_config_hash: 13GQpeITIJsp1kyPniXtWZfyFH87vb1xxJCHifL4UeE
+id: gavias_edmix_local_actions
+theme: gavias_edmix
+region: help
+weight: -8
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  label_display: '0'
+  provider: core
+visibility:
+  language:
+    id: language
+    negate: false
+    context_mapping:
+      language: '@language.current_language_context:language_interface'
+    langcodes:
+      es: es

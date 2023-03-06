@@ -1,0 +1,29 @@
+uuid: 51167c58-c068-4ee1-8769-6f5d186bb258
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_etiquetas_blog
+    - node.type.post
+    - taxonomy.vocabulary.posts
+id: node.post.field_etiquetas_blog
+field_name: field_etiquetas_blog
+entity_type: node
+bundle: post
+label: 'Etiquetas blog'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      posts: posts
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

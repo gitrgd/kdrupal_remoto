@@ -60,7 +60,7 @@ class UserSessionTest extends UnitTestCase {
     $roles = [];
     $roles['role_one'] = $this->getMockBuilder('Drupal\user\Entity\Role')
       ->disableOriginalConstructor()
-      ->setMethods(['hasPermission'])
+      ->onlyMethods(['hasPermission'])
       ->getMock();
     $roles['role_one']->expects($this->any())
       ->method('hasPermission')
@@ -72,7 +72,7 @@ class UserSessionTest extends UnitTestCase {
 
     $roles['role_two'] = $this->getMockBuilder('Drupal\user\Entity\Role')
       ->disableOriginalConstructor()
-      ->setMethods(['hasPermission'])
+      ->onlyMethods(['hasPermission'])
       ->getMock();
     $roles['role_two']->expects($this->any())
       ->method('hasPermission')
@@ -84,7 +84,7 @@ class UserSessionTest extends UnitTestCase {
 
     $roles['anonymous'] = $this->getMockBuilder('Drupal\user\Entity\Role')
       ->disableOriginalConstructor()
-      ->setMethods(['hasPermission'])
+      ->onlyMethods(['hasPermission'])
       ->getMock();
     $roles['anonymous']->expects($this->any())
       ->method('hasPermission')
@@ -97,7 +97,7 @@ class UserSessionTest extends UnitTestCase {
     $role_storage = $this->getMockBuilder('Drupal\user\RoleStorage')
       ->setConstructorArgs(['role', new MemoryCache()])
       ->disableOriginalConstructor()
-      ->setMethods(['loadMultiple'])
+      ->onlyMethods(['loadMultiple'])
       ->getMock();
     $role_storage->expects($this->any())
       ->method('loadMultiple')
@@ -117,7 +117,7 @@ class UserSessionTest extends UnitTestCase {
     $entity_type_manager->expects($this->any())
       ->method('getStorage')
       ->with($this->equalTo('user_role'))
-      ->will($this->returnValue($role_storage));
+      ->willReturn($role_storage);
     $container = new ContainerBuilder();
     $container->set('entity_type.manager', $entity_type_manager);
     \Drupal::setContainer($container);

@@ -1,0 +1,28 @@
+uuid: dbfad74a-0ac9-4f86-9ab8-0cef40eddede
+langcode: es
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.media_library
+    - field.field.media.videopost.field_media_video_file_1
+    - media.type.videopost
+id: media.videopost.media_library
+targetEntityType: media
+bundle: videopost
+mode: media_library
+content:
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_media_video_file_1: true
+  langcode: true
+  path: true
+  status: true
+  uid: true

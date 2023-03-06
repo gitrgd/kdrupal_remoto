@@ -59,8 +59,42 @@ class UninstallTest extends BrowserTestBase {
     ]);
     $node->save();
 
+    // Change the config directly to "install" non-stable modules.
+    $this->config('core.extension')
+      ->set('module.system_status_obsolete_test', 0)
+      ->set('module.deprecated_module', 0)
+      ->set('module.experimental_module_test', 0)
+      ->save();
+    $this->rebuildAll();
+
     $this->drupalGet('admin/modules/uninstall');
     $this->assertSession()->titleEquals('Uninstall | Drupal');
+
+    // Check that the experimental module link was rendered correctly.
+    $this->assertSession()->elementExists('xpath', "//a[contains(@aria-label, 'View information on the Experimental status of the module Experimental Test')]");
+    $this->assertSession()->elementExists('xpath', "//a[contains(@href, 'https://example.com/experimental')]");
+
+    // Check that the deprecated module link was rendered correctly.
+    $this->assertSession()->elementExists('xpath', "//a[contains(@aria-label, 'View information on the Deprecated status of the module Deprecated module')]");
+    $this->assertSession()->elementExists('xpath', "//a[contains(@href, 'http://example.com/deprecated')]");
+
+    // Check that the obsolete module link was rendered correctly.
+    $this->assertSession()->elementExists('xpath', "//a[contains(@aria-label, 'View information on the Obsolete status of the module System obsolete status test')]");
+    $this->assertSession()->elementExists('xpath', "//a[contains(@href, 'https://example.com/obsolete')]");
+
+    $form = $this->assertSession()->elementExists('xpath', "//form[@id='system-modules-uninstall']");
+    $form_html = $form->getOuterHtml();
+
+    // Select the first stable module on the uninstall list.
+    $module_stable = $this->assertSession()->elementExists('xpath', "//label[contains(@class, 'module-name') and not(./a[contains(@class, 'module-link--non-stable')])]")->getOuterHtml();
+
+    // Select the unstable modules (deprecated, and obsolete).
+    $module_unstable_1 = $this->assertSession()->elementExists('xpath', "//label[./a[contains(@aria-label, 'View information on the Deprecated status of the module Deprecated module')]]")->getOuterHtml();
+    $module_unstable_2 = $this->assertSession()->elementExists('xpath', "//label[./a[contains(@aria-label, 'View information on the Obsolete status of the module System obsolete status test')]]")->getOuterHtml();
+
+    // Check that all unstable modules appear before the first stable module.
+    $this->assertGreaterThan(strpos($form_html, $module_unstable_1), strpos($form_html, $module_stable));
+    $this->assertGreaterThan(strpos($form_html, $module_unstable_2), strpos($form_html, $module_stable));
 
     foreach (\Drupal::service('extension.list.module')->getAllInstalledInfo() as $module => $info) {
       $field_name = "uninstall[$module]";
@@ -75,7 +109,7 @@ class UninstallTest extends BrowserTestBase {
 
     // Be sure labels are rendered properly.
     // @see regression https://www.drupal.org/node/2512106
-    $this->assertRaw('<label for="edit-uninstall-node" class="module-name table-filter-text-source">Node</label>');
+    $this->assertSession()->responseContains('<label for="edit-uninstall-node" class="module-name table-filter-text-source">Node</label>');
 
     $this->assertSession()->pageTextContains('The following reason prevents Node from being uninstalled:');
     $this->assertSession()->pageTextContains('There is content for the entity type: Content');
@@ -87,7 +121,7 @@ class UninstallTest extends BrowserTestBase {
     $edit['uninstall[module_test]'] = TRUE;
     $this->drupalGet('admin/modules/uninstall');
     $this->submitForm($edit, 'Uninstall');
-    $this->assertNoText('Configuration deletions');
+    $this->assertSession()->pageTextNotContains('Configuration deletions');
     $this->assertSession()->pageTextContains('Configuration updates');
     $this->assertSession()->pageTextContains($node_type->label());
     $this->submitForm([], 'Uninstall');
@@ -95,13 +129,13 @@ class UninstallTest extends BrowserTestBase {
 
     // Uninstall node testing that the configuration that will be deleted is
     // listed.
-    $node_dependencies = \Drupal::service('config.manager')->findConfigEntityDependentsAsEntities('module', ['node']);
+    $node_dependencies = \Drupal::service('config.manager')->findConfigEntityDependenciesAsEntities('module', ['node']);
     $edit = [];
     $edit['uninstall[node]'] = TRUE;
     $this->drupalGet('admin/modules/uninstall');
     $this->submitForm($edit, 'Uninstall');
     $this->assertSession()->pageTextContains('Configuration deletions');
-    $this->assertNoText('Configuration updates');
+    $this->assertSession()->pageTextNotContains('Configuration updates');
 
     $entity_types = [];
     foreach ($node_dependencies as $entity) {
@@ -114,7 +148,7 @@ class UninstallTest extends BrowserTestBase {
       $entity_type = \Drupal::entityTypeManager()->getDefinition($entity_type_id);
       // Add h3's since the entity type label is often repeated in the entity
       // labels.
-      $this->assertRaw('<h3>' . $entity_type->getLabel() . '</h3>');
+      $this->assertSession()->responseContains('<h3>' . $entity_type->getLabel() . '</h3>');
     }
 
     // Set a unique cache entry to be able to test whether all caches are
@@ -126,7 +160,7 @@ class UninstallTest extends BrowserTestBase {
     $this->submitForm([], 'Uninstall');
     $this->assertSession()->pageTextContains('The selected modules have been uninstalled.');
     // Check that the page does not have double escaped HTML tags.
-    $this->assertNoRaw('&lt;label');
+    $this->assertSession()->responseNotContains('&lt;label');
 
     // Make sure our unique cache entry is gone.
     $cached = \Drupal::cache()->get('uninstall_test');
@@ -173,7 +207,7 @@ class UninstallTest extends BrowserTestBase {
     $this->submitForm($edit, 'Uninstall');
     $this->submitForm([], 'Uninstall');
     $this->assertSession()->pageTextContains('The selected modules have been uninstalled.');
-    $this->assertNoText('Module installer config test');
+    $this->assertSession()->pageTextNotContains('Module installer config test');
   }
 
 }

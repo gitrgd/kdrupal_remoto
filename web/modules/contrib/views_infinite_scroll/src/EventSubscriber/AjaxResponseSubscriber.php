@@ -35,10 +35,10 @@ class AjaxResponseSubscriber implements EventSubscriberInterface {
   /**
    * Renders the ajax commands right before preparing the result.
    *
-   * @param \Symfony\Component\HttpKernel\Event\FilterResponseEvent $event
+   * @param \Symfony\Component\HttpKernel\Event\ResponseEvent $event
    *   The response event, which contains the possible AjaxResponse object.
    */
-  public function onResponse(FilterResponseEvent $event) {
+  public function onResponse(\Symfony\Component\HttpKernel\Event\ResponseEvent $event) {
     $response = $event->getResponse();
 
     // Only alter views ajax responses.
@@ -49,7 +49,10 @@ class AjaxResponseSubscriber implements EventSubscriberInterface {
     $view = $response->getView();
     // Only alter commands if the user has selected our pager and it attempting
     // to move beyond page 0.
-    if ($view->getPager()->getPluginId() !== 'infinite_scroll' || $event->getRequest()->query->get('page') == 0) {
+    if ($view->getPager()->getPluginId() !== 'infinite_scroll' ||
+      $view->getCurrentPage() === 0 ||
+      $view->getPager()->getCurrentPage() === 0
+    ) {
       // When the current page is 0 it might be the case that there where no
       // additional items in this case we want to still append the empty result.
       return;

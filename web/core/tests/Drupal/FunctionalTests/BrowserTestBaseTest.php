@@ -37,7 +37,7 @@ class BrowserTestBaseTest extends BrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  protected $defaultTheme = 'classy';
+  protected $defaultTheme = 'starterkit_theme';
 
   /**
    * Tests basic page test.
@@ -69,7 +69,7 @@ class BrowserTestBaseTest extends BrowserTestBase {
     $js_settings = $this->getDrupalSettings();
     $this->assertSame('azAZ09();.,\\\/-_{}', $js_settings['test-setting']);
 
-    // Test drupalGet with a url object.
+    // Test drupalGet with a URL object.
     $url = Url::fromRoute('test_page_test.render_title');
     $this->drupalGet($url);
     $this->assertSession()->statusCodeEquals(200);
@@ -299,7 +299,7 @@ class BrowserTestBaseTest extends BrowserTestBase {
     $this->drupalGet('test-encoded');
     $dangerous = 'Bad html <script>alert(123);</script>';
     $sanitized = Html::escape($dangerous);
-    $this->assertNoText($dangerous);
+    $this->assertSession()->responseNotContains($dangerous);
     $this->assertSession()->responseContains($sanitized);
   }
 
@@ -333,6 +333,7 @@ class BrowserTestBaseTest extends BrowserTestBase {
    * @group legacy
    */
   public function testAssertNoText() {
+    $this->expectDeprecation('AssertLegacyTrait::assertNoText() is deprecated in drupal:8.2.0 and is removed from drupal:10.0.0. Use $this->assertSession()->responseNotContains() or $this->assertSession()->pageTextNotContains() instead. See https://www.drupal.org/node/3129738');
     $this->expectDeprecation('Calling AssertLegacyTrait::assertNoText() with more than one argument is deprecated in drupal:8.2.0 and the method is removed from drupal:10.0.0. Use $this->assertSession()->responseNotContains() or $this->assertSession()->pageTextNotContains() instead. See https://www.drupal.org/node/3129738');
     $this->drupalGet('test-encoded');
     $dangerous = 'Bad html <script>alert(123);</script>';
@@ -759,6 +760,9 @@ class BrowserTestBaseTest extends BrowserTestBase {
   public function testInstall() {
     $htaccess_filename = $this->tempFilesDirectory . '/.htaccess';
     $this->assertFileExists($htaccess_filename);
+
+    // Ensure the update module is not installed.
+    $this->assertFalse(\Drupal::moduleHandler()->moduleExists('update'), 'The Update module is not installed.');
   }
 
   /**
@@ -996,7 +1000,7 @@ class BrowserTestBaseTest extends BrowserTestBase {
     // value. It should be sufficient to test just a couple of properties.
     $this->assertStringContainsString('<span class=sf-dump-note>', $body);
     $this->assertStringContainsString('  #<span class=sf-dump-protected title="Protected property">id</span>: "<span class=sf-dump-str title="9 characters">test_role</span>"', $body);
-    $this->assertStringContainsString('  #<span class=sf-dump-protected title="Protected property">label</span>: <span class=sf-dump-const>null</span>', $body);
+    $this->assertStringContainsString('  #<span class=sf-dump-protected title="Protected property">label</span>: "<span class=sf-dump-str title="9 characters">Test role</span>"', $body);
     $this->assertStringContainsString('  #<span class=sf-dump-protected title="Protected property">permissions</span>: []', $body);
     $this->assertStringContainsString('  #<span class=sf-dump-protected title="Protected property">uuid</span>: "', $body);
     $this->assertStringContainsString('</samp>}', $body);

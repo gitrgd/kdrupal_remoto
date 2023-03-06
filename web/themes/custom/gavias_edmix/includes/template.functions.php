@@ -1,7 +1,7 @@
 <?php
 function gavias_edmix_base_url(){
   global $base_url;
-  $theme_path = drupal_get_path('theme', 'gavias_edmix');
+  $theme_path = \Drupal::service('extension.list.theme')->getPath('gavias_edmix');
   return $base_url . '/' . $theme_path . '/';
 }
 
@@ -44,7 +44,7 @@ function gavias_edmix_preprocess_node(&$variables) {
       $variables['gva_iframe'] = $iframe;
       $variables['post_format'] = $post_format;
   }
-  $variables['theme_uri'] = base_path() . drupal_get_path('theme', 'gavias_edmix');
+  $variables['theme_uri'] = base_path() . \Drupal::service('extension.list.theme')->getPath('gavias_edmix');
 }
 
 function gavias_edmix_preprocess_node__portfolio(&$variables){
@@ -87,7 +87,7 @@ function gavias_edmix_preprocess_breadcrumb(&$variables){
 
   $request = \Drupal::request();
   $title = '';
-  if ($route = $request->attributes->get(\Symfony\Cmf\Component\Routing\RouteObjectInterface::ROUTE_OBJECT)) {
+  if ($route = $request->attributes->get(\Drupal\Core\Routing\RouteObjectInterface::ROUTE_OBJECT)) {
     $title = \Drupal::service('title_resolver')->getTitle($request, $route);
   }
 

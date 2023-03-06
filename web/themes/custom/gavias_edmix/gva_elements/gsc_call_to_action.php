@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace Drupal\gavias_blockbuilder\shortcodes;
 if(!class_exists('gsc_call_to_action')):
    class gsc_call_to_action{
@@ -7,7 +7,7 @@ if(!class_exists('gsc_call_to_action')):
             'type' => 'gsc_call_to_action',
             'title' => t('Call to Action'),
             'size' => 12,
-            
+
             'fields' => array(
                array(
                   'id'        => 'title',
@@ -95,7 +95,7 @@ if(!class_exists('gsc_call_to_action')):
                   'sub_desc'  => t('Entrance animation'),
                   'options'   => gavias_blockbuilder_animate_aos(),
                ),
-            ),                                       
+            ),
          );
       return $fields;
       }
@@ -120,14 +120,14 @@ if(!class_exists('gsc_call_to_action')):
             'style_text'      => 'text-dark',
             'box_background'  => ''
          ), $attr));
-         
+
          // target
          if( $target ){
             $target = 'target="_blank"';
          } else {
             $target = false;
          }
-         
+
          $class = array();
          $class[] = $el_class;
          $class[] = $button_align;
@@ -141,7 +141,7 @@ if(!class_exists('gsc_call_to_action')):
          ?>
 
          <?php ob_start() ?>
-         <div class="widget gsc-call-to-action <?php print implode($class, ' ') ?>" <?php print $style ?> <?php print gavias_print_animate_aos($animate) ?>>
+         <div class="widget gsc-call-to-action <?php print implode(' ', $class) ?>" <?php print $style ?> <?php print gavias_print_animate_aos($animate) ?>>
             <div class="content-inner clearfix" >
                <div class="content">
                   <h2 class="title"><span><?php print $title; ?></span></h2>
@@ -149,7 +149,7 @@ if(!class_exists('gsc_call_to_action')):
                </div>
                <?php if($link){?>
                <div class="button-action">
-                  <a href="<?php print $link ?>" class="<?php print $style_button ?>" <?php print $target ?>><?php print $button_title ?></a>   
+                  <a href="<?php print $link ?>" class="<?php print $style_button ?>" <?php print $target ?>><?php print $button_title ?></a>
                </div>
                <?php } ?>
             </div>
@@ -162,7 +162,4 @@ if(!class_exists('gsc_call_to_action')):
          add_shortcode( 'cta', array($this, 'sc_call_to_action') );
       }
    }
-endif;   
-
-
-
+endif;

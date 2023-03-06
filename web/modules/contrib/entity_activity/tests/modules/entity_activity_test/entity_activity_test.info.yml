@@ -1,0 +1,12 @@
+name: Entity Activity Test
+type: module
+description: Contains various non-specific things needed in tests.
+package: Testing
+core_version_requirement: ^8.9 || ^9
+dependencies:
+  - entity_activity:entity_activity
+
+# Information added by Drupal.org packaging script on 2021-12-06
+version: '8.x-1.0-beta14'
+project: 'entity_activity'
+datestamp: 1638827635

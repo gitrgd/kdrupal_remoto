@@ -1,0 +1,29 @@
+uuid: c98aa19a-c28b-463f-a199-4ec6baf1baa0
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_entrada_blog
+    - node.type.article
+    - taxonomy.vocabulary.posts
+id: node.article.field_entrada_blog
+field_name: field_entrada_blog
+entity_type: node
+bundle: article
+label: 'Entrada blog'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      posts: posts
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

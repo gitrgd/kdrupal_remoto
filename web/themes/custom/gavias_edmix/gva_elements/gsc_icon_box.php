@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace Drupal\gavias_blockbuilder\shortcodes;
 if(!class_exists('gsc_icon_box')):
    class gsc_icon_box{
@@ -6,7 +6,7 @@ if(!class_exists('gsc_icon_box')):
       public function render_form(){
          $fields = array(
             'type' => 'gsc_icon_box',
-            'title' => ('Icon Box'), 
+            'title' => ('Icon Box'),
             'size' => 3,'fields' => array(
                array(
                   'id'        => 'title',
@@ -37,7 +37,7 @@ if(!class_exists('gsc_icon_box')):
                   'id'            => 'icon_position',
                   'type'          => 'select',
                   'options'       => array(
-                     'top-center'            => 'Top Center', 
+                     'top-center'            => 'Top Center',
                      'top-left'              => 'Top Left',
                      'top-right'             => 'Top Right',
                      'right'                 => 'Right',
@@ -60,18 +60,18 @@ if(!class_exists('gsc_icon_box')):
                   'title'     => t('Box Background'),
                   'desc'      => t('Box Background, e.g: #f5f5f5')
                ),
-              
+
                array(
                   'id'        => 'icon_background',
                   'type'      => 'select',
                   'title'     => 'Background icon',
                   'options'   => array(
                      ''          => t('--None--'),
-                     'bg-theme'  => t('Background of theme'), 
+                     'bg-theme'  => t('Background of theme'),
                      'bg-white'  => t('Background White'),
                      'bg-black'  => t('Background Black'),
                      'bg-dark'   => t('Background Dark'),
-                  ) 
+                  )
                ),
                array(
                   'id'        => 'icon_color',
@@ -79,7 +79,7 @@ if(!class_exists('gsc_icon_box')):
                   'title'     => t('Icon Color'),
                   'options'   => array(
                      'text-theme'  => t('Text theme'),
-                     'text-white'  => t('Text white'), 
+                     'text-white'  => t('Text white'),
                      'text-black'  => t('Text black')
                   )
                ),
@@ -88,8 +88,8 @@ if(!class_exists('gsc_icon_box')):
                   'type'      => 'select',
                   'title'     => t('Icon Width'),
                   'options'   => array(
-                     'fa-1x'  => t('Fa 1x small'), 
-                     'fa-2x'  => t('Fa 2x'), 
+                     'fa-1x'  => t('Fa 1x small'),
+                     'fa-2x'  => t('Fa 2x'),
                      'fa-3x'  => t('Fa 3x'),
                      'fa-4x'  => t('Fa 4x'),
                   )
@@ -99,8 +99,8 @@ if(!class_exists('gsc_icon_box')):
                   'type'      => 'select',
                   'title'     => t('Icon Radius'),
                   'options'   => array(
-                     ''           => t('--None--'), 
-                     'radius-1x'  => t('Radius 1x'), 
+                     ''           => t('--None--'),
+                     'radius-1x'  => t('Radius 1x'),
                      'radius-2x'  => t('Radius 2x'),
                      'radius-5x'  => t('Radius 5x'),
                   )
@@ -110,8 +110,8 @@ if(!class_exists('gsc_icon_box')):
                   'type'      => 'select',
                   'title'     => t('Icon Border'),
                   'options'   => array(
-                     ''           => t('--None--'), 
-                     'border-1'  => t('Border 1px'), 
+                     ''           => t('--None--'),
+                     'border-1'  => t('Border 1px'),
                      'border-2'  => t('Border 2px'),
                      'border-3'  => t('Border 3px'),
                      'border-4'  => t('Border 4px'),
@@ -123,9 +123,9 @@ if(!class_exists('gsc_icon_box')):
                   'type'      => 'select',
                   'title'     => 'Skin Text for box',
                   'options'   => array(
-                     'text-dark'  => t('Text Dark'), 
+                     'text-dark'  => t('Text Dark'),
                      'text-light' => t('Text Light')
-                  ) 
+                  )
                ),
                array(
                   'id'        => 'target',
@@ -140,7 +140,7 @@ if(!class_exists('gsc_icon_box')):
                   'title'     => t('Animation'),
                   'desc'      => t('Entrance animation for element'),
                   'options'   => gavias_blockbuilder_animate_aos(),
-               ), 
+               ),
                array(
                   'id'     => 'el_class',
                   'type'      => 'text',
@@ -148,7 +148,7 @@ if(!class_exists('gsc_icon_box')):
                   'desc'      => t('Style particular content element differently - add a class name and refer to it in custom CSS.'),
                ),
 
-            ),                                       
+            ),
          );
          return $fields;
       }
@@ -178,8 +178,8 @@ if(!class_exists('gsc_icon_box')):
             'min_height'         => '',
             'el_class'           => ''
          ), $attr));
-         
-         if($image) $image = $base_url . $image; 
+
+         if($image) $image = $base_url . $image;
 
          // target
          if( $target == 'on' ){
@@ -204,15 +204,15 @@ if(!class_exists('gsc_icon_box')):
          $style = array(); // Style box
          if($min_height) $style[] = "min-height:{$min_height};";
          if($box_background) $style[] = "background-color:{$box_background};";
-         
+
          $style_icon = ''; // Style icon
          if($style_icon) $style_icon = "style=\"{$style_icon}\"";
 
          ?>
          <?php ob_start() ?>
          <?php if($icon_position=='top-center' || $icon_position=='top-left' || $icon_position=='top-right' || $icon_position=='right' || $icon_position=='left'){ ?>
-            <div class="widget gsc-icon-box <?php if(count($class)>0) print implode($class, ' ') ?>" <?php if(count($style) > 0) print 'style="'.implode($style, ';').'"' ?> <?php print gavias_print_animate_aos($animate) ?>>
-               
+            <div class="widget gsc-icon-box <?php if(count($class)>0) print implode(' ', $class) ?>" <?php if(count($style) > 0) print 'style="'.implode(';', $style).'"' ?> <?php print gavias_print_animate_aos($animate) ?>>
+
                <?php if(($icon || $image) && $icon_position != 'right'){ ?>
                   <div class="highlight-icon">
                      <span class="icon-container <?php print $icon_class ?>" <?php print $style_icon ?>>
@@ -228,7 +228,7 @@ if(!class_exists('gsc_icon_box')):
                   </div>
                   <?php if($content){ ?>
                      <div class="desc"><?php print do_shortcode($content); ?></div>
-                  <?php } ?>   
+                  <?php } ?>
                </div>
 
                 <?php if(($icon || $image) && $icon_position == 'right'){ ?>
@@ -240,15 +240,15 @@ if(!class_exists('gsc_icon_box')):
                   </div>
                <?php } ?>
 
-            </div> 
-         <?php } ?>   
+            </div>
+         <?php } ?>
 
          <?php if($icon_position == 'top-left-title' || $icon_position == 'top-right-title'){ ?>
-            <div class="widget gsc-icon-box <?php if(count($class)>0) print implode($class, ' ') ?>" <?php if(count($style) > 0) print 'style="'.implode($style, ';').'"' ?> <?php print gavias_print_animate_aos($animate) ?>>
-               
+            <div class="widget gsc-icon-box <?php if(count($class)>0) print implode(' ', $class) ?>" <?php if(count($style) > 0) print 'style="'.implode(';', $style).'"' ?> <?php print gavias_print_animate_aos($animate) ?>>
+
                <div class="highlight_content">
                   <div class="title-inner">
-                     
+
                      <?php if(($icon || $image) && $icon_position=='top-left-title'){ ?>
                         <div class="highlight-icon">
                            <span class="icon-container <?php print $icon_class ?>"  <?php print $style_icon ?>>
@@ -257,7 +257,7 @@ if(!class_exists('gsc_icon_box')):
                            </span>
                         </div>
                      <?php } ?>
-                     
+
                      <div class="title">
                         <?php if($link){ ?><a href="<?php print $link ?>"<?php print $target ?>> <?php } ?><?php print $title; ?><?php if($link){ ?> </a> <?php } ?>
                      </div>
@@ -274,11 +274,11 @@ if(!class_exists('gsc_icon_box')):
                   </div>
                   <?php if($content){ ?>
                      <div class="desc"><?php print do_shortcode($content); ?></div>
-                  <?php } ?>   
+                  <?php } ?>
                </div>
 
-            </div> 
-         <?php } ?>   
+            </div>
+         <?php } ?>
 
          <?php return ob_get_clean() ?>
        <?php
@@ -287,5 +287,5 @@ if(!class_exists('gsc_icon_box')):
       public function load_shortcode(){
          add_shortcode( 'icon_box', array($this, 'sc_icon_box') );
       }
-   } 
-endif;   
+   }
+endif;

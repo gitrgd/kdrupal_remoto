@@ -1,0 +1,29 @@
+uuid: 76b7ab0a-5c36-4e4e-b44a-23edd00af67a
+langcode: es
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:822ea1e0-cb2a-41c5-a86c-67a5426debab'
+  module:
+    - block_content
+    - gaviasthemer
+  theme:
+    - gavias_edmix
+third_party_settings:
+  gaviasthemer:
+    classes: ''
+id: drupal
+theme: gavias_edmix
+region: footer_first
+weight: -17
+provider: null
+plugin: 'block_content:822ea1e0-cb2a-41c5-a86c-67a5426debab'
+settings:
+  id: 'block_content:822ea1e0-cb2a-41c5-a86c-67a5426debab'
+  label: Drupal
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

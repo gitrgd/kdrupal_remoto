@@ -1,0 +1,19 @@
+uuid: 05a1f8a7-f2cd-431b-8a85-313b21fa4119
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_mapagoogle
+    - node.type.event
+id: node.event.field_mapagoogle
+field_name: field_mapagoogle
+entity_type: node
+bundle: event
+label: mapagoogle
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

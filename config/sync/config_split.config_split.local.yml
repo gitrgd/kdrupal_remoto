@@ -1,0 +1,19 @@
+uuid: 05a7c06f-573d-4415-b88b-222fe0d391c2
+langcode: es
+status: false
+dependencies: {  }
+id: local
+label: local
+description: ''
+weight: 0
+folder: ../config/entornos/local
+module: {  }
+theme: {  }
+blacklist:
+  - mailchimp.settings
+  - swiftmailer.transport
+  - syslog.settings
+  - system.performance
+graylist: {  }
+graylist_dependents: true
+graylist_skip_equal: true

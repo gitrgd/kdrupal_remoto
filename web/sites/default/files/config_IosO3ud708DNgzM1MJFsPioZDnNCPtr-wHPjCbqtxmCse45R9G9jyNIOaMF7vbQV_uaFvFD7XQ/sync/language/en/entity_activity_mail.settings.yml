@@ -1,6 +1,0 @@
-mail:
-  subject: 'Logs report'
-  body:
-    value: 'Logs report for [user:display-name]'
-  footer:
-    value: 'You receive this email because you opt in to receive this report on site [site:name]. You can change your settings from your profile : [user:edit-url].'

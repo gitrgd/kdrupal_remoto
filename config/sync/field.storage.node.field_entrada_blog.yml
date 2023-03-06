@@ -1,0 +1,20 @@
+uuid: e145ae07-d550-43c7-8037-d436d41287e4
+langcode: es
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_entrada_blog
+field_name: field_entrada_blog
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 4
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

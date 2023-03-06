@@ -1,0 +1,35 @@
+uuid: d6cc33d9-59d1-4cbe-b323-622d59cf7f6d
+langcode: en
+status: false
+dependencies:
+  content:
+    - 'block_content:basic:9db6746c-07ed-4976-8d06-1a9a56f38e24'
+  module:
+    - block_content
+    - gaviasthemer
+    - system
+  theme:
+    - gavias_edmix
+third_party_settings:
+  gaviasthemer:
+    classes: ''
+id: companypresentation
+theme: gavias_edmix
+region: sidebar_right
+weight: -10
+provider: null
+plugin: 'block_content:9db6746c-07ed-4976-8d06-1a9a56f38e24'
+settings:
+  id: 'block_content:9db6746c-07ed-4976-8d06-1a9a56f38e24'
+  label: ' Company presentation'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    context_mapping: {  }
+    pages: "/blogs-grid\r\n/blogs-masonry\r\n/gallery\r\n/portfolio\r\n/portfolio-1\r\n/portfolio-2\r\n/courses\r\n/course-filter\r\n/course-list\r\n/course-grid\r\n/user/*"

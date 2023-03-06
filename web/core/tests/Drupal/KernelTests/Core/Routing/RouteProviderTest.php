@@ -87,6 +87,9 @@ class RouteProviderTest extends KernelTestBase {
    */
   protected $cacheTagsInvalidator;
 
+  /**
+   * {@inheritdoc}
+   */
   protected function setUp(): void {
     parent::setUp();
     $this->fixtures = new RoutingFixtures();
@@ -111,6 +114,9 @@ class RouteProviderTest extends KernelTestBase {
     }
   }
 
+  /**
+   * {@inheritdoc}
+   */
   protected function tearDown(): void {
     $this->fixtures->dropTables(Database::getConnection());
 
@@ -288,7 +294,7 @@ class RouteProviderTest extends KernelTestBase {
     $routes = $provider->getRouteCollectionForRequest($request);
     $this->assertCount($number, $routes, 'The correct number of routes was found.');
     if ($expected_route_name) {
-      $route_name = key(current($routes));
+      $route_name = $routes->getIterator()->key();
       $this->assertEquals($expected_route_name, $route_name, 'The expected route name was found.');
     }
   }

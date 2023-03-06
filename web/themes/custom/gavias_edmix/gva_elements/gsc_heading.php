@@ -1,13 +1,13 @@
-<?php 
+<?php
 namespace Drupal\gavias_blockbuilder\shortcodes;
 if(!class_exists('gsc_heading')):
    class gsc_heading{
       public function render_form(){
          $fields = array(
             'type'      => 'gsc_heading',
-            'title'     => t('Heading'), 
-            'size'      => 3, 
-            
+            'title'     => t('Heading'),
+            'size'      => 3,
+
             'fields'    => array(
                array(
                   'id'        => 'title',
@@ -66,7 +66,7 @@ if(!class_exists('gsc_heading')):
                   'type'      => 'select',
                   'title'     => t('Remove Padding'),
                   'options'   => array(
-                        ''                   => 'Default',   
+                        ''                   => 'Default',
                         'padding-top-0'      => 'Remove padding top',
                         'padding-bottom-0'    => 'Remove padding bottom',
                         'padding-bottom-0 padding-top-0'   => 'Remove padding top & bottom'
@@ -87,11 +87,11 @@ if(!class_exists('gsc_heading')):
                   'desc'      => t('Entrance animation'),
                   'options'   => gavias_blockbuilder_animate_aos(),
                ),
-            ),                                       
+            ),
          );
          return $fields;
-      } 
-      
+      }
+
       public function render_content( $item ) {
          if( ! key_exists('desc', $item['fields']) ) $item['fields']['desc'] = '';
          print self::sc_heading( $item['fields'], $item['fields']['desc'] );
@@ -117,8 +117,8 @@ if(!class_exists('gsc_heading')):
          $class[] = $remove_padding;
          ?>
          <?php ob_start() ?>
-         <div class="widget gsc-heading <?php print implode($class, ' ') ?>" <?php print gavias_print_animate_aos($animate) ?>>
-            <?php if($icon){?><div class="title-icon"><span><i class="<?php print $icon ?>"></i></span></div><?php } ?> 
+         <div class="widget gsc-heading <?php print implode(' ', $class) ?>" <?php print gavias_print_animate_aos($animate) ?>>
+            <?php if($icon){?><div class="title-icon"><span><i class="<?php print $icon ?>"></i></span></div><?php } ?>
             <?php if($sub_title){ ?><div class="sub-title"><span><?php print $sub_title; ?></span></div><?php } ?>
             <?php if($title){ ?><h2 class="title"><span><?php print $title; ?></span></h2><?php } ?>
             <div class="heading-line"></div>
@@ -134,4 +134,3 @@ if(!class_exists('gsc_heading')):
       }
    }
 endif;
-
