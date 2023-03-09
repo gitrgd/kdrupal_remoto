@@ -11,5 +11,5 @@ smtp_credential_provider: swiftmailer
 smtp_credentials:
   swiftmailer:
     username: info@kreativdrupal.com
-    password: 'LkO$90T7s_YhU'
+    password: 'Rk09_45$23vBY'
 spool_directory: ''
